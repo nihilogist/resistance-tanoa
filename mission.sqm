@@ -8,30 +8,72 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=2;
+		nextID=16;
+	};
+	class MarkerIDProvider
+	{
+		nextID=5;
 	};
 	class Camera
 	{
-		pos[]={1790.6528,19.375137,7315.6289};
-		dir[]={-0.78507715,-0.55948198,0.26584432};
-		up[]={-0.5299328,0.82883739,0.17944667};
-		aside[]={0.32073802,2.9569492e-007,0.94718766};
+		pos[]={2671.9375,25.600832,7317.5142};
+		dir[]={0.29719567,-0.56751502,0.76799035};
+		up[]={0.2048285,0.82331979,0.52929717};
+		aside[]={0.93269277,-4.0070154e-007,-0.36093217};
 	};
 };
 binarizationWanted=0;
 addons[]=
 {
-	"A3_Characters_F_Exp"
+	"A3_Characters_F_Exp",
+	"A3_Ui_F",
+	"A3_Structures_F_Ind_DieselPowerPlant",
+	"A3_Modules_F",
+	"CUP_CAStructures_E_Misc",
+	"A3_Structures_F_Exp_Civilian_House_Small_04"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=1;
+		items=6;
 		class Item0
 		{
 			className="A3_Characters_F_Exp";
 			name="Arma 3 Apex - Characters and Clothing";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item1
+		{
+			className="A3_Ui_F";
+			name="Arma 3 - User Interface";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item2
+		{
+			className="A3_Structures_F_Ind";
+			name="Arma 3 - Industrial Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item3
+		{
+			className="A3_Modules_F";
+			name="Arma 3 Alpha - Scripted Modules";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item4
+		{
+			className="CUP_CAStructures_E_Misc";
+			name="CUP_CAStructures_E_Misc";
+		};
+		class Item5
+		{
+			className="A3_Structures_F_Exp_Civilian";
+			name="Arma 3 Apex - Civilian Buildings";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -135,7 +177,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=1;
+		items=11;
 		class Item0
 		{
 			dataType="Group";
@@ -167,6 +209,296 @@ class Mission
 			};
 			id=0;
 			atlOffset=6.1988831e-005;
+		};
+		class Item1
+		{
+			dataType="Marker";
+			position[]={2292.6379,13.294,6323.7051};
+			name="location_balavu_fuel_depot";
+			markerType="ELLIPSE";
+			type="ellipse";
+			alpha=0;
+			a=50;
+			b=50;
+			id=2;
+			atlOffset=-0.00041675568;
+		};
+		class Item2
+		{
+			dataType="Marker";
+			position[]={2422.3081,70.117996,7230.9438};
+			name="location_balavu_comms_tower";
+			markerType="ELLIPSE";
+			type="ellipse";
+			alpha=0;
+			a=50;
+			b=50;
+			id=3;
+			atlOffset=-0.00012207031;
+		};
+		class Item3
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2297.418,18.556969,6308.8223};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=4;
+			type="Land_dp_smallTank_F";
+		};
+		class Item4
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={2296.832,13.767825,6308.562};
+				angles[]={0.034652505,0,0.0079935296};
+			};
+			areaSize[]={5,-1,5};
+			flags=1;
+			id=5;
+			type="ModuleHideTerrainObjects_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="#filter";
+					expression="_this setVariable [""#filter"",_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=15;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="#hideLocally";
+					expression="_this setVariable [""#hideLocally"",_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item5
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={2283.5332,13.598765,6312.9619};
+				angles[]={0.034652505,0,0.0079935296};
+			};
+			areaSize[]={5,-1,5};
+			flags=1;
+			id=6;
+			type="ModuleHideTerrainObjects_F";
+			atlOffset=0.15332222;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="#filter";
+					expression="_this setVariable [""#filter"",_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=15;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="#hideLocally";
+					expression="_this setVariable [""#hideLocally"",_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item6
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2283.8591,18.247499,6312.8452};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=7;
+			type="Land_dp_smallTank_F";
+		};
+		class Item7
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={2435.5291,72.16655,7219.9395};
+			};
+			areaSize[]={5,-1,5};
+			flags=1;
+			id=8;
+			type="ModuleHideTerrainObjects_F";
+			atlOffset=-1.5258789e-005;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="#filter";
+					expression="_this setVariable [""#filter"",_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=15;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="#hideLocally";
+					expression="_this setVariable [""#hideLocally"",_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item8
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2435.5598,87.584984,7219.7314};
+				angles[]={6.2432065,0,0.010669862};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=9;
+			type="Land_Com_tower_ep1";
+		};
+		class Item9
+		{
+			dataType="Marker";
+			position[]={2653.729,7.7399998,7335.855};
+			name="location_balavu_town";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=250;
+			b=150;
+			id=11;
+			atlOffset=-0.0003323555;
+		};
+		class Item10
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2685.2,8.3556719,7350.4351};
+				angles[]={0,5.0573707,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=14;
+			type="Land_House_Small_04_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="Enh_featureType";
+					expression="if (_value isEqualType 0) then {_this setFeatureType _value}; if (_value isEqualType 'STRING') then {_this setFeatureType parseNumber _value}";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="0";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 	};
 };

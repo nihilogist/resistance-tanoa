@@ -5,4 +5,6 @@ private _campMap = "Land_Map_Tanoa_F";
 
 private _positionToSpawn = _location;
 
-_base = _campTable createVehicle (_positionToSpawn);
+_baseTable = _campTable createVehicle (_positionToSpawn);
+_baseMap = _campMap createVehicle (_positionToSpawn);
+_baseMap attachTo [_baseTable, [0,0,0.41] ];

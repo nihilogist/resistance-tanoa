@@ -15,11 +15,20 @@
               </ProjectNodeViewModel>
             </SubNodes>
           </ProjectNodeViewModel>
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="resistance-camp" IsExpanded="true" FileName="resistance\resistance-camp">
+            <IsSelected>false</IsSelected>
+            <SubNodes>
+              <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="resistance-camp-placement.sqf" IsExpanded="false" FileName="resistance\resistance-camp\resistance-camp-placement.sqf">
+                <IsSelected>true</IsSelected>
+                <SubNodes />
+              </ProjectNodeViewModel>
+            </SubNodes>
+          </ProjectNodeViewModel>
           <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="save-manager" IsExpanded="true" FileName="resistance\save-manager">
             <IsSelected>false</IsSelected>
             <SubNodes>
               <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="regular-autosave.sqf" IsExpanded="false" FileName="resistance\save-manager\regular-autosave.sqf">
-                <IsSelected>true</IsSelected>
+                <IsSelected>false</IsSelected>
                 <SubNodes />
               </ProjectNodeViewModel>
               <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="save-manager.sqf" IsExpanded="false" FileName="resistance\save-manager\save-manager.sqf">

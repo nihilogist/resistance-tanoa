@@ -3,10 +3,50 @@
   <ProjectRootNode Name="resistance-tanoa-mp" IsExpanded="true" FileName="">
     <IsSelected>false</IsSelected>
     <SubNodes>
+      <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="Enigma" IsExpanded="true" FileName="Enigma">
+        <IsSelected>false</IsSelected>
+        <SubNodes>
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="Civilians" IsExpanded="false" FileName="Enigma\Civilians">
+            <IsSelected>false</IsSelected>
+            <SubNodes>
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="Common" IsExpanded="true" FileName="Enigma\Civilians\Common">
+                <IsSelected>false</IsSelected>
+                <SubNodes>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="Common.sqf" IsExpanded="false" FileName="Enigma\Civilians\Common\Common.sqf">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="Debug.sqf" IsExpanded="false" FileName="Enigma\Civilians\Common\Debug.sqf">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
+                </SubNodes>
+              </ProjectNodeViewModel>
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="Server" IsExpanded="true" FileName="Enigma\Civilians\Server">
+                <IsSelected>false</IsSelected>
+                <SubNodes>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="ServerFunctions.sqf" IsExpanded="false" FileName="Enigma\Civilians\Server\ServerFunctions.sqf">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
+                </SubNodes>
+              </ProjectNodeViewModel>
+              <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="ConfigAndStart.sqf" IsExpanded="false" FileName="Enigma\Civilians\ConfigAndStart.sqf">
+                <IsSelected>false</IsSelected>
+                <SubNodes />
+              </ProjectNodeViewModel>
+              <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="start-civilians-module.sqf" IsExpanded="false" FileName="Enigma\Civilians\start-civilians-module.sqf">
+                <IsSelected>false</IsSelected>
+                <SubNodes />
+              </ProjectNodeViewModel>
+            </SubNodes>
+          </ProjectNodeViewModel>
+        </SubNodes>
+      </ProjectNodeViewModel>
       <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="resistance" IsExpanded="true" FileName="resistance">
         <IsSelected>false</IsSelected>
         <SubNodes>
-          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="game-manager" IsExpanded="true" FileName="resistance\game-manager">
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="game-manager" IsExpanded="false" FileName="resistance\game-manager">
             <IsSelected>false</IsSelected>
             <SubNodes>
               <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="game-manager.sqf" IsExpanded="false" FileName="resistance\game-manager\game-manager.sqf">
@@ -15,7 +55,7 @@
               </ProjectNodeViewModel>
             </SubNodes>
           </ProjectNodeViewModel>
-          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="locations" IsExpanded="true" FileName="resistance\locations">
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="locations" IsExpanded="false" FileName="resistance\locations">
             <IsSelected>false</IsSelected>
             <SubNodes>
               <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="locations.sqf" IsExpanded="false" FileName="resistance\locations\locations.sqf">
@@ -24,7 +64,7 @@
               </ProjectNodeViewModel>
             </SubNodes>
           </ProjectNodeViewModel>
-          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="logging-utils" IsExpanded="true" FileName="resistance\logging-utils">
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="logging-utils" IsExpanded="false" FileName="resistance\logging-utils">
             <IsSelected>false</IsSelected>
             <SubNodes>
               <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="logger.sqf" IsExpanded="false" FileName="resistance\logging-utils\logger.sqf">
@@ -32,7 +72,7 @@
                 <SubNodes />
               </ProjectNodeViewModel>
               <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="should-show-log.sqf" IsExpanded="false" FileName="resistance\logging-utils\should-show-log.sqf">
-                <IsSelected>true</IsSelected>
+                <IsSelected>false</IsSelected>
                 <SubNodes />
               </ProjectNodeViewModel>
             </SubNodes>
@@ -40,16 +80,29 @@
           <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="mission-config" IsExpanded="true" FileName="resistance\mission-config">
             <IsSelected>false</IsSelected>
             <SubNodes>
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="unit-config" IsExpanded="true" FileName="resistance\mission-config\unit-config">
+                <IsSelected>false</IsSelected>
+                <SubNodes>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="civilian-config.sqf" IsExpanded="false" FileName="resistance\mission-config\unit-config\civilian-config.sqf">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
+                </SubNodes>
+              </ProjectNodeViewModel>
+              <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="mission-config.sqf" IsExpanded="false" FileName="resistance\mission-config\mission-config.sqf">
+                <IsSelected>true</IsSelected>
+                <SubNodes />
+              </ProjectNodeViewModel>
               <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="variables-config.sqf" IsExpanded="false" FileName="resistance\mission-config\variables-config.sqf">
                 <IsSelected>false</IsSelected>
                 <SubNodes />
               </ProjectNodeViewModel>
             </SubNodes>
           </ProjectNodeViewModel>
-          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="resistance-camp" IsExpanded="true" FileName="resistance\resistance-camp">
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="resistance-camp" IsExpanded="false" FileName="resistance\resistance-camp">
             <IsSelected>false</IsSelected>
             <SubNodes>
-              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="resistance-camp-actions" IsExpanded="true" FileName="resistance\resistance-camp\resistance-camp-actions">
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="resistance-camp-actions" IsExpanded="false" FileName="resistance\resistance-camp\resistance-camp-actions">
                 <IsSelected>false</IsSelected>
                 <SubNodes>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="resistance-camp-map-action.sqf" IsExpanded="false" FileName="resistance\resistance-camp\resistance-camp-actions\resistance-camp-map-action.sqf">
@@ -64,7 +117,7 @@
               </ProjectNodeViewModel>
             </SubNodes>
           </ProjectNodeViewModel>
-          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="save-manager" IsExpanded="true" FileName="resistance\save-manager">
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="save-manager" IsExpanded="false" FileName="resistance\save-manager">
             <IsSelected>false</IsSelected>
             <SubNodes>
               <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="regular-autosave.sqf" IsExpanded="false" FileName="resistance\save-manager\regular-autosave.sqf">

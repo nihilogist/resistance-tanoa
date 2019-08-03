@@ -3,6 +3,9 @@
 // Setup configuration variables
 [] call compileFinal preprocessFileLineNumbers "resistance\mission-config\mission-config.sqf";
 
+// Initialise objects
+execVM "init.sqx.sqf";
+
 // Script definitions
 spawnBase = compileFinal preprocessFileLineNumbers "resistance\resistance-camp\resistance-camp-placement.sqf";
 reviewIntelligenceAction = compileFinal preprocessFileLineNumbers "resistance\resistance-camp\resistance-camp-actions\resistance-camp-map-action.sqf";

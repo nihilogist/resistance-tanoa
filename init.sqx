@@ -1,0 +1,9 @@
+call compile preprocessFileLineNumbers "resistance\classes\locations\PrisonCamp.sqx";
+
+using dave3;
+
+private "_camp" as PrisonCamp;
+
+sleep 3;
+
+_camp = ["locationBalavuPrisonCamp01"] new PrisonCamp;

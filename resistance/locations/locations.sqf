@@ -13,8 +13,8 @@ towns = [
 	["Balavu", "location_balavu_town", 50]
 ];
 
-// Region format: [regionName, [towns]]
+// Region format: [regionName, [towns], [prisonCampMarkers]]
 
 regions = [
-	["Balavu Region", [towns select 0]]
+	["Balavu Region", [towns select 0], ["locationBalavuPrisonCamp01"]]
 ];

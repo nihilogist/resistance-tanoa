@@ -28,6 +28,10 @@
             <IsSelected>false</IsSelected>
             <SubNodes>
               <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="logger.sqf" IsExpanded="false" FileName="resistance\logging-utils\logger.sqf">
+                <IsSelected>false</IsSelected>
+                <SubNodes />
+              </ProjectNodeViewModel>
+              <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="should-show-log.sqf" IsExpanded="false" FileName="resistance\logging-utils\should-show-log.sqf">
                 <IsSelected>true</IsSelected>
                 <SubNodes />
               </ProjectNodeViewModel>

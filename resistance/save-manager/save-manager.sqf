@@ -12,9 +12,11 @@ if (nukeTheSave) then {
 
 // Try to load values from save game
 if (!isNil "resistanceSaveGame") then {
+	["Loading data from save game."] call logger;
 	popularSupport = resistanceSaveGame select 0;
 	governmentSupport = resistanceSaveGame select 1;
 	externalSupport = resistanceSaveGame select 2;
+	["Save game data loaded."] call logger;
 };
 
 // Start autosave
@@ -35,6 +37,8 @@ while {true} do {
 	
 	resistanceSaveGame = [popularSupport, governmentSupport, externalSupport];
 	profileNamespace setVariable [saveGameName, resistanceSaveGame];
-	saveProfileNamespace;	
+	saveProfileNamespace;
+	
+	["Game data saved."] call logger;
 
 };

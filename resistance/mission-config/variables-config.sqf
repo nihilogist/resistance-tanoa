@@ -3,6 +3,7 @@ gameplayLoopDuration = 10;
 autosaveFrequency = 120;
 nukeTheSave = false;
 debug = true;
+logLevel = 2;
 
 // Ingame variables
 popularSupport = 10; // A measure of the popular support for the resistance

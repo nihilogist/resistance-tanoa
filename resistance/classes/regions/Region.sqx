@@ -13,23 +13,24 @@ namespace dave3
 	{
 	
 		// Fields for the region
-		private fields ["_mRegionName" as String, "_mPrisonCamp" as PrisonCamp];
+		private fields ["_mRegionName" as String, "_mMilitarisation", "_mPrisonCamp" as PrisonCamp, "_mGendarmeHQ" as GendarmeHQ];
 	
 		// Creates a Region object.
 		public constructor {
-			params ["_regionName" as String, "_prisonCampMarkers" as Array];
+			params ["_regionName" as String, "_militarisation", "_prisonCampMarkers" as Array, "_gendarmeHQMarker" as String];
 			
 			private ["_prisonCampMarker" as String];
 			
 			_mRegionName = _regionName;
+			_mMilitarisation = _militarisation;
 			
-			["Initialising Region"] call logger;
-			[_regionName] call logger;
+			[["Initialising Region ", _regionName] joinString ""] call logger;
 			
 			// Create a prison camp at one of the markers
 			_prisonCampMarker = selectRandom _prisonCampMarkers;
 			[_prisonCampMarker] call Logger;
 			_mPrisonCamp = [_prisonCampMarker] new PrisonCamp;
+			_mGendarmeHQ = [_gendarmeHQMarker] new GendarmeHQ;
 		};
 	};
 };

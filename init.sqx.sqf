@@ -1,10 +1,13 @@
-call compile preprocessFileLineNumbers "resistance\classes\locations\PrisonCamp.sqx.sqf";
-call compile preprocessFileLineNumbers "resistance\classes\regions\Region.sqx.sqf";
+call compile preprocessFileLineNumbers "resistance\classes\compile-all-classes.sqx.sqf";
 
 
-
-private ["_region"];
 
 sleep 3;
 
-_region = (["Balavu Region", ["locationBalavuPrisonCamp01", "locationBalavuPrisonCamp02", "locationBalavuPrisonCamp03"]] call cl_dave3_Region_constructor);
+{
+    _regionName = _x select 0;
+    _regionMilitarisation = _x select 1;
+    _regionPrisonCampLocations = _x select 2;
+    _regionGendarmeHQ = _x select 3;
+    ([_regionName, _regionMilitarisation, _regionPrisonCampLocations, _regionGendarmeHQ] call cl_dave3_Region_constructor);
+} forEach regions;

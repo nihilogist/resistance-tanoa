@@ -5,15 +5,16 @@
 // Set up logging framework
 logger = compileFinal preprocessFileLineNumbers "resistance\logging-utils\logger.sqf";
 
+// Script definitions
+spawnBase = compileFinal preprocessFileLineNumbers "resistance\resistance-camp\resistance-camp-placement.sqf";
+reviewIntelligenceAction = compileFinal preprocessFileLineNumbers "resistance\resistance-camp\resistance-camp-actions\resistance-camp-map-action.sqf";
+shouldShowLog = compileFinal preprocessFileLineNumbers "resistance\logging-utils\should-show-log.sqf";
+spawnObjectAtMarker = compileFinal preprocessFileLineNumbers "resistance\spawners\object-spawners\spawn-on-marker.sqf";
 
 // Initialise objects
 execVM "init.sqx.sqf";
 
-// Script definitions
-spawnBase = compileFinal preprocessFileLineNumbers "resistance\resistance-camp\resistance-camp-placement.sqf";
-reviewIntelligenceAction = compileFinal preprocessFileLineNumbers "resistance\resistance-camp\resistance-camp-actions\resistance-camp-map-action.sqf";
 
-shouldShowLog = compileFinal preprocessFileLineNumbers "resistance\logging-utils\should-show-log.sqf";
 
 // Run the save manager
 execVM "resistance\save-manager\save-manager.sqf";

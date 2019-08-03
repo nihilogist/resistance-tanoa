@@ -16,7 +16,7 @@ namespace dave3
 		// Creates a PrisonCamp object and spawns the prison camp buildings at the given location
 		public constructor {
 			params ["_locationMarker" as String];
-			private ["_prisonCampShedClass" as String, "_prisonCampGateClass" as String, "_prisonCampSidewallClass" as String, "_positionToSpawn", "_directionToSpawn"];
+			private ["_prisonCampShedClass" as String, "_prisonCampGateClass" as String, "_prisonCampSidewallClass" as String, "_positionToSpawn", "_directionToSpawn", "_prisonCampShed" as Object];
 
 			// Define buildings used in constructing the camp.
 			_prisonCampShedClass = "Land_Metal_Shed_F";
@@ -26,12 +26,9 @@ namespace dave3
 			// Get the position to spawn the camp.
 			_mLocation = _locationMarker;
 			_positionToSpawn = markerPos _mLocation;
-			_directionToSpawn = markerDir _mLocation;
 			
 			// Spawn in the buildings and arrange them.
-			private _prisonCampShed = _prisonCampShedClass createVehicle (_positionToSpawn);
-			_prisonCampShed setDir _directionToSpawn;
-			_prisonCampShed setPos getPos _prisonCampShed;
+			_prisonCampShed = [_prisonCampShedClass, _mLocation] call spawnObjectAtMarker;
 			
 			
 			private _prisonCampWall1 = _prisonCampSidewallClass createVehicle (_positionToSpawn);

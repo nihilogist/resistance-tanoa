@@ -16,7 +16,7 @@
 
 cl_dave3_PrisonCamp_constructor = { private "_class_fields"; _class_fields = [["dave3_PrisonCamp", []]];
     params ["_locationMarker"];
-    private ["_prisonCampShedClass", "_prisonCampGateClass", "_prisonCampSidewallClass", "_positionToSpawn", "_directionToSpawn"];
+    private ["_prisonCampShedClass", "_prisonCampGateClass", "_prisonCampSidewallClass", "_positionToSpawn", "_directionToSpawn", "_prisonCampShed"];
 
 
     _prisonCampShedClass = "Land_Metal_Shed_F";
@@ -26,12 +26,9 @@ cl_dave3_PrisonCamp_constructor = { private "_class_fields"; _class_fields = [["
 
     _class_fields set [1, _locationMarker];
     _positionToSpawn = markerPos (_class_fields select 1);
-    _directionToSpawn = markerDir (_class_fields select 1);
 
 
-    private _prisonCampShed = _prisonCampShedClass createVehicle (_positionToSpawn);
-    _prisonCampShed setDir _directionToSpawn;
-    _prisonCampShed setPos getPos _prisonCampShed;
+    _prisonCampShed = [_prisonCampShedClass, (_class_fields select 1)] call spawnObjectAtMarker;
 
 
     private _prisonCampWall1 = _prisonCampSidewallClass createVehicle (_positionToSpawn);

@@ -13,16 +13,17 @@ namespace dave3
 	{
 	
 		// Fields for the region
-		private fields ["_mRegionName" as String, "_mMilitarisation", "_mPrisonCamp" as PrisonCamp, "_mGendarmeHQ" as GendarmeHQ];
+		private fields ["_mRegionName" as String, "_mMilitarisation", "_mPrisonCamp" as PrisonCamp, "_mGendarmeHQ" as GendarmeHQ, "_mTowns" as Array];
 	
 		// Creates a Region object.
 		public constructor {
-			params ["_regionName" as String, "_militarisation", "_prisonCampMarkers" as Array, "_gendarmeHQMarker" as String];
+			params ["_regionName" as String, "_militarisation", "_prisonCampMarkers" as Array, "_gendarmeHQMarker" as String, "_towns" as Array];
 			
 			private ["_prisonCampMarker" as String];
 			
 			_mRegionName = _regionName;
 			_mMilitarisation = _militarisation;
+			_mTowns = _towns;
 			
 			[["Initialising Region ", _regionName] joinString ""] call logger;
 			
@@ -30,7 +31,17 @@ namespace dave3
 			_prisonCampMarker = selectRandom _prisonCampMarkers;
 			[_prisonCampMarker] call Logger;
 			_mPrisonCamp = [_prisonCampMarker] new PrisonCamp;
+			
+			// Create the region's gendarme HQ
 			_mGendarmeHQ = [_gendarmeHQMarker] new GendarmeHQ;
+			
+			// Create all the region's towns
+			{
+				_townName = _x select 0;
+				_gendarmesGroups = _x select 1;
+				_gendarmePatrolAreas = _x select 2;
+				[_townName, _gendarmesGroups, _gendarmePatrolAreas] new Town;
+			} foreach (_mTowns);
 		};
 	};
 };

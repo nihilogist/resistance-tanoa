@@ -1,2 +1,3 @@
 call compile preprocessFileLineNumbers "resistance\classes\locations\compile-all-locations.sqx";
 call compile preprocessFileLineNumbers "resistance\classes\regions\compile-all-regions.sqx";
+call compile preprocessFileLineNumbers "resistance\classes\utils\compile-all-utils.sqx";

@@ -1,0 +1,1 @@
+call compile preprocessFileLineNumbers "resistance\classes\utils\MarkerUtils.sqx.sqf";

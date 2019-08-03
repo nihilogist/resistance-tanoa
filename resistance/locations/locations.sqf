@@ -1,5 +1,12 @@
 // Variables containing the locations on the map, and their markers.
 
+
+// Resistance base format [baseName, baseMarkerName]
+bases = [
+	["First Camp", "locationFirstBase"]
+];
+
+
 // Town format: [townName, townMarkerName, townPopulation]
 
 towns = [

@@ -1,0 +1,2 @@
+call compile preprocessFileLineNumbers "resistance\classes\locations\PrisonCamp.sqx";
+call compile preprocessFileLineNumbers "resistance\classes\locations\GendarmeHQ.sqx";

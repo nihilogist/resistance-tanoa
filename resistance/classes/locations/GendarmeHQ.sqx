@@ -1,0 +1,39 @@
+/*
+ * Name:	GendarmeHQ
+ * Date:	03/08/2019
+ * Version: 1.0
+ * Author:  dave3
+ *
+ * Description:
+ * Represents a GendarmeHQ
+ */
+namespace dave3
+{
+	public class GendarmeHQ
+	{
+	
+		private fields ["_mLocationMarker" as String];
+		// Creates a GendarmeHQ object.
+		public constructor {
+		
+			params ["_locationMarker" as String];
+			
+			private ["_hqBuildingClass" as String, "_flagBuildingClass" as String, "_hqBuilding", "_hqFlag" as Object, "_flagPosition"];
+			
+			_mLocationMarker = _locationMarker;
+			_flagPosition = markerPos _mLocationMarker;
+			
+			// Define the buildings used to construct the HQ
+			_hqBuildingClass = "Land_House_Small_06_F";
+			_flagBuildingClass = "Flag_Gendarmerie_F";
+			
+			// Spawn in the buildings
+			_hqBuilding = [_hqBuildingClass, _locationMarker] call spawnObjectAtMarker;
+			
+			_hqFlag = _flagBuildingClass createVehicle (_flagPosition);
+			_hqFlag attachTo [_hqBuilding, [-7,-7,0]];
+			
+		};
+	};
+};
+

@@ -1,0 +1,1 @@
+call compile preprocessFileLineNumbers "resistance\classes\regions\Region.sqx.sqf";

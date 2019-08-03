@@ -1,7 +1,7 @@
 // Setup location variables
 [] call compileFinal preprocessFileLineNumbers "resistance\locations\locations.sqf";
 // Setup configuration variables
-[] call compileFinal preprocessFileLineNumbers "resistance\mission-config\variables-config.sqf";
+[] call compileFinal preprocessFileLineNumbers "resistance\mission-config\mission-config.sqf";
 
 // Script definitions
 spawnBase = compileFinal preprocessFileLineNumbers "resistance\resistance-camp\resistance-camp-placement.sqf";
@@ -14,6 +14,9 @@ execVM "resistance\save-manager\save-manager.sqf";
 
 // Run the main game loop
 execVM "resistance\game-manager\game-manager.sqf";
+
+// Start the civilians module
+call compile preprocessFileLineNumbers "Enigma\Civilians\start-civilians-module.sqf";
 
 
 // Spawn the first insurgent camp

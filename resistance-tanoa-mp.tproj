@@ -6,6 +6,15 @@
       <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="resistance" IsExpanded="true" FileName="resistance">
         <IsSelected>false</IsSelected>
         <SubNodes>
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="game-manager" IsExpanded="true" FileName="resistance\game-manager">
+            <IsSelected>false</IsSelected>
+            <SubNodes>
+              <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="game-manager.sqf" IsExpanded="false" FileName="resistance\game-manager\game-manager.sqf">
+                <IsSelected>false</IsSelected>
+                <SubNodes />
+              </ProjectNodeViewModel>
+            </SubNodes>
+          </ProjectNodeViewModel>
           <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="locations" IsExpanded="true" FileName="resistance\locations">
             <IsSelected>false</IsSelected>
             <SubNodes>
@@ -15,11 +24,42 @@
               </ProjectNodeViewModel>
             </SubNodes>
           </ProjectNodeViewModel>
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="logging-utils" IsExpanded="true" FileName="resistance\logging-utils">
+            <IsSelected>false</IsSelected>
+            <SubNodes>
+              <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="logger.sqf" IsExpanded="false" FileName="resistance\logging-utils\logger.sqf">
+                <IsSelected>false</IsSelected>
+                <SubNodes />
+              </ProjectNodeViewModel>
+              <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="should-show-log.sqf" IsExpanded="false" FileName="resistance\logging-utils\should-show-log.sqf">
+                <IsSelected>true</IsSelected>
+                <SubNodes />
+              </ProjectNodeViewModel>
+            </SubNodes>
+          </ProjectNodeViewModel>
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="mission-config" IsExpanded="true" FileName="resistance\mission-config">
+            <IsSelected>false</IsSelected>
+            <SubNodes>
+              <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="variables-config.sqf" IsExpanded="false" FileName="resistance\mission-config\variables-config.sqf">
+                <IsSelected>false</IsSelected>
+                <SubNodes />
+              </ProjectNodeViewModel>
+            </SubNodes>
+          </ProjectNodeViewModel>
           <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="resistance-camp" IsExpanded="true" FileName="resistance\resistance-camp">
             <IsSelected>false</IsSelected>
             <SubNodes>
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="resistance-camp-actions" IsExpanded="true" FileName="resistance\resistance-camp\resistance-camp-actions">
+                <IsSelected>false</IsSelected>
+                <SubNodes>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="resistance-camp-map-action.sqf" IsExpanded="false" FileName="resistance\resistance-camp\resistance-camp-actions\resistance-camp-map-action.sqf">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
+                </SubNodes>
+              </ProjectNodeViewModel>
               <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="resistance-camp-placement.sqf" IsExpanded="false" FileName="resistance\resistance-camp\resistance-camp-placement.sqf">
-                <IsSelected>true</IsSelected>
+                <IsSelected>false</IsSelected>
                 <SubNodes />
               </ProjectNodeViewModel>
             </SubNodes>

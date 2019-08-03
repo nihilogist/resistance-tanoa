@@ -1,4 +1,4 @@
-_saveInterval = 60;
+_saveInterval = autosaveFrequency;
 
 while {true} do {
 sleep _saveInterval;

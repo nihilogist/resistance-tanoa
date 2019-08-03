@@ -6,6 +6,15 @@
       <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="resistance" IsExpanded="true" FileName="resistance">
         <IsSelected>false</IsSelected>
         <SubNodes>
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="game-manager" IsExpanded="true" FileName="resistance\game-manager">
+            <IsSelected>false</IsSelected>
+            <SubNodes>
+              <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="game-manager.sqf" IsExpanded="false" FileName="resistance\game-manager\game-manager.sqf">
+                <IsSelected>false</IsSelected>
+                <SubNodes />
+              </ProjectNodeViewModel>
+            </SubNodes>
+          </ProjectNodeViewModel>
           <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="locations" IsExpanded="true" FileName="resistance\locations">
             <IsSelected>false</IsSelected>
             <SubNodes>
@@ -15,11 +24,20 @@
               </ProjectNodeViewModel>
             </SubNodes>
           </ProjectNodeViewModel>
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="mission-config" IsExpanded="true" FileName="resistance\mission-config">
+            <IsSelected>false</IsSelected>
+            <SubNodes>
+              <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="variables-config.sqf" IsExpanded="false" FileName="resistance\mission-config\variables-config.sqf">
+                <IsSelected>true</IsSelected>
+                <SubNodes />
+              </ProjectNodeViewModel>
+            </SubNodes>
+          </ProjectNodeViewModel>
           <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="resistance-camp" IsExpanded="true" FileName="resistance\resistance-camp">
             <IsSelected>false</IsSelected>
             <SubNodes>
               <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="resistance-camp-placement.sqf" IsExpanded="false" FileName="resistance\resistance-camp\resistance-camp-placement.sqf">
-                <IsSelected>true</IsSelected>
+                <IsSelected>false</IsSelected>
                 <SubNodes />
               </ProjectNodeViewModel>
             </SubNodes>

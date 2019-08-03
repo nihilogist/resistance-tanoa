@@ -7,4 +7,9 @@ private _positionToSpawn = _location;
 
 _baseTable = _campTable createVehicle (_positionToSpawn);
 _baseMap = _campMap createVehicle (_positionToSpawn);
-_baseMap attachTo [_baseTable, [0,0,0.41] ];
+_baseMap attachTo [_baseTable, [0.15,0,0.41] ];
+
+if (isServer) then {
+	[_baseMap, ["Review Intel", {hint "Intel Reviewed"}, [], 10, true, true, "", "true", 3]] remoteExec ["addAction"];
+};
+

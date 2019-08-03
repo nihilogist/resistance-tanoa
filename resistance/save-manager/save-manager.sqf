@@ -7,7 +7,7 @@ resistanceSaveGame = profileNamespace getVariable saveGameName;
 if (nukeTheSave) then {
 	resistanceSaveGame = [];
 	profileNamespace setVariable [saveGameName, resistanceSaveGame];
-	hint "Erasing Saved Data!";
+	["Erasing save game data!"] call logger;
 };
 
 // Try to load values from save game
@@ -27,6 +27,8 @@ while {true} do {
 		sleep 0.5;
 		triggerServerSave > 0
 	};
+	
+	["Saving game data to server profile file"] call logger;
 	
 	// When save trigger happens, then set all variables into the profile namespace and save it
 	triggerServerSave = 0;

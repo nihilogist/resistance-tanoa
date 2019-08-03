@@ -7,6 +7,8 @@ while {true} do {
 		sleep gameplayLoopDuration;
 		true
 	};
+	
+	["Executing gameplay loop update"] call logger;
 
 	if ((random 10) > 8) then {
 		popularSupport = popularSupport + 1;

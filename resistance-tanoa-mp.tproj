@@ -24,6 +24,15 @@
               </ProjectNodeViewModel>
             </SubNodes>
           </ProjectNodeViewModel>
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="logging-utils" IsExpanded="true" FileName="resistance\logging-utils">
+            <IsSelected>false</IsSelected>
+            <SubNodes>
+              <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="logger.sqf" IsExpanded="false" FileName="resistance\logging-utils\logger.sqf">
+                <IsSelected>true</IsSelected>
+                <SubNodes />
+              </ProjectNodeViewModel>
+            </SubNodes>
+          </ProjectNodeViewModel>
           <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="mission-config" IsExpanded="true" FileName="resistance\mission-config">
             <IsSelected>false</IsSelected>
             <SubNodes>
@@ -40,7 +49,7 @@
                 <IsSelected>false</IsSelected>
                 <SubNodes>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="resistance-camp-map-action.sqf" IsExpanded="false" FileName="resistance\resistance-camp\resistance-camp-actions\resistance-camp-map-action.sqf">
-                    <IsSelected>true</IsSelected>
+                    <IsSelected>false</IsSelected>
                     <SubNodes />
                   </ProjectNodeViewModel>
                 </SubNodes>

@@ -8,6 +8,12 @@ while {true} do {
 		true
 	};
 
-	hint "Executing Gameplay Loop";
+	if ((random 10) > 8) then {
+		popularSupport = popularSupport + 1;
+	};
+	
+	if ((random 10) < 2) then {
+		popularSupport = popularSupport - 1;
+	};
 
 };

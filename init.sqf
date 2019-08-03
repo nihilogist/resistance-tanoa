@@ -5,6 +5,7 @@
 
 // Script definitions
 spawnBase = compileFinal preprocessFileLineNumbers "resistance\resistance-camp\resistance-camp-placement.sqf";
+reviewIntelligenceAction = compileFinal preprocessFileLineNumbers "resistance\resistance-camp\resistance-camp-actions\resistance-camp-map-action.sqf";
 
 // Run the save manager
 execVM "resistance\save-manager\save-manager.sqf";

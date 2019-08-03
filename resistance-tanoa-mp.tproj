@@ -28,7 +28,7 @@
             <IsSelected>false</IsSelected>
             <SubNodes>
               <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="variables-config.sqf" IsExpanded="false" FileName="resistance\mission-config\variables-config.sqf">
-                <IsSelected>true</IsSelected>
+                <IsSelected>false</IsSelected>
                 <SubNodes />
               </ProjectNodeViewModel>
             </SubNodes>
@@ -36,6 +36,15 @@
           <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="resistance-camp" IsExpanded="true" FileName="resistance\resistance-camp">
             <IsSelected>false</IsSelected>
             <SubNodes>
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="resistance-camp-actions" IsExpanded="true" FileName="resistance\resistance-camp\resistance-camp-actions">
+                <IsSelected>false</IsSelected>
+                <SubNodes>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="resistance-camp-map-action.sqf" IsExpanded="false" FileName="resistance\resistance-camp\resistance-camp-actions\resistance-camp-map-action.sqf">
+                    <IsSelected>true</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
+                </SubNodes>
+              </ProjectNodeViewModel>
               <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="resistance-camp-placement.sqf" IsExpanded="false" FileName="resistance\resistance-camp\resistance-camp-placement.sqf">
                 <IsSelected>false</IsSelected>
                 <SubNodes />

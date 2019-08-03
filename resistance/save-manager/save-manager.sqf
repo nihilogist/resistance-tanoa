@@ -1,14 +1,14 @@
 saveGameName = "resistanceSave";
 
-
-// Default values if new game
-popularSupport = 10;
-governmentSupport = 10;
-externalSupport = 0;
-
 triggerServerSave = 0;
 resistanceSaveGame = profileNamespace getVariable saveGameName;
 
+// Check to see if save should be deleted
+if (nukeTheSave) then {
+	resistanceSaveGame = [];
+	profileNamespace setVariable [saveGameName, resistanceSaveGame];
+	hint "Erasing Saved Data!";
+};
 
 // Try to load values from save game
 if (!isNil "resistanceSaveGame") then {

@@ -1,0 +1,2 @@
+// Action to be taken when performing the Review Intel action on the Base Map
+hint composeText ["Popular support: ", (str popularSupport), lineBreak, "Government support: ", (str governmentSupport), lineBreak, "External support: ", (str externalSupport)];

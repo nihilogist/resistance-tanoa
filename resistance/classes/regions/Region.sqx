@@ -1,0 +1,36 @@
+/*
+ * Name:	Region
+ * Date:	03/08/2019
+ * Version: 1.0
+ * Author:  dave3
+ *
+ * Description:
+ * Represents a Region
+ */
+namespace dave3
+{
+	public class Region
+	{
+	
+		// Fields for the region
+		private fields ["_mRegionName" as String, "_mPrisonCamp" as PrisonCamp];
+	
+		// Creates a Region object.
+		public constructor {
+			params ["_regionName" as String, "_prisonCampMarkers" as Array];
+			
+			private ["_prisonCampMarker" as String];
+			
+			_mRegionName = _regionName;
+			
+			["Initialising Region"] call logger;
+			[_regionName] call logger;
+			
+			// Create a prison camp at one of the markers
+			_prisonCampMarker = selectRandom _prisonCampMarkers;
+			[_prisonCampMarker] call Logger;
+			_mPrisonCamp = [_prisonCampMarker] new PrisonCamp;
+		};
+	};
+};
+

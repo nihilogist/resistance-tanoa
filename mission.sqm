@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=641;
+	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=17;
+		nextID=21;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2689.5747,19.608137,7367.6353};
-		dir[]={-0.87108094,-0.41179734,0.2679188};
-		up[]={-0.39365229,0.91124403,0.12107532};
-		aside[]={0.29399803,8.4702333e-007,0.9558689};
+		pos[]={2597.5334,36.741051,7276.8525};
+		dir[]={0.015475678,-0.6412549,0.7671901};
+		up[]={0.01293359,0.76732111,0.64113313};
+		aside[]={0.99981302,2.4619567e-008,-0.020168528};
 	};
 };
 binarizationWanted=0;
@@ -90,7 +90,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=4;
+		items=6;
 		class Item0
 		{
 			dataType="Group";
@@ -276,6 +276,29 @@ class Mission
 			b=0.1;
 			angle=120.50419;
 			id=16;
+		};
+		class Item4
+		{
+			dataType="Marker";
+			position[]={2594.7549,12.081,7300.5879};
+			name="locationBalavuPrisonCamp02";
+			markerType="ELLIPSE";
+			type="ellipse";
+			b=0.1;
+			angle=264.96298;
+			id=19;
+			atlOffset=-0.00037193298;
+		};
+		class Item5
+		{
+			dataType="Marker";
+			position[]={2585.332,8.6009665,7394.4033};
+			name="locationBalavuPrisonCamp03";
+			markerType="ELLIPSE";
+			type="ellipse";
+			b=0.1;
+			angle=22.963999;
+			id=20;
 		};
 	};
 };

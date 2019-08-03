@@ -3,7 +3,7 @@
   <ProjectRootNode Name="resistance-tanoa-mp" IsExpanded="true" FileName="">
     <IsSelected>false</IsSelected>
     <SubNodes>
-      <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="Enigma" IsExpanded="true" FileName="Enigma">
+      <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="Enigma" IsExpanded="false" FileName="Enigma">
         <IsSelected>false</IsSelected>
         <SubNodes>
           <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="Civilians" IsExpanded="true" FileName="Enigma\Civilians">
@@ -26,7 +26,7 @@
                 <IsSelected>false</IsSelected>
                 <SubNodes>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="ServerFunctions.sqf" IsExpanded="false" FileName="Enigma\Civilians\Server\ServerFunctions.sqf">
-                    <IsSelected>true</IsSelected>
+                    <IsSelected>false</IsSelected>
                     <SubNodes />
                   </ProjectNodeViewModel>
                 </SubNodes>
@@ -49,7 +49,7 @@
           <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="classes" IsExpanded="true" FileName="resistance\classes">
             <IsSelected>false</IsSelected>
             <SubNodes>
-              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="locations" IsExpanded="true" FileName="resistance\classes\locations">
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="locations" IsExpanded="false" FileName="resistance\classes\locations">
                 <IsSelected>false</IsSelected>
                 <SubNodes>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="PrisonCamp.sqx" IsExpanded="false" FileName="resistance\classes\locations\PrisonCamp.sqx">
@@ -58,9 +58,18 @@
                   </ProjectNodeViewModel>
                 </SubNodes>
               </ProjectNodeViewModel>
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="regions" IsExpanded="false" FileName="resistance\classes\regions">
+                <IsSelected>false</IsSelected>
+                <SubNodes>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="Region.sqx" IsExpanded="false" FileName="resistance\classes\regions\Region.sqx">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
+                </SubNodes>
+              </ProjectNodeViewModel>
             </SubNodes>
           </ProjectNodeViewModel>
-          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="game-manager" IsExpanded="false" FileName="resistance\game-manager">
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="game-manager" IsExpanded="true" FileName="resistance\game-manager">
             <IsSelected>false</IsSelected>
             <SubNodes>
               <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="game-manager.sqf" IsExpanded="false" FileName="resistance\game-manager\game-manager.sqf">
@@ -82,7 +91,7 @@
                 </SubNodes>
               </ProjectNodeViewModel>
               <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="locations.sqf" IsExpanded="false" FileName="resistance\locations\locations.sqf">
-                <IsSelected>false</IsSelected>
+                <IsSelected>true</IsSelected>
                 <SubNodes />
               </ProjectNodeViewModel>
             </SubNodes>

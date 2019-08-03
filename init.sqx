@@ -1,9 +1,10 @@
 call compile preprocessFileLineNumbers "resistance\classes\locations\PrisonCamp.sqx";
+call compile preprocessFileLineNumbers "resistance\classes\regions\Region.sqx";
 
 using dave3;
 
-private "_camp" as PrisonCamp;
+private "_region" as Region;
 
 sleep 3;
 
-_camp = ["locationBalavuPrisonCamp01"] new PrisonCamp;
+_region = ["Balavu Region", ["locationBalavuPrisonCamp01", "locationBalavuPrisonCamp02", "locationBalavuPrisonCamp03"]] new Region;

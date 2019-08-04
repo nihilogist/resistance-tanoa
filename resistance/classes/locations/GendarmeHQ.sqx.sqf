@@ -31,4 +31,4 @@ cl_dave3_GendarmeHQ_constructor = { private "_class_fields"; _class_fields = [["
     _hqBuilding = [_hqBuildingClass, _locationMarker] call spawnObjectAtMarker;
 
     _hqFlag = _flagBuildingClass createVehicle (_flagPosition);
-    _hqFlag attachTo [_hqBuilding, [-10, 0, 0]]; _class_fields };
+    _hqFlag attachTo [_hqBuilding, [-7, -7, 0]]; _class_fields };

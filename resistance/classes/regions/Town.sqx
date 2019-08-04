@@ -1,0 +1,50 @@
+/*
+ * Name:	Town
+ * Date:	03/08/2019
+ * Version: 1.0
+ * Author:  dave3
+ *
+ * Description:
+ * Represents a Town
+ */
+namespace dave3
+{
+	public class Town
+	{
+	
+		private fields ["_mTownName" as String, "_mGendarmesPatrolMarkers" as Array, "_mGendarmesGroups" as Array];
+		// Creates a Town object.
+		public constructor {
+			params ["_name" as String, "_gendarmeGroupsPresent" as Scalar, "_gendarmesPatrolMarkers" as Array];
+			
+			private ["_gendarmeClass" as String, "_gendarmeGroup" as GendarmeGroup];
+			
+			_mTownName = _name;
+			_mGendarmesPatrolMarkers = _gendarmesPatrolMarkers;
+
+			// Spawn all gendarmes groups
+			for "_i" from 0 to (_gendarmeGroupsPresent -1) do {
+				_gendarmeGroup = [2, _self] new GendarmeGroup;
+				_mGendarmesGroups pushBack (_gendarmeGroup);
+			};
+		};
+		
+		// returns one of the designated patrol markers for the town
+		public method String getRandomPatrolMarker {
+			selectRandom _mGendarmesPatrolMarkers
+		};
+		
+		public method String getTownName {
+			_mTownName
+		};
+		
+		public method Array getGendarmesGroups {
+			_mGendarmesGroups
+		};
+		
+		public method Array getGendarmesPatrolMarkers {
+			_mGendarmesPatrolMarkers
+		};
+	};
+};
+

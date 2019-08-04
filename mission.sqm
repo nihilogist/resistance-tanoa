@@ -8,18 +8,18 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=24;
+		nextID=28;
 	};
 	class MarkerIDProvider
 	{
-		nextID=4;
+		nextID=6;
 	};
 	class Camera
 	{
-		pos[]={2692.7603,19.280235,7307.4624};
-		dir[]={0.31764752,-0.41111508,0.85456765};
-		up[]={0.14326124,0.91153246,0.38541707};
-		aside[]={0.93743116,-1.9443542e-007,-0.34845328};
+		pos[]={880.31982,81.632545,7602.8408};
+		dir[]={0.53840786,-0.57866848,0.61271387};
+		up[]={0.38198876,0.81554419,0.43470344};
+		aside[]={0.75124097,8.8280649e-007,-0.66014498};
 	};
 };
 binarizationWanted=0;
@@ -90,7 +90,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=7;
+		items=11;
 		class Item0
 		{
 			dataType="Group";
@@ -313,6 +313,55 @@ class Mission
 			angle=196.58296;
 			id=23;
 			atlOffset=-0.0001039505;
+		};
+		class Item7
+		{
+			dataType="Marker";
+			position[]={850.13599,2.77,7658.5259};
+			name="gendarmeTavuPatrol01";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=25;
+			b=25;
+			angle=130.96696;
+			id=24;
+		};
+		class Item8
+		{
+			dataType="Marker";
+			position[]={934.22229,1.8200001,7753.3877};
+			name="gendarmeTavuPatrol02";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=8;
+			b=30;
+			angle=41.013988;
+			id=25;
+		};
+		class Item9
+		{
+			dataType="Marker";
+			position[]={940.41699,2.3199999,7668.5342};
+			name="gendarmeTavuPatrol03";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=8;
+			b=30;
+			angle=41.013985;
+			id=26;
+		};
+		class Item10
+		{
+			dataType="Marker";
+			position[]={1005.6,2.76,7741.8481};
+			name="gendarmeTavuPatrol04";
+			markerType="RECTANGLE";
+			type="rectangle";
+			a=8;
+			b=30;
+			angle=129.05;
+			id=27;
+			atlOffset=-0.00038838387;
 		};
 	};
 };

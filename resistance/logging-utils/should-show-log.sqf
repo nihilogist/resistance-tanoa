@@ -11,7 +11,7 @@ params ["_logLevel"];
 if (_logLevel isEqualTo "ERROR") then {
 	true
 } else {
-	if (_logLevel isEqualTo "LOG") then {
+	if (_logLevel isEqualTo "LOG" || _logLevel isEqualTo "WARN") then {
 		if (logLevel < 4) then {true} else {false};
 	};
 	

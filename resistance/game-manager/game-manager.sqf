@@ -8,20 +8,20 @@ while {!gameIsOver} do {
 		true
 	};
 	
-	["Executing gameplay loop update"] call logger;
+	//["Executing gameplay loop update"] call logger;
 
 	if ((random 10) > 8) then {
 		governmentStability = governmentStability + 1;
-		["Government stability increased"] call logger;
+	//	["Government stability increased"] call logger;
 	};
 	
 	if ((random 10) < 2) then {
 		governmentStability = governmentStability - 1;
-		["Government stability decreased"] call logger;
+	//	["Government stability decreased"] call logger;
 	};
 	
 	if (governmentStability < 10) then {
-		["Government stability critical!"] call logger;
+	//	["Government stability critical!"] call logger;
 		gameIsOver = true;
 	};
 

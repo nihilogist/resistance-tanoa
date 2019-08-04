@@ -1,3 +1,5 @@
+/*
+
 saveGameName = "resistanceSave";
 
 // Check to see if save should be deleted
@@ -43,3 +45,5 @@ while {true} do {
 	["Game data saved."] call logger;
 
 };
+
+*/

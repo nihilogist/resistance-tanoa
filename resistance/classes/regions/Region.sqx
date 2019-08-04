@@ -9,8 +9,11 @@
  */
 namespace dave3
 {
-	public class Region
+	public class Region : ISaveable
 	{
+	
+		// Properties for the region
+		public property String regionName {get; private set; };
 	
 		// Fields for the region
 		private fields ["_mRegionName" as String, "_mMilitarisation", "_mPrisonCamp" as PrisonCamp, "_mGendarmeHQ" as GendarmeHQ, "_mTowns" as Array];
@@ -21,11 +24,12 @@ namespace dave3
 			
 			private ["_prisonCampMarker" as String];
 			
-			_mRegionName = _regionName;
+			_self.regionName = _regionName;
+			
 			_mMilitarisation = _militarisation;
 			_mTowns = _towns;
 			
-			[["Initialising Region ", _regionName] joinString ""] call logger;
+			[["Initialising Region ", _self.regionName] joinString ""] call logger;
 			
 			// Create a prison camp at one of the markers
 			_prisonCampMarker = selectRandom _prisonCampMarkers;
@@ -43,6 +47,17 @@ namespace dave3
 				[_townName, _gendarmesGroups, _gendarmePatrolAreas] new Town;
 			} foreach (_mTowns);
 		};
+		
+		
+		public method Array getSaveableData() {
+			private ["_saveableData" as Array];
+			_saveableData = [
+				_self.regionName
+			];
+			[["REGION: Save data generated as: ", _saveableData] joinString ""] call logger;
+			_saveableData
+		};
+		
 	};
 };
 

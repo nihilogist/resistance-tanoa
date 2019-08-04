@@ -19,7 +19,7 @@ namespace dave3
 			
 			private ["_gendarmeClass" as String, "_gendarmeGroup" as GendarmeGroup];
 			
-			[["Initialising Town ", _name] joinString ""] call logger;
+			// [["Initialising Town ", _name] joinString ""] call logger;
 			
 			_mTownName = _name;
 			_mGendarmesPatrolMarkers = _gendarmesPatrolMarkers;

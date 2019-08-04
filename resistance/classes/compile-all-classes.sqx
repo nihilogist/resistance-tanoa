@@ -2,3 +2,4 @@ call compile preprocessFileLineNumbers "resistance\classes\locations\compile-all
 call compile preprocessFileLineNumbers "resistance\classes\regions\compile-all-regions.sqx";
 call compile preprocessFileLineNumbers "resistance\classes\units\compile-all-units.sqx";
 call compile preprocessFileLineNumbers "resistance\classes\utils\compile-all-utils.sqx";
+call compile preprocessFileLineNumbers "resistance\classes\game\compile-all-game.sqx";

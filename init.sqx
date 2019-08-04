@@ -1,13 +1,41 @@
+call compile preprocessFileLineNumbers "resistance\interfaces\compile-all-interfaces.sqx";
 call compile preprocessFileLineNumbers "resistance\classes\compile-all-classes.sqx";
 
 using dave3;
 
+private ["_saveManager" as SaveManager, "_savedWorldData" as Array, "_worldName" as String, "_worldRegions" as Array];
+
 sleep 3;
 
 // Initialise singletons
-
-_worldName = worldData select 0;
-_worldRegions = worldData select 1;
+_saveManager = [nukeTheSave, saveGameName] new SaveManager;
 
 
-[[_worldName, _worldRegions]] new WorldRegions;
+// Check to see if world can be loaded
+_savedWorldData = call _saveManager.getSavedData;
+
+if (isNil "_savedWorldData") then {
+	["INIT: Saved world data does not exist."] call logger;
+	_worldName = worldData select 0;
+	_worldRegions = worldData select 1;
+} else {
+	["INIT: Parsing saved world data"] call logger;
+	if (count _savedWorldData == 0) then {
+		["INIT: No world data in save file."] call logger;
+		_worldName = worldData select 0;
+		_worldRegions = worldData select 1;
+	} else {
+		["INIT: Selecting world data from save file"] call logger;
+		_worldName = _savedWorldData select 0;
+		[["INIT: World name found as ", _worldName] joinString ""] call logger;
+		_worldRegions = _savedWorldData select 1;
+	};
+};
+
+theWorld = [[_worldName, _worldRegions]] new WorldRegions;
+
+// Once the world is initialised, then set it into the save manager and request a save.
+[theWorld] call _saveManager.setWorldToSave;
+[] call _saveManager.requestSave;
+
+[] call _saveManager.RunAsync;

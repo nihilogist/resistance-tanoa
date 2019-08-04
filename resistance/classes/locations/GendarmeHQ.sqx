@@ -14,6 +14,7 @@ namespace dave3
 	
 
 		public property String locationMarker {get; private set; };
+		public property Region region { get; private set; };
 	
 
 		// Creates a GendarmeHQ object.
@@ -49,6 +50,10 @@ namespace dave3
 			
 			_gendarmeHQData
 			
+		};
+		
+		public method setRegion("_region" as Region) {
+			_self.region = _region;
 		};
 	};
 };

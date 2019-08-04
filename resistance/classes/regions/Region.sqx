@@ -38,6 +38,7 @@ namespace dave3
 			// Create the gendarme HQ for the area
 			[["Initialising Region ", _self.regionName, "'s Gendarme HQ at ", _regionData select 2] joinString ""] call logger;
 			_self.gendarmeHQ = [_regionData select 2] new GendarmeHQ;
+
 			
 			// Create the region's towns
 			[["Initialising Region ", _self.regionName, "'s Towns"] joinString ""] call logger;

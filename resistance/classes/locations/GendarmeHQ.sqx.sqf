@@ -14,6 +14,7 @@
 
 
 cl_dave3_GendarmeHQ_locationMarker_PropIndex = 1;
+cl_dave3_GendarmeHQ_region_PropIndex = 2;
 
 
 
@@ -48,3 +49,8 @@ cl_dave3_GendarmeHQ_getSaveableData = { params ["_class_fields", "_this"];
     _gendarmeHQData = [(_class_fields select 1)];
 
     _gendarmeHQData };
+
+
+
+cl_dave3_GendarmeHQ_setRegion = { params ["_class_fields", "_this"]; params ["_region"]; 
+    _class_fields set [2, _region]; };

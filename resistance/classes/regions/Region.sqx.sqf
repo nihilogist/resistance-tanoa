@@ -38,6 +38,7 @@ cl_dave3_Region_constructor = { private "_class_fields"; _class_fields = [["dave
 
     [["Initialising Region ", (_class_fields select 1), "'s Gendarme HQ at ", _regionData select 2] joinString ""] call logger;
     _class_fields set [4, ([_regionData select 2] call cl_dave3_GendarmeHQ_constructor)];
+    ([(_class_fields select 4), [_class_fields]] call cl_dave3_GendarmeHQ_setRegion);
 
 
     [["Initialising Region ", (_class_fields select 1), "'s Towns"] joinString ""] call logger;

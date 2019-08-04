@@ -6,12 +6,8 @@ sleep 3;
 
 
 
+_worldName = worldData select 0;
+_worldRegions = worldData select 1;
 
-{
-    _regionName = _x select 0;
-    _regionMilitarisation = _x select 1;
-    _regionPrisonCampLocations = _x select 2;
-    _regionGendarmeHQ = _x select 3;
-    _regionTowns = _x select 4;
-    ([_regionName, _regionMilitarisation, _regionPrisonCampLocations, _regionGendarmeHQ, _regionTowns] call cl_dave3_Region_constructor);
-} forEach regions;
+
+([[_worldName, _worldRegions]] call cl_dave3_WorldRegions_constructor);

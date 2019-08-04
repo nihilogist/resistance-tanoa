@@ -15,12 +15,15 @@ tavu = ["Tavu", // town name
 
 // Region format: [regionName, militarisation level, [prisonCampMarkers], Gendarme HQ Marker, [towns]]
 
-regions = [
-	[
-		"Balavu Region", // Name
-		0, // Militarisation
-		["locationBalavuPrisonCamp01", "locationBalavuPrisonCamp02", "locationBalavuPrisonCamp03"], // Prison camp locations
-		"locationBalavuGendarmeHQ", // Gendarme HQ Locations
-		[tavu] // towns
-	]
+balavu = [
+	"Balavu Region", // Name
+	0, // Militarisation
+	["locationBalavuPrisonCamp01", "locationBalavuPrisonCamp02", "locationBalavuPrisonCamp03"], // Prison camp locations
+	"locationBalavuGendarmeHQ", // Gendarme HQ Locations
+	[tavu] // towns
+];
+
+worldData = [
+	"Tanoa", // World name
+	[balavu] // regions array
 ];

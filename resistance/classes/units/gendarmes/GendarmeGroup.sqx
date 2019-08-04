@@ -21,6 +21,8 @@ namespace dave3
 			
 			_gendarmeUnitClass = "B_GEN_Soldier_F";
 			
+			[["Initialising Gendarme Group for ", _town] joinString ""] call logger;
+			
 			// Define the home town
 			_mHomeTown = _town;
 			

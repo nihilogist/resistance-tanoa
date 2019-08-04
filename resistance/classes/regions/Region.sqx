@@ -17,7 +17,7 @@ namespace dave3
 	
 		// Creates a Region object.
 		public constructor {
-			params ["_regionName" as String, "_militarisation", "_prisonCampMarkers" as Array, "_gendarmeHQMarker" as String, "_towns" as Array];
+			params ["_regionName" as String, "_militarisation" as Scalar, "_prisonCampMarkers" as Array, "_gendarmeHQMarker" as String, "_towns" as Array];
 			
 			private ["_prisonCampMarker" as String];
 			

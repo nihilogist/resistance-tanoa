@@ -1,2 +1,3 @@
 call compile preprocessFileLineNumbers "resistance\classes\regions\Region.sqx";
 call compile preprocessFileLineNumbers "resistance\classes\regions\Town.sqx";
+call compile preprocessFileLineNumbers "resistance\classes\regions\WorldRegions.sqx";

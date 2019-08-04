@@ -24,3 +24,8 @@ regions = [
 		[tavu] // towns
 	]
 ];
+
+worldData = [
+	"Tanoa", // World name
+	regions // Region array
+];

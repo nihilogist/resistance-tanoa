@@ -1,0 +1,53 @@
+/*
+ * Name:	World
+ * Date:	04/08/2019
+ * Version: 1.0
+ * Author:  dave3
+ *
+ * Description:
+ * Represents the whole world (island)
+ */
+namespace dave3
+{
+	public class WorldRegions
+	{
+	
+		private fields ["_mWorldName" as String, "_mRegions" as Array];
+		
+		
+		// Creates a World object.
+		public constructor {
+			params ["_worldData" as Array];
+
+			private ["_regions" as Array, "_region" as Region, "_regionName" as String, "_regionMilitarisation" as Scalar, "_regionPrisonCampMarkers" as Array, "_regionGendarmeHQMarker" as String, "_regionTowns" as Array];
+
+			_mWorldName = _worldData select 0;
+			_regions = _worldData select 1;
+			
+			[["Initialising World ", _mWorldName] joinString ""] call logger;
+			[["Initialising ", (count _regions), " regions"] joinString ""] call logger;
+			
+			// Iterate over all regions and create them
+			{
+				_regionName = _x select 0;
+				_regionMilitarisation = _x select 1;
+				_regionPrisonCampMarkers = _x select 2;
+				_regionGendarmeHQMarker = _x select 3;
+				_regionTowns = _x select 4;
+				_region = [_regionName, _regionMilitarisation, _regionPrisonCampMarkers, _regionGendarmeHQMarker, _regionTowns] new Region;
+				_mRegions pushBack _region;
+			} forEach _regions;
+		};
+		
+		
+		// Returns the name of the world / island
+		public method String getWorldName {
+			_mWorldName
+		};
+		
+		public method Array getRegions {
+			_mRegions
+		};
+	};
+};
+

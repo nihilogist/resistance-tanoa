@@ -66,7 +66,7 @@
                   </ProjectNodeViewModel>
                 </SubNodes>
               </ProjectNodeViewModel>
-              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="regions" IsExpanded="false" FileName="resistance\classes\regions">
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="regions" IsExpanded="true" FileName="resistance\classes\regions">
                 <IsSelected>false</IsSelected>
                 <SubNodes>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="compile-all-regions.sqx" IsExpanded="false" FileName="resistance\classes\regions\compile-all-regions.sqx">
@@ -74,10 +74,14 @@
                     <SubNodes />
                   </ProjectNodeViewModel>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="Region.sqx" IsExpanded="false" FileName="resistance\classes\regions\Region.sqx">
-                    <IsSelected>false</IsSelected>
+                    <IsSelected>true</IsSelected>
                     <SubNodes />
                   </ProjectNodeViewModel>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="Town.sqx" IsExpanded="false" FileName="resistance\classes\regions\Town.sqx">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="WorldRegions.sqx" IsExpanded="false" FileName="resistance\classes\regions\WorldRegions.sqx">
                     <IsSelected>false</IsSelected>
                     <SubNodes />
                   </ProjectNodeViewModel>
@@ -100,7 +104,7 @@
                     </SubNodes>
                   </ProjectNodeViewModel>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="compile-all-units.sqx" IsExpanded="false" FileName="resistance\classes\units\compile-all-units.sqx">
-                    <IsSelected>true</IsSelected>
+                    <IsSelected>false</IsSelected>
                     <SubNodes />
                   </ProjectNodeViewModel>
                 </SubNodes>

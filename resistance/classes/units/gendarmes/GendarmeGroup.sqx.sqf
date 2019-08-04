@@ -21,6 +21,8 @@ cl_dave3_GendarmeGroup_constructor = { private "_class_fields"; _class_fields = 
 
     _gendarmeUnitClass = "B_GEN_Soldier_F";
 
+    [["Initialising Gendarme Group for ", _town] joinString ""] call logger;
+
 
     _class_fields set [2, _town];
 

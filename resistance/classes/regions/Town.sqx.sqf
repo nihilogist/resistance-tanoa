@@ -19,6 +19,8 @@ cl_dave3_Town_constructor = { private "_class_fields"; _class_fields = [["dave3_
 
     private ["_gendarmeClass", "_gendarmeGroup"];
 
+    [["Initialising Town ", _name] joinString ""] call logger;
+
     _class_fields set [1, _name];
     _class_fields set [2, _gendarmesPatrolMarkers];
 

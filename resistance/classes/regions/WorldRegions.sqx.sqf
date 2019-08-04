@@ -20,25 +20,20 @@ cl_dave3_WorldRegions_regions_PropIndex = 2;
 cl_dave3_WorldRegions_constructor = { private "_class_fields"; _class_fields = [["dave3_WorldRegions", ["dave3.ISaveable"]]];
     params ["_worldData"];
 
-    private ["_regions", "_region", "_regionName", "_regionMilitarisation", "_regionPrisonCampMarkers", "_regionGendarmeHQMarker", "_regionTowns"];
+    private ["_regionsData", "_region"];
 
     _class_fields set [1, _worldData select 0];
-    _regions = _worldData select 1;
+    _regionsData = _worldData select 1;
 
-    [["Initialising World ", (_class_fields select 1)] joinString ""] call logger;
-    [["Initialising ", (count _regions), " regions"] joinString ""] call logger;
+    [["Initialising World ", (_class_fields select 1), " with ", count _regionsData, " regions."] joinString ""] call logger;
 
     _class_fields set [2, []];
 
     {
-        _regionName = _x select 0;
-        _regionMilitarisation = _x select 1;
-        _regionPrisonCampMarkers = _x select 2;
-        _regionGendarmeHQMarker = _x select 3;
-        _regionTowns = _x select 4;
-        _region = ([_regionName, _regionMilitarisation, _regionPrisonCampMarkers, _regionGendarmeHQMarker, _regionTowns] call cl_dave3_Region_constructor);
+        [["Reading data for region ", _x] joinString ""] call logger;
+        _region = ([_x] call cl_dave3_Region_constructor);
         (_class_fields select 2) pushBack _region;
-    } forEach _regions; _class_fields };
+    } forEach _regionsData; _class_fields };
 
 
 

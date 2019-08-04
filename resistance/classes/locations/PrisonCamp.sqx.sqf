@@ -12,11 +12,15 @@
 
 
 
+cl_dave3_PrisonCamp_locationMarker_PropIndex = 1;
 
 
-cl_dave3_PrisonCamp_constructor = { private "_class_fields"; _class_fields = [["dave3_PrisonCamp", []]];
-    params ["_locationMarker"];
-    private ["_prisonCampShedClass", "_prisonCampGateClass", "_prisonCampSidewallClass", "_positionToSpawn", "_directionToSpawn", "_prisonCampShed"];
+cl_dave3_PrisonCamp_constructor = { private "_class_fields"; _class_fields = [["dave3_PrisonCamp", ["dave3.ISaveable"]]];
+    params ["_prisonCampData"];
+    private ["_prisonCampShedClass", "_prisonCampGateClass", "_prisonCampSidewallClass", "_positionToSpawn", "_prisonCampShed"];
+
+
+    _class_fields set [1, _prisonCampData select 0];
 
 
     _prisonCampShedClass = "Land_Metal_Shed_F";
@@ -24,7 +28,6 @@ cl_dave3_PrisonCamp_constructor = { private "_class_fields"; _class_fields = [["
     _prisonCampSidewallClass = "Land_BackAlley_02_l_1m_F";
 
 
-    _class_fields set [1, _locationMarker];
     _positionToSpawn = markerPos (_class_fields select 1);
 
 
@@ -43,3 +46,13 @@ cl_dave3_PrisonCamp_constructor = { private "_class_fields"; _class_fields = [["
     private _prisonCampGate = _prisonCampGateClass createVehicle (_positionToSpawn);
     _prisonCampGate attachTo [_prisonCampShed, [0, 0.8, 0]];
     _prisonCampGate setVectorDirAndUp [[0, -1, 0], [0, 0, 1]]; _class_fields };
+
+
+
+
+cl_dave3_PrisonCamp_getSaveableData = { params ["_class_fields", "_this"];
+    private ["_prisonCampData"];
+
+    _prisonCampData = [(_class_fields select 1)];
+
+    _prisonCampData };

@@ -62,7 +62,7 @@
                   </ProjectNodeViewModel>
                 </SubNodes>
               </ProjectNodeViewModel>
-              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="locations" IsExpanded="false" FileName="resistance\classes\locations">
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="locations" IsExpanded="true" FileName="resistance\classes\locations">
                 <IsSelected>false</IsSelected>
                 <SubNodes>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="compile-all-locations.sqx" IsExpanded="false" FileName="resistance\classes\locations\compile-all-locations.sqx">
@@ -103,7 +103,7 @@
               <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="units" IsExpanded="true" FileName="resistance\classes\units">
                 <IsSelected>false</IsSelected>
                 <SubNodes>
-                  <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="gendarmes" IsExpanded="false" FileName="resistance\classes\units\gendarmes">
+                  <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="gendarmes" IsExpanded="true" FileName="resistance\classes\units\gendarmes">
                     <IsSelected>false</IsSelected>
                     <SubNodes>
                       <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="compile-all-gendarmes.sqx" IsExpanded="false" FileName="resistance\classes\units\gendarmes\compile-all-gendarmes.sqx">
@@ -111,7 +111,7 @@
                         <SubNodes />
                       </ProjectNodeViewModel>
                       <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="GendarmeGroup.sqx" IsExpanded="false" FileName="resistance\classes\units\gendarmes\GendarmeGroup.sqx">
-                        <IsSelected>false</IsSelected>
+                        <IsSelected>true</IsSelected>
                         <SubNodes />
                       </ProjectNodeViewModel>
                     </SubNodes>
@@ -158,7 +158,7 @@
                 <SubNodes />
               </ProjectNodeViewModel>
               <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="ISaveable.sqx" IsExpanded="false" FileName="resistance\interfaces\ISaveable.sqx">
-                <IsSelected>true</IsSelected>
+                <IsSelected>false</IsSelected>
                 <SubNodes />
               </ProjectNodeViewModel>
             </SubNodes>

@@ -35,6 +35,10 @@ namespace dave3
 				_gendarmeUnitClass createUnit [_positionToSpawn, _mGroup];
 			};
 		};
+		
+		public method Group getGendarmePatrol {
+			_mGroup
+		};
 	};
 };
 

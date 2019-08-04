@@ -1,1 +1,2 @@
 call compile preprocessFileLineNumbers "resistance\classes\game\SaveManager.sqx";
+call compile preprocessFileLineNumbers "resistance\classes\game\GameMaster.sqx";

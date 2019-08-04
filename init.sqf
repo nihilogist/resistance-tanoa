@@ -11,13 +11,9 @@ reviewIntelligenceAction = compileFinal preprocessFileLineNumbers "resistance\re
 shouldShowLog = compileFinal preprocessFileLineNumbers "resistance\logging-utils\should-show-log.sqf";
 spawnObjectAtMarker = compileFinal preprocessFileLineNumbers "resistance\spawners\object-spawners\spawn-on-marker.sqf";
 
-// Initialise objects
+// Initialise objects and start the main game loop
 execVM "init.sqx.sqf";
 
-
-
-// Run the main game loop
-execVM "resistance\game-manager\game-manager.sqf";
 
 // Start the civilians module
 call compile preprocessFileLineNumbers "Enigma\Civilians\start-civilians-module.sqf";

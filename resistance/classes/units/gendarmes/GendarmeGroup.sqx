@@ -1,0 +1,38 @@
+/*
+ * Name:	GendarmeGroup
+ * Date:	04/08/2019
+ * Version: 1.0
+ * Author:  dave3
+ *
+ * Description:
+ * Represents a small Gendarme patrol
+ */
+namespace dave3
+{
+	public class GendarmeGroup
+	{
+	
+		private fields ["_mGroup", "_mHomeTown" as Town];
+		
+		// Creates a GendarmeGroup object.
+		public constructor {
+			params ["_numberOfUnits" as Scalar, "_town" as Town];
+			private ["_positionToSpawn", "_gendarmeUnitClass"];
+			
+			_gendarmeUnitClass = "B_GEN_Soldier_F";
+			
+			// Define the home town
+			_mHomeTown = _town;
+			
+			// Create the group
+			_mGroup = createGroup blufor;
+
+			// get a random position within a random patrol marker to spawn the group in
+			_positionToSpawn = [[call _mHomeTown.getRandomPatrolMarker]] call BIS_fnc_randomPos;
+			for "_i" from 0 to (_numberOfUnits - 1) do {
+				_gendarmeUnitClass createUnit [_positionToSpawn, _mGroup];
+			};
+		};
+	};
+};
+

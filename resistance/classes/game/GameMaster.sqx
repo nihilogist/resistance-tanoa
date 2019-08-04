@@ -1,0 +1,42 @@
+/*
+ * Name:	GameMaster
+ * Date:	04/08/2019
+ * Version: 1.0
+ * Author:  dave3
+ *
+ * Description:
+ * Object to manage the Resistance game mode
+ */
+namespace dave3
+{
+	public class GameMaster
+	{
+	
+		public property Boolean isRunning { get; private set; };
+		
+		private fields ["_mGameplayLoop" as Scalar];
+		
+		// Creates a GameMaster object.
+		public constructor {
+			// gameplay loop defaults to 60 seconds
+			_mGameplayLoop = 60;	
+		};
+		
+		private method run {
+			while {_self.isRunning} do {
+				waitUntil {
+					sleep _mGameplayLoop;
+					true
+				};
+				
+				["Main game state evaluation called."] call logger;
+			};
+		};
+		
+		public method startGameMasterAsync {
+			_self.isRunning = true;
+			[] spawn _self.run;
+		};
+	};
+};
+

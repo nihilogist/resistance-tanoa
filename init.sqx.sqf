@@ -3,13 +3,13 @@ call compile preprocessFileLineNumbers "resistance\classes\compile-all-classes.s
 
 
 
-private ["_saveManager", "_savedWorldData", "_worldName", "_worldRegions"];
+private ["_saveManager", "_gameMaster", "_savedWorldData", "_worldName", "_worldRegions"];
 
 sleep 3;
 
 
-_saveManager = ([nukeTheSave, saveGameName] call cl_dave3_SaveManager_constructor);
-
+_saveManager = ([nukeTheSave, saveGameName, 120] call cl_dave3_SaveManager_constructor);
+_gameMaster = ([] call cl_dave3_GameMaster_constructor);
 
 
 _savedWorldData = ([_saveManager, []] call cl_dave3_SaveManager_getSavedData);
@@ -37,5 +37,12 @@ theWorld = ([[_worldName, _worldRegions]] call cl_dave3_WorldRegions_constructor
 
 ([_saveManager, [theWorld]] call cl_dave3_SaveManager_setWorldToSave);
 ([_saveManager, []] call cl_dave3_SaveManager_requestSave);
-
 ([_saveManager, []] call cl_dave3_SaveManager_RunAsync);
+([_saveManager, []] call cl_dave3_SaveManager_runAutosaveAsync);
+
+
+
+sleep 10;
+
+
+([_gameMaster, []] call cl_dave3_GameMaster_startGameMasterAsync);

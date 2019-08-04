@@ -13,17 +13,20 @@
 
 
 cl_dave3_SaveManager_isRunning_PropIndex = 5;
+cl_dave3_SaveManager_autosaveInterval_PropIndex = 6;
 
 
 cl_dave3_SaveManager_constructor = { private "_class_fields"; _class_fields = [["dave3_SaveManager", []]];
 
-    params ["_nukeTheSave", "_saveGameName"];
+    params ["_nukeTheSave", "_saveGameName", "_autosaveInterval"];
 
     if (isServer) then {
         ["SAVEMAN: Initialising SaveManager"] call logger;
         _class_fields set [1, _saveGameName];
         _class_fields set [2, []];
         _class_fields set [3, false];
+        _class_fields set [5, false];
+        _class_fields set [6, _autosaveInterval];
 
 
         ([_class_fields, []] call cl_dave3_SaveManager_loadSave);
@@ -112,3 +115,14 @@ cl_dave3_SaveManager_Run = { params ["_class_fields", "_this"];
 cl_dave3_SaveManager_RunAsync = { params ["_class_fields", "_this"];
     _class_fields set [5, true];
     ([_class_fields, []] spawn cl_dave3_SaveManager_Run); };
+
+
+cl_dave3_SaveManager_runAutosaveAsync = { params ["_class_fields", "_this"];
+    ([_class_fields, []] spawn cl_dave3_SaveManager_RunAutoSave); };
+
+
+cl_dave3_SaveManager_RunAutoSave = { params ["_class_fields", "_this"];
+    if ((_class_fields select 6) > 0) then {
+        while { true } do {
+            sleep (_class_fields select 6);
+            ([_class_fields, []] call cl_dave3_SaveManager_requestSave); }; }; };

@@ -3,13 +3,13 @@ call compile preprocessFileLineNumbers "resistance\classes\compile-all-classes.s
 
 using dave3;
 
-private ["_saveManager" as SaveManager, "_savedWorldData" as Array, "_worldName" as String, "_worldRegions" as Array];
+private ["_saveManager" as SaveManager, "_gameMaster" as GameMaster, "_savedWorldData" as Array, "_worldName" as String, "_worldRegions" as Array];
 
 sleep 3;
 
 // Initialise singletons
 _saveManager = [nukeTheSave, saveGameName, 120] new SaveManager;
-
+_gameMaster = [] new GameMaster;
 
 // Check to see if world can be loaded
 _savedWorldData = call _saveManager.getSavedData;
@@ -39,3 +39,10 @@ theWorld = [[_worldName, _worldRegions]] new WorldRegions;
 [] call _saveManager.requestSave;
 [] call _saveManager.RunAsync;
 [] call _saveManager.runAutosaveAsync;
+
+
+// Give a little while for the objects to initialise
+sleep 10;
+
+// Start the game master
+[] call _gameMaster.startGameMasterAsync;

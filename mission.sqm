@@ -16,7 +16,7 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={880.31982,81.632545,7602.8408};
+		pos[]={817.11292,81.632545,7530.9106};
 		dir[]={0.53840786,-0.57866848,0.61271387};
 		up[]={0.38198876,0.81554419,0.43470344};
 		aside[]={0.75124097,8.8280649e-007,-0.66014498};
@@ -90,7 +90,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=11;
+		items=10;
 		class Item0
 		{
 			dataType="Group";
@@ -294,17 +294,6 @@ class Mission
 		class Item5
 		{
 			dataType="Marker";
-			position[]={2585.332,8.6009665,7394.4033};
-			name="locationBalavuPrisonCamp03";
-			markerType="ELLIPSE";
-			type="ellipse";
-			b=0.1;
-			angle=22.963999;
-			id=20;
-		};
-		class Item6
-		{
-			dataType="Marker";
 			position[]={2693.3149,7.2319999,7343.0342};
 			name="locationBalavuGendarmeHQ";
 			markerType="ELLIPSE";
@@ -314,7 +303,7 @@ class Mission
 			id=23;
 			atlOffset=-0.0001039505;
 		};
-		class Item7
+		class Item6
 		{
 			dataType="Marker";
 			position[]={850.13599,2.77,7658.5259};
@@ -326,7 +315,7 @@ class Mission
 			angle=130.96696;
 			id=24;
 		};
-		class Item8
+		class Item7
 		{
 			dataType="Marker";
 			position[]={934.22229,1.8200001,7753.3877};
@@ -335,10 +324,10 @@ class Mission
 			type="rectangle";
 			a=8;
 			b=30;
-			angle=41.013988;
+			angle=41.013985;
 			id=25;
 		};
-		class Item9
+		class Item8
 		{
 			dataType="Marker";
 			position[]={940.41699,2.3199999,7668.5342};
@@ -347,10 +336,10 @@ class Mission
 			type="rectangle";
 			a=8;
 			b=30;
-			angle=41.013985;
+			angle=41.013981;
 			id=26;
 		};
-		class Item10
+		class Item9
 		{
 			dataType="Marker";
 			position[]={1005.6,2.76,7741.8481};

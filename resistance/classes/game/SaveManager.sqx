@@ -1,0 +1,136 @@
+/*
+ * Name:	SaveManager
+ * Date:	04/08/2019
+ * Version: 1.0
+ * Author:  dave3
+ *
+ * Description:
+ * Singleton class to manage game saving
+ */
+namespace dave3
+{
+	public class SaveManager
+	{
+		private fields ["_mSaveGameName" as String, "_mSaveGameContents" as Array, "_mAwaitingSave" as Boolean, "_mWorldToSave" as WorldRegions];
+		public property Boolean isRunning {get; private set;};
+		public property Scalar autosaveInterval { get; private set; };
+	
+		// Creates a SaveManager object.
+		public constructor {
+		
+			params ["_nukeTheSave" as Boolean, "_saveGameName" as String, "_autosaveInterval" as Scalar];
+			
+			if (isServer) then {
+				["SAVEMAN: Initialising SaveManager"] call logger;
+				_mSaveGameName = _saveGameName;
+				_mSaveGameContents = [];
+				_mAwaitingSave = false;
+				_self.isRunning = false;
+				_self.autosaveInterval = _autosaveInterval;
+				
+				// Read content of save file
+				call _self.loadSave;
+				
+				// If config says we should erase the save then erase it
+				if (_nukeTheSave) then {
+					["SAVEMAN: Erasing Save Game contents...", "WARN"] call logger;
+					_mSaveGameContents = [];
+					profileNamespace setVariable [_mSaveGameName, _mSaveGameContents];
+					saveProfileNamespace;
+					["SAVEMAN: Save Game contents erased.", "WARN"] call logger;
+				};
+				
+			} else {
+				["SAVEMAN: Illegal operation trying to create SaveManager on client", "ERROR"] call logger;
+			};
+			
+		};
+		
+		
+		// Loads the savegame from the profile namespace, and initialises it as an empty array if it is null
+		private method loadSave {
+			["SAVEMAN: Loading saved game from profile"] call logger;
+			_mSaveGameContents = profileNamespace getVariable _mSaveGameName;
+			if (isNil "_mSaveGameContents") then {
+				_mSaveGameContents = [];
+			}; 
+		};
+		
+		
+		// Gets the World Data as a valid way of constructing a World object from the save game
+		public method Array getSavedData {
+			private ["_worldData"];
+			_worldData = [];
+			["SAVEMAN: Reading world data from save game."] call logger;
+			if (isNil "_mSaveGameContents") then {
+				["SAVEMAN: No world data available in save game.", "ERROR"] call logger;
+				_worldData
+			} else {
+				if (count _mSaveGameContents == 0) then {
+					["SAVEMAN: No world data available in save game.", "ERROR"] call logger;
+					_worldData
+				} else {
+					["SAVEMAN: World data definitely available in save game."] call logger;
+				_worldData = _mSaveGameContents select 1;
+				};
+			};
+			
+			_worldData
+		};
+		
+		
+		// Requests a game save at the next save evaluation
+		public method requestSave {
+			["Server save has been requested."] call logger;
+			_mAwaitingSave = true;
+		};
+		
+		
+		// Sets the world to save from the passed parameter
+		public method setWorldToSave {
+			params ["_worldToSave" as WorldRegions];
+			
+			_mWorldToSave = _worldToSave;
+		};
+		
+		private method Run {
+			while {true} do {
+				// wait for a save to be requested
+				waitUntil {
+					sleep 10;
+					_mAwaitingSave
+				};
+				// Then persist the data in the world to save into the profile namespace
+				["Saving game state to server profile namespace"] call logger;
+				_mSaveGameContents = [call _mWorldToSave.getSaveableData];
+				profileNamespace setVariable [_mSaveGameName, _mSaveGameContents];
+				saveProfileNamespace;
+				_mAwaitingSave = false;
+				["Game state saved."] call logger;
+			};
+			
+			_self.isRunning = false;
+		};
+		
+		public method RunAsync {
+			_self.isRunning = true;
+			[] spawn _self.Run;
+		};
+		
+		public method runAutosaveAsync {
+			[] spawn _self.RunAutoSave;
+		};
+		
+		private method RunAutoSave {
+			if (_self.autosaveInterval > 0) then {
+				while {true} do {
+					sleep _self.autosaveInterval;
+					[] call _self.requestSave;
+				};
+			};
+		};
+		
+		
+	};
+};
+

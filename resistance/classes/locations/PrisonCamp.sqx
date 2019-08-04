@@ -9,14 +9,18 @@
  */
 namespace dave3
 {
-	public class PrisonCamp
+	public class PrisonCamp : ISaveable
 	{
-		private fields ["_mLocation" as String];
+	
+		public property String locationMarker { get; private set; };
 	
 		// Creates a PrisonCamp object and spawns the prison camp buildings at the given location
 		public constructor {
-			params ["_locationMarker" as String];
-			private ["_prisonCampShedClass" as String, "_prisonCampGateClass" as String, "_prisonCampSidewallClass" as String, "_positionToSpawn", "_directionToSpawn", "_prisonCampShed" as Object];
+			params ["_prisonCampData" as Array];
+			private ["_prisonCampShedClass" as String, "_prisonCampGateClass" as String, "_prisonCampSidewallClass" as String, "_positionToSpawn", "_prisonCampShed"];
+			
+			// Deserialise data from array
+			_self.locationMarker = _prisonCampData select 0;
 
 			// Define buildings used in constructing the camp.
 			_prisonCampShedClass = "Land_Metal_Shed_F";
@@ -24,11 +28,10 @@ namespace dave3
 			_prisonCampSidewallClass = "Land_BackAlley_02_l_1m_F";
 
 			// Get the position to spawn the camp.
-			_mLocation = _locationMarker;
-			_positionToSpawn = markerPos _mLocation;
+			_positionToSpawn = markerPos _self.locationMarker;
 			
 			// Spawn in the buildings and arrange them.
-			_prisonCampShed = [_prisonCampShedClass, _mLocation] call spawnObjectAtMarker;
+			_prisonCampShed = [_prisonCampShedClass, _self.locationMarker] call spawnObjectAtMarker;
 			
 			
 			private _prisonCampWall1 = _prisonCampSidewallClass createVehicle (_positionToSpawn);
@@ -44,6 +47,15 @@ namespace dave3
 			_prisonCampGate attachTo [_prisonCampShed, [0, 0.8, 0]];
 			_prisonCampGate setVectorDirAndUp [[0,-1,0], [0,0,1]];
 			
+			
+		};
+		
+		public method Array getSaveableData() {
+			private ["_prisonCampData" as Array];
+			
+			_prisonCampData = [_self.locationMarker];
+			
+			_prisonCampData
 			
 		};
 	};

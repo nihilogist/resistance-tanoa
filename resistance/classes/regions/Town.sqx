@@ -9,44 +9,66 @@
  */
 namespace dave3
 {
-	public class Town
+	public class Town : ISaveable
 	{
 	
-		private fields ["_mTownName" as String, "_mGendarmesPatrolMarkers" as Array, "_mGendarmesGroups" as Array];
+		public property String townName { get; private set; };
+		public property Array gendarmesPatrolMarkers { get; private set; };
+		public property Array gendarmePatrols { get; private set; };
+	
 		// Creates a Town object.
 		public constructor {
-			params ["_name" as String, "_gendarmeGroupsPresent" as Scalar, "_gendarmesPatrolMarkers" as Array];
-			
-			private ["_gendarmeClass" as String, "_gendarmeGroup" as GendarmeGroup];
-			
-			[["Initialising Town ", _name] joinString ""] call logger;
-			
-			_mTownName = _name;
-			_mGendarmesPatrolMarkers = _gendarmesPatrolMarkers;
 
+			params ["_townData" as Array];
+			private ["_targetGendarmes" as Scalar, "_assignedGendarmes" as Scalar];
+			
+			// deserialise the townData
+			_self.townName = _townData select 0;
+			_targetGendarmes = _townData select 1;
+			_self.gendarmesPatrolMarkers = _townData select 2;
+			
+						
 			// Spawn all gendarmes groups
-			for "_i" from 0 to (_gendarmeGroupsPresent -1) do {
-				_gendarmeGroup = [2, _self] new GendarmeGroup;
-				_mGendarmesGroups pushBack (_gendarmeGroup);
+			_assignedGendarmes = 0;
+			while {_assignedGendarmes < _targetGendarmes} do {
+				if (_targetGendarmes - _assignedGendarmes > 1) then {
+					_self.gendarmePatrols pushback ([2, _self] new GendarmeGroup);
+					_assignedGendarmes = _assignedGendarmes + 2;
+				} else {
+					_self.gendarmePatrols pushback ([1, _self] new GendarmeGroup);
+					_assignedGendarmes = _assignedGendarmes + 1;
+				};
 			};
+			
 		};
 		
 		// returns one of the designated patrol markers for the town
 		public method String getRandomPatrolMarker {
-			selectRandom _mGendarmesPatrolMarkers
+			selectRandom _self.gendarmesPatrolMarkers;
 		};
 		
-		public method String getTownName {
-			_mTownName
+		// Method to return the current number of gendarmes in the town
+		public method Scalar getNumberOfGendarmes {
+			private ["_numberOfGendarmes" as Scalar];
+			_numberOfGendarmes = 0;
+			{
+				_numberOfGendarmes = _numberOfGendarmes + (count units (call _x.getGendarmePatrol));
+			} forEach _self.gendarmePatrols as GendarmeGroup;
+			_numberOfGendarmes
 		};
 		
-		public method Array getGendarmesGroups {
-			_mGendarmesGroups
+		public method Array getSaveableData() {
+			private ["_saveableData" as Array];
+			
+			_saveableData = [
+				_self.townName, // 0 = town name
+				call _self.getNumberOfGendarmes, // 1 = number of gendarmes
+				_self.gendarmesPatrolMarkers // 2 = gendarmes patrol markers
+			];
+			
+			_saveableData
 		};
 		
-		public method Array getGendarmesPatrolMarkers {
-			_mGendarmesPatrolMarkers
-		};
 	};
 };
 

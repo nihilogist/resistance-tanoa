@@ -9,40 +9,71 @@
  */
 namespace dave3
 {
-	public class Region
+	public class Region : ISaveable
 	{
 	
-		// Fields for the region
-		private fields ["_mRegionName" as String, "_mMilitarisation", "_mPrisonCamp" as PrisonCamp, "_mGendarmeHQ" as GendarmeHQ, "_mTowns" as Array];
+		// Properties for the region
+		public property String regionName {get; private set; };
+		public property Array towns {get; private set; };
+		public property Array prisonCamps { get; private set; };
+		public property GendarmeHQ gendarmeHQ { get; private set; };
 	
 		// Creates a Region object.
 		public constructor {
-			params ["_regionName" as String, "_militarisation" as Scalar, "_prisonCampMarkers" as Array, "_gendarmeHQMarker" as String, "_towns" as Array];
+			params ["_regionData" as Array];
 			
-			private ["_prisonCampMarker" as String];
+			// Unpack the region name
+			_self.regionName = _regionData select 0;
+			[["Initialising Region ", _self.regionName] joinString ""] call logger;
 			
-			_mRegionName = _regionName;
-			_mMilitarisation = _militarisation;
-			_mTowns = _towns;
-			
-			[["Initialising Region ", _regionName] joinString ""] call logger;
-			
-			// Create a prison camp at one of the markers
-			_prisonCampMarker = selectRandom _prisonCampMarkers;
-			[_prisonCampMarker] call Logger;
-			_mPrisonCamp = [_prisonCampMarker] new PrisonCamp;
-			
-			// Create the region's gendarme HQ
-			_mGendarmeHQ = [_gendarmeHQMarker] new GendarmeHQ;
-			
-			// Create all the region's towns
+			// Create the region's prison camps
+			[["Initialising Region ", _self.regionName, "'s Prison Camps"] joinString ""] call logger;
+			_self.prisonCamps = [];
 			{
-				_townName = _x select 0;
-				_gendarmesGroups = _x select 1;
-				_gendarmePatrolAreas = _x select 2;
-				[_townName, _gendarmesGroups, _gendarmePatrolAreas] new Town;
-			} foreach (_mTowns);
+				[["Reading data for prison camp ", _x] joinString ""] call logger;
+				_self.prisonCamps pushBack ([_x] new PrisonCamp);
+			} forEach (_regionData select 1);
+			
+			
+			// Create the gendarme HQ for the area
+			[["Initialising Region ", _self.regionName, "'s Gendarme HQ at ", _regionData select 2] joinString ""] call logger;
+			_self.gendarmeHQ = [_regionData select 2] new GendarmeHQ;
+			
+			// Create the region's towns
+			[["Initialising Region ", _self.regionName, "'s Towns"] joinString ""] call logger;
+			_self.towns = [];
+			{
+				[["Reading data for town ", _x] joinString ""] call logger;
+				_self.towns pushBack ([_x] new Town);
+			} forEach (_regionData select 3);
+			
 		};
+		
+		
+		public method Array getSaveableData() {
+			private ["_saveableData" as Array, "_gendarmeHQ" as GendarmeHQ, "_prisonCamps" as Array, "_towns" as Array];
+			_gendarmeHQ = _self.gendarmeHQ;
+			
+			_prisonCamps = [];
+			{
+				_prisonCamps pushBack ([] call _x.getSaveableData);
+			} forEach _self.prisonCamps as PrisonCamp;
+			
+			_towns = [];
+			{
+				_towns pushBack ([] call _x.getSaveableData);
+			} forEach _self.towns as Town;
+			
+			_saveableData = [
+				_self.regionName, // 0 = region name
+				_prisonCamps, // 1 = prison camp
+				call _gendarmeHQ.getSaveableData, // 2 = gendarme HQ
+				[] // 3 = towns
+			];
+			[["REGION: Save data generated as: ", _saveableData] joinString ""] call logger;
+			_saveableData
+		};
+		
 	};
 };
 

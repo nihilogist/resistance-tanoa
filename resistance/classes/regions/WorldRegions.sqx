@@ -9,44 +9,50 @@
  */
 namespace dave3
 {
-	public class WorldRegions
+	public class WorldRegions : ISaveable
 	{
-	
-		private fields ["_mWorldName" as String, "_mRegions" as Array];
 		
+		public property String worldName { get; private set; };
+		
+		public property Array regions { get; private set; };
 		
 		// Creates a World object.
 		public constructor {
 			params ["_worldData" as Array];
 
-			private ["_regions" as Array, "_region" as Region, "_regionName" as String, "_regionMilitarisation" as Scalar, "_regionPrisonCampMarkers" as Array, "_regionGendarmeHQMarker" as String, "_regionTowns" as Array];
+			private ["_regionsData" as Array, "_region" as Region];
 
-			_mWorldName = _worldData select 0;
-			_regions = _worldData select 1;
+			_self.worldName = _worldData select 0;
+			_regionsData = _worldData select 1;
 			
-			[["Initialising World ", _mWorldName] joinString ""] call logger;
-			[["Initialising ", (count _regions), " regions"] joinString ""] call logger;
+			[["Initialising World ", _self.worldName, " with ", count _regionsData, " regions."] joinString ""] call logger;
 			
+			_self.regions = [];
 			// Iterate over all regions and create them
 			{
-				_regionName = _x select 0;
-				_regionMilitarisation = _x select 1;
-				_regionPrisonCampMarkers = _x select 2;
-				_regionGendarmeHQMarker = _x select 3;
-				_regionTowns = _x select 4;
-				_region = [_regionName, _regionMilitarisation, _regionPrisonCampMarkers, _regionGendarmeHQMarker, _regionTowns] new Region;
-				_mRegions pushBack _region;
-			} forEach _regions;
+				[["Reading data for region ", _x] joinString ""] call logger;
+				_region = [_x] new Region;
+				_self.regions pushBack _region;
+			} forEach _regionsData;
 		};
 		
 		
-		// Returns the name of the world / island
-		public method String getWorldName {
-			_mWorldName
-		};
-		
-		public method Array getRegions {
-			_mRegions
+		public method Array getSaveableData {
+			private ["_saveData" as Array, "_saveableRegions" as Array, "_saveableRegion" as Array];
+			
+			_saveableRegions = [];
+			
+			{
+				_saveableRegion = [] call _x.getSaveableData;
+				_saveableRegions pushBack _saveableRegion;
+			} forEach _self.regions as Region;
+			
+			_saveData = [
+				_self.worldName,
+				_saveableRegions
+			];
+			
+			_saveData
 		};
 	};
 };

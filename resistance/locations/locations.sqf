@@ -9,21 +9,29 @@ bases = [
 
 // Town format: [townName, gendarme groups present, [gendarmes patrol areas]]
 tavu = ["Tavu", // town name
-	2, // gendarmes groups present
+	3, // gendarmes present
 	["gendarmeTavuPatrol01", "gendarmeTavuPatrol02", "gendarmeTavuPatrol03", "gendarmeTavuPatrol04"] // gendarme patrol areas
 ];
 
-// Region format: [regionName, militarisation level, [prisonCampMarkers], Gendarme HQ Marker, [towns]]
 
+// Gendamarie HQ format: [markerName]
+balavuGendarmeHQ = ["locationBalavuGendarmeHQ"];
+
+// Prison camp format [markerName]
+balavuPrisonCamp01 = ["locationBalavuPrisonCamp01"];
+balavuPrisonCamp02 = ["locationBalavuPrisonCamp02"];
+
+// Region format: [regionName, [prisonCampMarkers], Gendarme HQ Marker, [towns]]
 balavu = [
 	"Balavu Region", // Name
-	0, // Militarisation
-	["locationBalavuPrisonCamp01", "locationBalavuPrisonCamp02", "locationBalavuPrisonCamp03"], // Prison camp locations
-	"locationBalavuGendarmeHQ", // Gendarme HQ Locations
+	[balavuPrisonCamp01, balavuPrisonCamp02], // Prison Camps
+	balavuGendarmeHQ, // Gendarme HQ Locations
 	[tavu] // towns
 ];
+
 
 worldData = [
 	"Tanoa", // World name
 	[balavu] // regions array
 ];
+

@@ -13,6 +13,16 @@ tavu = ["Tavu", // town name
 	["gendarmeTavuPatrol01", "gendarmeTavuPatrol02", "gendarmeTavuPatrol03", "gendarmeTavuPatrol04"] // gendarme patrol areas
 ];
 
+muaceba = ["Muaceba",
+	1,
+	["gendarmeMuacebaPatrol01"]
+];
+
+leqa = ["Leqa",
+	1,
+	["gendarmeLeqaPatrol01", "gendarmeLeqaPatrol02", "gendarmeLeqaPatrol03", "gendarmeLeqaPatrol04"]
+];
+
 
 // Gendamarie HQ format: [markerName]
 balavuGendarmeHQ = ["locationBalavuGendarmeHQ"];
@@ -26,7 +36,7 @@ balavu = [
 	"Balavu Region", // Name
 	[balavuPrisonCamp01, balavuPrisonCamp02], // Prison Camps
 	balavuGendarmeHQ, // Gendarme HQ Locations
-	[tavu] // towns
+	[tavu, muaceba, leqa] // towns
 ];
 
 

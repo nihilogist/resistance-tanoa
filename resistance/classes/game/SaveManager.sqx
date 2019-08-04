@@ -13,17 +13,20 @@ namespace dave3
 	{
 		private fields ["_mSaveGameName" as String, "_mSaveGameContents" as Array, "_mAwaitingSave" as Boolean, "_mWorldToSave" as WorldRegions];
 		public property Boolean isRunning {get; private set;};
+		public property Scalar autosaveInterval { get; private set; };
 	
 		// Creates a SaveManager object.
 		public constructor {
 		
-			params ["_nukeTheSave" as Boolean, "_saveGameName" as String];
+			params ["_nukeTheSave" as Boolean, "_saveGameName" as String, "_autosaveInterval" as Scalar];
 			
 			if (isServer) then {
 				["SAVEMAN: Initialising SaveManager"] call logger;
 				_mSaveGameName = _saveGameName;
 				_mSaveGameContents = [];
 				_mAwaitingSave = false;
+				_self.isRunning = false;
+				_self.autosaveInterval = _autosaveInterval;
 				
 				// Read content of save file
 				call _self.loadSave;
@@ -112,6 +115,19 @@ namespace dave3
 		public method RunAsync {
 			_self.isRunning = true;
 			[] spawn _self.Run;
+		};
+		
+		public method runAutosaveAsync {
+			[] spawn _self.RunAutoSave;
+		};
+		
+		private method RunAutoSave {
+			if (_self.autosaveInterval > 0) then {
+				while {true} do {
+					sleep _self.autosaveInterval;
+					[] call _self.requestSave;
+				};
+			};
 		};
 		
 		

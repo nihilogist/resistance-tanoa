@@ -8,7 +8,7 @@ private ["_saveManager" as SaveManager, "_savedWorldData" as Array, "_worldName"
 sleep 3;
 
 // Initialise singletons
-_saveManager = [nukeTheSave, saveGameName] new SaveManager;
+_saveManager = [nukeTheSave, saveGameName, 120] new SaveManager;
 
 
 // Check to see if world can be loaded
@@ -37,5 +37,5 @@ theWorld = [[_worldName, _worldRegions]] new WorldRegions;
 // Once the world is initialised, then set it into the save manager and request a save.
 [theWorld] call _saveManager.setWorldToSave;
 [] call _saveManager.requestSave;
-
 [] call _saveManager.RunAsync;
+[] call _saveManager.runAutosaveAsync;

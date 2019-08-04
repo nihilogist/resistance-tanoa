@@ -16,9 +16,6 @@ execVM "init.sqx.sqf";
 
 
 
-// Run the save manager
-execVM "resistance\save-manager\save-manager.sqf";
-
 // Run the main game loop
 execVM "resistance\game-manager\game-manager.sqf";
 

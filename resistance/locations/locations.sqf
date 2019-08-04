@@ -35,18 +35,3 @@ worldData = [
 	[balavu] // regions array
 ];
 
-/*
-["Tanoa", <-- world data select 0
-	[
-		["Balavu Region",
-			["locationBalavuPrisonCamp01","locationBalavuPrisonCamp02","locationBalavuPrisonCamp03"],
-			["locationBalavuGendarmeHQ"],
-			[
-				["Tavu",
-				2,
-					["gendarmeTavuPatrol01","gendarmeTavuPatrol02","gendarmeTavuPatrol03","gendarmeTavuPatrol04"]
-				]
-			]
-		]
-	]
-] */

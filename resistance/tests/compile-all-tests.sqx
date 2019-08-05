@@ -1,7 +1,7 @@
 // In this file all test classes will be compiled and then initialised
 
 // Compile all test files
-call compile preprocessFileLineNumbers "resistance\tests\regions\TownTests.sqx";
+//call compile preprocessFileLineNumbers "resistance\tests\regions\TownTests.sqx";
 
 // Initialise & register all test files
-call dave3.tests.TownTests.Init;
+//call dave3.tests.TownTests.Init;

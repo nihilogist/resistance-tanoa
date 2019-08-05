@@ -125,9 +125,6 @@ class ScenarioData
 {
 	author="dave3";
 };
-class CustomAttributes
-{
-};
 class Mission
 {
 	class Intel

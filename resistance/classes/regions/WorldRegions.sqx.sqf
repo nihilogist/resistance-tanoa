@@ -23,25 +23,28 @@ cl_dave3_WorldRegions_constructor = { private "_class_fields"; _class_fields = [
 
     private ["_regionsData", "_region", "_cacheData", "_cache"];
 
+    ([missionLogger, [["WORLDREGIONS: Received world data to construct world state", _worldData], 4]] call cl_dave3_LoggerUtil_logMessage);
+
     _class_fields set [1, _worldData select 0];
     _regionsData = _worldData select 1;
-    _cacheData = _worldData select 2;
+    _cacheData = (_worldData select 2) select 0;
 
-    [["Initialising World ", (_class_fields select 1), " with ", count _regionsData, " regions and ", count _cacheData, " caches."] joinString ""] call logger;
-
+    ([missionLogger, [["WORLDREGIONS: Initialising ", (count _regionsData), " regions"], 3]] call cl_dave3_LoggerUtil_logMessage);
     _class_fields set [2, []];
 
     {
-        [["Reading data for region ", _x] joinString ""] call logger;
         _region = ([_x] call cl_dave3_Region_constructor);
         (_class_fields select 2) pushBack _region;
     } forEach _regionsData;
 
+
+    ([missionLogger, [["WORLDREGIONS: Initialising ", (count _cacheData), " caches"], 3]] call cl_dave3_LoggerUtil_logMessage);
+    ([missionLogger, [["WORLDREGIONS: Ammo cache data: ", _cacheData], 4]] call cl_dave3_LoggerUtil_logMessage);
     _class_fields set [3, []];
 
     {
-        ["Generating Ammo Cache"] call logger;
-        _cache = (_x call cl_dave3_AmmoDump_constructor);
+        ([missionLogger, [["Generating Ammo Cache - ", _x], 4]] call cl_dave3_LoggerUtil_logMessage);
+        _cache = ([_x] call cl_dave3_AmmoDump_constructor);
         (_class_fields select 3) pushBack _cache;
     } forEach _cacheData; _class_fields };
 
@@ -65,11 +68,13 @@ cl_dave3_WorldRegions_getSaveableData = { params ["_class_fields", "_this"];
         _saveableAmmoDumps pushBack (([_x, []] call cl_dave3_AmmoDump_getSaveableData));
     } forEach (_class_fields select 3);
 
-    _saveData = [(
+    _saveData = [[(
     _class_fields select 1), 
     _saveableRegions, 
-    _saveableAmmoDumps];
+    [_saveableAmmoDumps]]];
 
+
+    ([missionLogger, [["World state data for saving: ", _saveData], 4]] call cl_dave3_LoggerUtil_logMessage);
 
     _saveData };
 

@@ -24,10 +24,8 @@ namespace dave3
 			
 			// Unpack the region name
 			_self.regionName = _regionData select 0;
-			[["Initialising Region ", _self.regionName] joinString ""] call logger;
 			
 			// Create the region's prison camps
-			[["Initialising Region ", _self.regionName, "'s Prison Camps"] joinString ""] call logger;
 			_self.prisonCamps = [];
 			{
 				_self.prisonCamps pushBack ([_x] new PrisonCamp);
@@ -35,11 +33,9 @@ namespace dave3
 			
 			
 			// Create the gendarme HQ for the area
-			[["Initialising Region ", _self.regionName, "'s Gendarme HQ at ", _regionData select 2] joinString ""] call logger;
 			_self.gendarmeHQ = [[(_regionData select 2) select 0, _self.regionName]] new GendarmeHQ;
 			
 			// Create the region's towns
-			[["Initialising Region ", _self.regionName, "'s Towns"] joinString ""] call logger;
 			_self.towns = [];
 			{
 				_self.towns pushBack ([_x] new Town);
@@ -68,7 +64,6 @@ namespace dave3
 				call _gendarmeHQ.getSaveableData, // 2 = gendarme HQ
 				[] // 3 = towns
 			];
-			[["REGION: Save data generated as: ", _saveableData] joinString ""] call logger;
 			_saveableData
 		};
 		

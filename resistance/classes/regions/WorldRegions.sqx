@@ -22,26 +22,29 @@ namespace dave3
 			params ["_worldData" as Array];
 
 			private ["_regionsData" as Array, "_region" as Region, "_cacheData" as Array, "_cache" as AmmoDump];
+			
+			[["WORLDREGIONS: Received world data to construct world state", _worldData], LogLevel.Debug] call missionLogger.logMessage;
 
 			_self.worldName = _worldData select 0;
 			_regionsData = _worldData select 1;
-			_cacheData = _worldData select 2;
+			_cacheData = (_worldData select 2) select 0;
 			
-			[["Initialising World ", _self.worldName, " with ", count _regionsData, " regions and ", count _cacheData, " caches."] joinString ""] call logger;
-			
+			[["WORLDREGIONS: Initialising ", (count _regionsData), " regions"], LogLevel.Info] call missionLogger.logMessage;
 			_self.regions = [];
 			// Iterate over all regions and create them
 			{
-				[["Reading data for region ", _x] joinString ""] call logger;
 				_region = [_x] new Region;
 				_self.regions pushBack _region;
 			} forEach _regionsData;
 			
+			
+			[["WORLDREGIONS: Initialising ", (count _cacheData), " caches"], LogLevel.Info] call missionLogger.logMessage;
+			[["WORLDREGIONS: Ammo cache data: ", _cacheData], LogLevel.Debug] call missionLogger.logMessage;
 			_self.caches = [];
 			// Iterate over all ammunition caches and create them
 			{
-				["Generating Ammo Cache"] call logger;
-				_cache = _x new AmmoDump;
+				[["Generating Ammo Cache - ", _x], LogLevel.Debug] call missionLogger.logMessage;
+				_cache = [_x] new AmmoDump;
 				_self.caches pushBack _cache;
 			} forEach _cacheData;
 			
@@ -65,11 +68,13 @@ namespace dave3
 				_saveableAmmoDumps pushBack ([] call _x.getSaveableData);
 			} forEach _self.caches as AmmoDump;
 			
-			_saveData = [
+			_saveData = [[
 				_self.worldName,
 				_saveableRegions,
-				_saveableAmmoDumps
-			];
+				[_saveableAmmoDumps]
+			]];
+			
+			[["World state data for saving: ", _saveData], LogLevel.Debug] call missionLogger.logMessage;
 			
 			_saveData
 		};

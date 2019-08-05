@@ -21,27 +21,26 @@ namespace dave3
 			params ["_nukeTheSave" as Boolean, "_saveGameName" as String, "_autosaveInterval" as Scalar];
 			
 			if (isServer) then {
-				["SAVEMAN: Initialising SaveManager"] call logger;
 				_mSaveGameName = _saveGameName;
 				_mSaveGameContents = [];
 				_mAwaitingSave = false;
 				_self.isRunning = false;
 				_self.autosaveInterval = _autosaveInterval;
 				
+				// If config says we should erase the save then erase it
+				if (_nukeTheSave) then {
+					[["SAVEMAN: Erasing Save Game contents..."], LogLevel.Fatal] call missionLogger.logMessage;
+					_mSaveGameContents = [[]];
+					profileNamespace setVariable [_mSaveGameName, _mSaveGameContents];
+					saveProfileNamespace;
+					[["SAVEMAN: Save Game contents erased."], LogLevel.Fatal] call missionLogger.logMessage;
+				};
+				
 				// Read content of save file
 				call _self.loadSave;
 				
-				// If config says we should erase the save then erase it
-				if (_nukeTheSave) then {
-					["SAVEMAN: Erasing Save Game contents...", "WARN"] call logger;
-					_mSaveGameContents = [];
-					profileNamespace setVariable [_mSaveGameName, _mSaveGameContents];
-					saveProfileNamespace;
-					["SAVEMAN: Save Game contents erased.", "WARN"] call logger;
-				};
-				
 			} else {
-				["SAVEMAN: Illegal operation trying to create SaveManager on client", "ERROR"] call logger;
+				[["SAVEMAN: Illegal operation trying to create SaveManager on client"], LogLevel.Fatal] call missionLogger.logMessage;
 			};
 			
 		};
@@ -49,39 +48,21 @@ namespace dave3
 		
 		// Loads the savegame from the profile namespace, and initialises it as an empty array if it is null
 		private method loadSave {
-			["SAVEMAN: Loading saved game from profile"] call logger;
-			_mSaveGameContents = profileNamespace getVariable _mSaveGameName;
-			if (isNil "_mSaveGameContents") then {
-				_mSaveGameContents = [];
-			}; 
+			[["SAVEMAN: Loading saved game from profile"], LogLevel.Info] call missionLogger.logMessage;
+			_mSaveGameContents = (profileNamespace getVariable _mSaveGameName) select 0;
+			[["SAVEMAN: ", _mSaveGameContents, " was savegame content."], LogLevel.Info] call missionLogger.logMessage;
 		};
 		
 		
 		// Gets the World Data as a valid way of constructing a World object from the save game
 		public method Array getSavedData {
-			private ["_worldData"];
-			_worldData = [];
-			["SAVEMAN: Reading world data from save game."] call logger;
-			if (isNil "_mSaveGameContents") then {
-				["SAVEMAN: No world data available in save game.", "ERROR"] call logger;
-				_worldData
-			} else {
-				if (count _mSaveGameContents == 0) then {
-					["SAVEMAN: No world data available in save game.", "ERROR"] call logger;
-					_worldData
-				} else {
-					["SAVEMAN: World data definitely available in save game."] call logger;
-				_worldData = _mSaveGameContents select 1;
-				};
-			};
-			
-			_worldData
+			_mSaveGameContents
 		};
 		
 		
 		// Requests a game save at the next save evaluation
 		public method requestSave {
-			["Server save has been requested."] call logger;
+			//["Server save has been requested."] call logger;
 			_mAwaitingSave = true;
 		};
 		
@@ -101,7 +82,11 @@ namespace dave3
 					_mAwaitingSave
 				};
 				// Then persist the data in the world to save into the profile namespace
-				["Saving game state to server profile namespace"] call logger;
+				//["Saving game state to server profile namespace"] call logger;
+				_mSaveGameContents = [];
+				profileNamespace setVariable [_mSaveGameName, _mSaveGameContents];
+				saveProfileNamespace;
+				
 				_mSaveGameContents = [call _mWorldToSave.getSaveableData];
 				profileNamespace setVariable [_mSaveGameName, _mSaveGameContents];
 				saveProfileNamespace;
@@ -124,6 +109,7 @@ namespace dave3
 		private method RunAutoSave {
 			if (_self.autosaveInterval > 0) then {
 				while {true} do {
+					[["Autosaving in ", _self.autosaveInterval, " seconds"], LogLevel.Info] call missionLogger.logMessage;
 					sleep _self.autosaveInterval;
 					[] call _self.requestSave;
 				};

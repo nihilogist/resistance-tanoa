@@ -1,0 +1,8 @@
+namespace dave3 {
+	public enum LogLevel {
+		Fatal = 1,
+		Error = 2,
+		Info = 3,
+		Debug = 4
+	}
+};

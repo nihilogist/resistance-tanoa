@@ -24,10 +24,8 @@ cl_dave3_Region_constructor = { private "_class_fields"; _class_fields = [["dave
 
 
     _class_fields set [1, _regionData select 0];
-    [["Initialising Region ", (_class_fields select 1)] joinString ""] call logger;
 
 
-    [["Initialising Region ", (_class_fields select 1), "'s Prison Camps"] joinString ""] call logger;
     _class_fields set [3, []];
     {
         (_class_fields select 3) pushBack (([_x] call cl_dave3_PrisonCamp_constructor));
@@ -35,11 +33,9 @@ cl_dave3_Region_constructor = { private "_class_fields"; _class_fields = [["dave
 
 
 
-    [["Initialising Region ", (_class_fields select 1), "'s Gendarme HQ at ", _regionData select 2] joinString ""] call logger;
     _class_fields set [4, ([[(_regionData select 2) select 0, (_class_fields select 1)]] call cl_dave3_GendarmeHQ_constructor)];
 
 
-    [["Initialising Region ", (_class_fields select 1), "'s Towns"] joinString ""] call logger;
     _class_fields set [2, []];
     {
         (_class_fields select 2) pushBack (([_x] call cl_dave3_Town_constructor));
@@ -68,5 +64,4 @@ cl_dave3_Region_getSaveableData = { params ["_class_fields", "_this"];
     ([_gendarmeHQ, []] call cl_dave3_GendarmeHQ_getSaveableData), 
     []];
 
-    [["REGION: Save data generated as: ", _saveableData] joinString ""] call logger;
     _saveableData };

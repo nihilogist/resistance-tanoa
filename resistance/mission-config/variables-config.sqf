@@ -2,9 +2,9 @@
 gameplayLoopDuration = 10;
 autosaveFrequency = 120;
 saveGameName = "resistanceSave";
-nukeTheSave = true;
+nukeTheSave = false;
 debug = true;
-logLevel = 3;
+logDetailLevel = 3;
 
 // Ingame variables
 popularSupport = 10; // A measure of the popular support for the resistance

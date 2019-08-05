@@ -3,31 +3,41 @@ call compile preprocessFileLineNumbers "resistance\classes\compile-all-classes.s
 
 using dave3;
 
-private ["_saveManager" as SaveManager, "_gameMaster" as GameMaster, "_savedWorldData" as Array, "_worldName" as String, "_worldRegions" as Array];
+private ["_saveManager" as SaveManager, "_gameMaster" as GameMaster, "_savedWorldData" as Array];
 
 sleep 3;
 
+
+
 // Initialise singletons
-_saveManager = [nukeTheSave, saveGameName, 120] new SaveManager;
+missionLogger = [LogLevel.Debug] new LoggerUtil;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+[["Logger initialised"], LogLevel.Info] call missionLogger.logMessage;
+
+_saveManager = [nukeTheSave, saveGameName, 30] new SaveManager;
 _gameMaster = [] new GameMaster;
 
 // Check to see if world can be loaded
 _savedWorldData = call _saveManager.getSavedData;
 
-if (isNil "_savedWorldData") then {
-	["INIT: Saved world data does not exist."] call logger;
-	_savedWorldData = worldData;
+
+[["INIT: Parsing saved world data", _savedWorldData]] call missionLogger.logMessage;
+
+
+if (count _savedWorldData == 0) then {
+	[["INIT: No world data in save file."]] call missionLogger.logMessage;
+	_savedWorldData = [worldData];
 } else {
-	["INIT: Parsing saved world data"] call logger;
-	if (count _savedWorldData == 0) then {
-		["INIT: No world data in save file."] call logger;
-		_savedWorldData = worldData;
-	} else {
-		["INIT: Selecting world data from save file"] call logger;
-	};
+	[["INIT: Selecting world data from save file"]] call missionLogger.logMessage;
 };
 
-theWorld = [_savedWorldData] new WorldRegions;
+[["INIT: Using world data to construct world state: ", _savedWorldData], LogLevel.Info] call missionLogger.logMessage;
+
+theWorld = (_savedWorldData) new WorldRegions;
 
 // Once the world is initialised, then set it into the save manager and request a save.
 [theWorld] call _saveManager.setWorldToSave;
@@ -40,4 +50,4 @@ theWorld = [_savedWorldData] new WorldRegions;
 sleep 10;
 
 // Start the game master
-[] call _gameMaster.startGameMasterAsync;
+[] call _gameMaster.startGameMasterAsync; 

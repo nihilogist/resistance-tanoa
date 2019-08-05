@@ -1,1 +1,2 @@
 call compile preprocessFileLineNumbers "resistance\classes\utils\MarkerUtils.sqx";
+call compile preprocessFileLineNumbers "resistance\classes\utils\Logger.sqx";

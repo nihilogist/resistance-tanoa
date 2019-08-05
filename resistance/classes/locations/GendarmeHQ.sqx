@@ -14,7 +14,7 @@ namespace dave3
 	
 
 		public property String locationMarker {get; private set; };
-		public property Region region { get; private set; };
+		public property String region { get; private set; };
 	
 
 		// Creates a GendarmeHQ object.
@@ -26,6 +26,7 @@ namespace dave3
 			
 			// De-serialise construction data from array
 			_self.locationMarker = _gendarmeHQData select 0;
+			_self.region = _gendarmeHQData select 1;
 			
 			_flagPosition = markerPos _self.locationMarker;
 			
@@ -52,9 +53,6 @@ namespace dave3
 			
 		};
 		
-		public method setRegion("_region" as Region) {
-			_self.region = _region;
-		};
 	};
 };
 

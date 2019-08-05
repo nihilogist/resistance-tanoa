@@ -26,6 +26,7 @@ cl_dave3_GendarmeHQ_constructor = { private "_class_fields"; _class_fields = [["
 
 
     _class_fields set [1, _gendarmeHQData select 0];
+    _class_fields set [2, _gendarmeHQData select 1];
 
     _flagPosition = markerPos (_class_fields select 1);
 
@@ -49,8 +50,3 @@ cl_dave3_GendarmeHQ_getSaveableData = { params ["_class_fields", "_this"];
     _gendarmeHQData = [(_class_fields select 1)];
 
     _gendarmeHQData };
-
-
-
-cl_dave3_GendarmeHQ_setRegion = { params ["_class_fields", "_this"]; params ["_region"]; 
-    _class_fields set [2, _region]; };

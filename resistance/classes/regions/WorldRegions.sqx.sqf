@@ -53,3 +53,14 @@ cl_dave3_WorldRegions_getSaveableData = { params ["_class_fields", "_this"];
 
 
     _saveData };
+
+
+
+cl_dave3_WorldRegions_getRegionByName = { params ["_class_fields", "_this"]; params ["_regionName"]; 
+    private ["_regionToReturn"];
+    {
+        if ((_x select 1) isEqualTo _regionName) then {
+            _regionToReturn = _x; };
+    } forEach (
+    _class_fields select 2);
+    _regionToReturn };

@@ -54,6 +54,19 @@ namespace dave3
 			
 			_saveData
 		};
+	
+		
+		public method Region getRegionByName("_regionName" as String) {
+			private ["_regionToReturn" as Region];
+			{
+				if (_x.regionName isEqualTo _regionName) then {
+					_regionToReturn = _x;
+				};
+			} forEach _self.regions as Region;
+			_regionToReturn
+		};
+	
 	};
+	
 };
 

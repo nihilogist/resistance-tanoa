@@ -69,6 +69,10 @@
               <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="locations" IsExpanded="true" FileName="resistance\classes\locations">
                 <IsSelected>false</IsSelected>
                 <SubNodes>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="AmmoDump.sqx" IsExpanded="false" FileName="resistance\classes\locations\AmmoDump.sqx">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="compile-all-locations.sqx" IsExpanded="false" FileName="resistance\classes\locations\compile-all-locations.sqx">
                     <IsSelected>false</IsSelected>
                     <SubNodes />
@@ -91,7 +95,7 @@
                     <SubNodes />
                   </ProjectNodeViewModel>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="Region.sqx" IsExpanded="false" FileName="resistance\classes\regions\Region.sqx">
-                    <IsSelected>true</IsSelected>
+                    <IsSelected>false</IsSelected>
                     <SubNodes />
                   </ProjectNodeViewModel>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="Town.sqx" IsExpanded="false" FileName="resistance\classes\regions\Town.sqx">
@@ -99,7 +103,7 @@
                     <SubNodes />
                   </ProjectNodeViewModel>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="WorldRegions.sqx" IsExpanded="false" FileName="resistance\classes\regions\WorldRegions.sqx">
-                    <IsSelected>false</IsSelected>
+                    <IsSelected>true</IsSelected>
                     <SubNodes />
                   </ProjectNodeViewModel>
                 </SubNodes>

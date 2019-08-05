@@ -22,8 +22,6 @@ cl_dave3_GendarmeGroup_constructor = { private "_class_fields"; _class_fields = 
     _gendarmeUnitClass = "B_GEN_Soldier_F";
 
 
-
-
     _class_fields set [2, _town];
 
 

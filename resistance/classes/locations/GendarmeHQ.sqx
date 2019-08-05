@@ -35,8 +35,6 @@ namespace dave3
 			_flagBuildingClass = "Flag_Gendarmerie_F";
 			
 			// Spawn in the buildings
-			
-			[["Spawning Gendarmarie HQ at marker ", _self.locationMarker] joinString ""] call logger;
 			_hqBuilding = [_hqBuildingClass, _self.locationMarker] call spawnObjectAtMarker;
 			
 			_hqFlag = _flagBuildingClass createVehicle (_flagPosition);

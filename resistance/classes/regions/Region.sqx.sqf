@@ -30,7 +30,6 @@ cl_dave3_Region_constructor = { private "_class_fields"; _class_fields = [["dave
     [["Initialising Region ", (_class_fields select 1), "'s Prison Camps"] joinString ""] call logger;
     _class_fields set [3, []];
     {
-        [["Reading data for prison camp ", _x] joinString ""] call logger;
         (_class_fields select 3) pushBack (([_x] call cl_dave3_PrisonCamp_constructor));
     } forEach (_regionData select 1);
 
@@ -43,7 +42,6 @@ cl_dave3_Region_constructor = { private "_class_fields"; _class_fields = [["dave
     [["Initialising Region ", (_class_fields select 1), "'s Towns"] joinString ""] call logger;
     _class_fields set [2, []];
     {
-        [["Reading data for town ", _x] joinString ""] call logger;
         (_class_fields select 2) pushBack (([_x] call cl_dave3_Town_constructor));
     } forEach (_regionData select 3); _class_fields };
 

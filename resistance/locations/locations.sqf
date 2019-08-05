@@ -6,6 +6,14 @@ bases = [
 	["First Camp", "locationFirstBase"]
 ];
 
+firstAmmunitionCache = [
+	[1787.45, 7309.312, 0] // position
+];
+
+ammunitionCaches = [
+	firstAmmunitionCache
+];
+
 
 // Town format: [townName, gendarme groups present, [gendarmes patrol areas]]
 tavu = ["Tavu", // town name
@@ -42,6 +50,7 @@ balavu = [
 
 worldData = [
 	"Tanoa", // World name
-	[balavu] // regions array
+	[balavu], // regions array
+	[ammunitionCaches] // ammo caches array
 ];
 

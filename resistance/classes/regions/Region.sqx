@@ -30,7 +30,6 @@ namespace dave3
 			[["Initialising Region ", _self.regionName, "'s Prison Camps"] joinString ""] call logger;
 			_self.prisonCamps = [];
 			{
-				[["Reading data for prison camp ", _x] joinString ""] call logger;
 				_self.prisonCamps pushBack ([_x] new PrisonCamp);
 			} forEach (_regionData select 1);
 			
@@ -43,7 +42,6 @@ namespace dave3
 			[["Initialising Region ", _self.regionName, "'s Towns"] joinString ""] call logger;
 			_self.towns = [];
 			{
-				[["Reading data for town ", _x] joinString ""] call logger;
 				_self.towns pushBack ([_x] new Town);
 			} forEach (_regionData select 3);
 			

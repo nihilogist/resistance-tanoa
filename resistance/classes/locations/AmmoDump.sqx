@@ -9,11 +9,32 @@
  */
 namespace dave3
 {
-	public class AmmoDump
+	public class AmmoDump : ISaveable
 	{
+	
+		private fields ["_boxClassName" as String, "_ammunitionCache" as Object];
+		
 		// Creates a AmmoDump object.
 		public constructor {
+			params ["_ammoDumpData" as Array];
+		
+			_boxClassName = "Box_FIA_Support_F";
 			
+			// Spawn the box
+			[["Spawning ammunition crate at ", (_ammoDumpData select 0)] joinString ""] call logger;
+			_ammunitionCache = _boxClassName createVehicle (_ammoDumpData select 0);
+			
+			
+		};
+		
+		public method Array getSaveableData {
+			private ["_saveableData" as Array];
+			
+			_saveableData = [
+				getPos _ammunitionCache // returns the position of the cache
+			];
+			
+			_saveableData
 		};
 	};
 };

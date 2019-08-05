@@ -13,19 +13,21 @@ namespace dave3
 	{
 		
 		public property String worldName { get; private set; };
-		
 		public property Array regions { get; private set; };
+		public property Array caches { get; private set; };
+		
 		
 		// Creates a World object.
 		public constructor {
 			params ["_worldData" as Array];
 
-			private ["_regionsData" as Array, "_region" as Region];
+			private ["_regionsData" as Array, "_region" as Region, "_cacheData" as Array, "_cache" as AmmoDump];
 
 			_self.worldName = _worldData select 0;
 			_regionsData = _worldData select 1;
+			_cacheData = _worldData select 2;
 			
-			[["Initialising World ", _self.worldName, " with ", count _regionsData, " regions."] joinString ""] call logger;
+			[["Initialising World ", _self.worldName, " with ", count _regionsData, " regions and ", count _cacheData, " caches."] joinString ""] call logger;
 			
 			_self.regions = [];
 			// Iterate over all regions and create them
@@ -34,22 +36,39 @@ namespace dave3
 				_region = [_x] new Region;
 				_self.regions pushBack _region;
 			} forEach _regionsData;
+			
+			_self.caches = [];
+			// Iterate over all ammunition caches and create them
+			{
+				["Generating Ammo Cache"] call logger;
+				_cache = _x new AmmoDump;
+				_self.caches pushBack _cache;
+			} forEach _cacheData;
+			
 		};
 		
 		
 		public method Array getSaveableData {
-			private ["_saveData" as Array, "_saveableRegions" as Array, "_saveableRegion" as Array];
+			private ["_saveData" as Array, "_saveableRegions" as Array, "_saveableRegion" as Array, "_saveableAmmoDumps" as Array];
 			
 			_saveableRegions = [];
+			_saveableAmmoDumps = [];
 			
+			// Get all regions to save
 			{
 				_saveableRegion = [] call _x.getSaveableData;
 				_saveableRegions pushBack _saveableRegion;
 			} forEach _self.regions as Region;
 			
+			// Get all ammo caches to save
+			{
+				_saveableAmmoDumps pushBack ([] call _x.getSaveableData);
+			} forEach _self.caches as AmmoDump;
+			
 			_saveData = [
 				_self.worldName,
-				_saveableRegions
+				_saveableRegions,
+				_saveableAmmoDumps
 			];
 			
 			_saveData

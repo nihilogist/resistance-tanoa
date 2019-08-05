@@ -35,8 +35,6 @@ cl_dave3_GendarmeHQ_constructor = { private "_class_fields"; _class_fields = [["
     _flagBuildingClass = "Flag_Gendarmerie_F";
 
 
-
-    [["Spawning Gendarmarie HQ at marker ", (_class_fields select 1)] joinString ""] call logger;
     _hqBuilding = [_hqBuildingClass, (_class_fields select 1)] call spawnObjectAtMarker;
 
     _hqFlag = _flagBuildingClass createVehicle (_flagPosition);

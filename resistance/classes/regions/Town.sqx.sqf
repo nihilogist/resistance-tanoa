@@ -22,6 +22,8 @@ cl_dave3_Town_constructor = { private "_class_fields"; _class_fields = [["dave3_
     params ["_townData"];
     private ["_targetGendarmes", "_assignedGendarmes"];
 
+    ([missionLogger, [["TownData array received: ", _townData], 4]] call cl_dave3_LoggerUtil_logMessage);
+
 
     _class_fields set [1, _townData select 0];
     _targetGendarmes = _townData select 1;
@@ -29,14 +31,17 @@ cl_dave3_Town_constructor = { private "_class_fields"; _class_fields = [["dave3_
 
 
 
-    _assignedGendarmes = 0;
-    while { _assignedGendarmes < _targetGendarmes } do {
-        if (_targetGendarmes - _assignedGendarmes > 1) then {
-            (_class_fields select 3) pushback (([2, _class_fields] call cl_dave3_GendarmeGroup_constructor));
-            _assignedGendarmes = _assignedGendarmes + 2; } else { 
+    if (_targetGendarmes > 0) then {
+        _assignedGendarmes = 0;
+        while { _assignedGendarmes < _targetGendarmes } do {
+            if (_targetGendarmes - _assignedGendarmes > 1) then {
+                (_class_fields select 3) pushback (([2, _class_fields] call cl_dave3_GendarmeGroup_constructor));
+                _assignedGendarmes = _assignedGendarmes + 2; } else { 
 
-            (_class_fields select 3) pushback (([1, _class_fields] call cl_dave3_GendarmeGroup_constructor));
-            _assignedGendarmes = _assignedGendarmes + 1; }; }; _class_fields };
+                (_class_fields select 3) pushback (([1, _class_fields] call cl_dave3_GendarmeGroup_constructor));
+                _assignedGendarmes = _assignedGendarmes + 1; }; }; }; _class_fields };
+
+
 
 
 
@@ -66,4 +71,6 @@ cl_dave3_Town_getSaveableData = { params ["_class_fields", "_this"];
     _class_fields select 2)];
 
 
-    _saveableData };
+    ([missionLogger, [["TownData array returned: ", _saveableData], 4]] call cl_dave3_LoggerUtil_logMessage);
+
+    [_saveableData] };

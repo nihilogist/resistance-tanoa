@@ -1,0 +1,149 @@
+/*
+ * Name:	TestEngine
+ * Date:	2018-11-19
+ * Version: 1.0
+ * Author:  Engima
+ *
+ * Description:
+ * A class that runs all the registered tests.
+ */
+namespace Sqx.UnitTest
+{
+	using dave3;
+
+	public class TestEngine
+	{
+		private static fields ["_mTestUnits" as Array /* of TestUnit */, "_mMethodSucceeded" as Boolean];
+		private static fields ["_mCurrentNamespaceName" as String, "_mCurrentClassName" as String, "_mCurrentMethodName" as String];
+		
+		// Initializes the test engine.
+		public static method Init {
+			_mTestUnits = [];
+		};
+		
+		// Registeres a test unit (a custom testclass with its test methods) so the testclass' tests can be executed.
+		// _namespaceName (String): The dot-separated namespace name for the test class.
+		// _className (String): The testclass' name.
+		// _methodNames (Array): A list of names reflecting the test methods.
+		public static method Register("_namespaceName" as String, "_className" as String, "_methodNames" as Array)
+		{
+			_mTestUnits pushBack [_namespaceName, _className, _methodNames] new TestUnit;
+		};
+		
+		// Outputs a text to the screen and the Arma 3 RPT file.
+		// _text (String): The text to be written.
+		private static method Output("_text" as String, ["_onlyToRpt" as Boolean, false])
+		{
+			if (!_onlyToRpt) then {
+				player sideChat _text;
+			};
+			[[_text], LogLevel.Debug] call missionLogger.logMessage;
+			diag_log _text;
+		};
+		
+		// Asserting a test and registeres it as failed.
+		// Only used by the test framework, and should never be called explicitly.
+		// _message (String): The test's error message to be shown for the test user.
+		public static method WriteFailed("_message" as String)
+		{
+			if (_mMethodSucceeded) then // Just report one failed assert per test method.
+			{
+				//player sideChat ("FAILED: " + _mCurrentClassName + "." + _mCurrentMethodName + " - " + _message); // TODO SQX: Should work without parenthesis - ; disappears...
+				[("FAILED: " + _mCurrentClassName + "." + _mCurrentMethodName + " - " + _message)] call _self.Output;
+				_mMethodSucceeded = false;
+			};
+		};
+		
+		// Replaces a sub string within a string with another string.
+		// _str (String): The string to be edited.
+		// _find (String): The string to fine.
+		// _replace (String): The string to replace the found strings.
+		// Returns (String): The replaced string.
+		private static method String StringReplace("_str" as String, "_find" as String, "_replace" as String)
+		{
+			private _return = "";
+			private _len = count _find;	
+			private _pos = _str find _find;
+			
+			while {(_pos != -1) && (count _str > 0)} do {
+				_return = _return + (_str select [0, _pos]) + _replace;
+				
+				_str = (_str select [_pos+_len]);
+				_pos = _str find _find;
+			};
+			
+			_return + _str;
+		};
+		
+		// Runs all the tests.
+		private static method Run("_delayed" as Boolean)
+		{
+			private ["_sqfTestMethod" as String, "_successCount" as Scalar, "_failedCount" as Scalar, "_testUnit" as TestUnit, "_sqfClassName" as String, "_sConstructorFunction" as String, "_sqfBeforeEach" as String, "_sqfAfterEach" as String];
+
+			_successCount = 0;
+			_failedCount = 0;
+			
+			if (_delayed) then {
+				sleep 3;
+			};
+
+			["RUNNING TESTS..."] call _self.Output;
+			
+			{
+				_testUnit = _x;
+				
+				_mCurrentNamespaceName = _testUnit.NamespaceName;
+				_mCurrentClassName = _testUnit.ClassName;
+				_sqfClassName = ([_mCurrentNamespaceName, ".", "_"] call _self.StringReplace) + "_" + _mCurrentClassName;
+				
+				_sConstructorFunction = "cl_" + _sqfClassName + "_constructor";
+				waitUntil { !(isNil compile _sConstructorFunction) };
+				
+				{
+					_mCurrentMethodName = _x;
+					_mMethodSucceeded = true;
+					
+					_sqfBeforeEach = _sqfClassName + "_BeforeEach";
+					if (!isNil _sqfBeforeEach) then {
+						call compile ("call " + _sqfBeforeEach);
+					};
+					
+					_sqfTestMethod = _sqfClassName + "_" + _mCurrentMethodName + ";";
+					
+					if (isNil compile _sqfTestMethod) then {
+						_mMethodSucceeded = false;
+						[("MISSING: " + _mCurrentClassName + "." + _mCurrentMethodName + " - Test method was not found.")] call _self.Output;
+					}
+					else {
+						call compile ("call " + _sqfTestMethod);
+					};
+					
+					if (_mMethodSucceeded) then {
+						_successCount = _successCount + 1;
+						[("PASSED: " + _mCurrentClassName + "." + _mCurrentMethodName), true] call _self.Output;
+					}
+					else {
+						_failedCount = _failedCount + 1;
+					};
+					
+					_sqfAfterEach = _sqfClassName + "_AfterEach";
+					if (!(isNil compile _sqfAfterEach)) then {
+						call compile ("call " + _sqfAfterEach);
+					};
+				} foreach _testUnit.MethodNames as String;
+			} foreach _mTestUnits as TestUnit;
+			
+			["TOTAL: " + str (_successCount + _failedCount) + ". PASSED: " + str _successCount + ". FAILED: " + str _failedCount] call _self.Output;
+		};
+		
+		// Starts a parallell task that runs all the tests.
+		public static method RunAsync {
+			[false] spawn _self.Run;
+		};
+		
+		// Starts a parallell task that runs all the tests, but starts after 3 seconds.
+		public static method RunDelayedAsync {
+			[true] spawn _self.Run;
+		};
+	};
+};

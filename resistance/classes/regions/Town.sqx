@@ -22,6 +22,8 @@ namespace dave3
 			params ["_townData" as Array];
 			private ["_targetGendarmes" as Scalar, "_assignedGendarmes" as Scalar];
 			
+			[["TownData array received: ", _townData], LogLevel.Debug] call missionLogger.logMessage;
+			
 			// deserialise the townData
 			_self.townName = _townData select 0;
 			_targetGendarmes = _townData select 1;
@@ -29,16 +31,19 @@ namespace dave3
 			
 						
 			// Spawn all gendarmes groups
-			_assignedGendarmes = 0;
-			while {_assignedGendarmes < _targetGendarmes} do {
-				if (_targetGendarmes - _assignedGendarmes > 1) then {
-					_self.gendarmePatrols pushback ([2, _self] new GendarmeGroup);
-					_assignedGendarmes = _assignedGendarmes + 2;
-				} else {
-					_self.gendarmePatrols pushback ([1, _self] new GendarmeGroup);
-					_assignedGendarmes = _assignedGendarmes + 1;
+			if (_targetGendarmes > 0) then {
+				_assignedGendarmes = 0;
+				while {_assignedGendarmes < _targetGendarmes} do {
+					if (_targetGendarmes - _assignedGendarmes > 1) then {
+						_self.gendarmePatrols pushback ([2, _self] new GendarmeGroup);
+						_assignedGendarmes = _assignedGendarmes + 2;
+					} else {
+						_self.gendarmePatrols pushback ([1, _self] new GendarmeGroup);
+						_assignedGendarmes = _assignedGendarmes + 1;
+					};
 				};
 			};
+			
 			
 		};
 		
@@ -66,7 +71,9 @@ namespace dave3
 				_self.gendarmesPatrolMarkers // 2 = gendarmes patrol markers
 			];
 			
-			_saveableData
+			[["TownData array returned: ", _saveableData], LogLevel.Debug] call missionLogger.logMessage;
+			
+			[_saveableData]
 		};
 		
 	};

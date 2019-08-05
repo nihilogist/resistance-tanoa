@@ -1,5 +1,7 @@
 call compile preprocessFileLineNumbers "resistance\interfaces\compile-all-interfaces.sqx";
 call compile preprocessFileLineNumbers "resistance\classes\compile-all-classes.sqx";
+call compile preprocessFileLineNumbers "Sqx\UnitTest\Init.sqx.sqf"
+call compile preprocessFileLineNumbers "resistance\tests\compile-all-tests.sqx";
 
 using dave3;
 
@@ -17,6 +19,17 @@ missionLogger = [LogLevel.Debug] new LoggerUtil;
 [["---"], LogLevel.Info] call missionLogger.logMessage;
 [["---"], LogLevel.Info] call missionLogger.logMessage;
 [["Logger initialised"], LogLevel.Info] call missionLogger.logMessage;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+
+if (testBuild) then {
+	call Sqx_UnitTest_TestEngine_RunDelayedAsync; // Added by Sqx.UnitTest
+	sleep 10;
+};
+
 
 _saveManager = [nukeTheSave, saveGameName, 30] new SaveManager;
 _gameMaster = [] new GameMaster;

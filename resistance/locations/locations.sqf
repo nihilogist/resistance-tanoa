@@ -16,7 +16,12 @@ firstAmmunitionCache = [
 ];
 
 ammunitionCaches = [
-	firstAmmunitionCache
+	firstAmmunitionCache // a list of equipment caches
+];
+
+insurgencyData = [
+	10, // number of available insurgency members
+	ammunitionCaches // available ammunition / equipment caches
 ];
 
 
@@ -56,7 +61,7 @@ balavu = [
 worldData = [
 	"Tanoa", // World name
 	[balavu], // regions array -- largely static data
-	[ammunitionCaches] // ammo caches array - heavily 
+	[ammunitionCaches] // ammo caches array - heavily dynamic
 ];
 
 /*

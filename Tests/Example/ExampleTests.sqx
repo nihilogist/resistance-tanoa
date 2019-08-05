@@ -1,0 +1,72 @@
+/*
+ * Name:	OrderQueueTests
+ * Date:	2018-11-19
+ * Version: 1.0
+ * Author:  Engima
+ *
+ * Description:
+ * Tests for the OrderQueue object.
+ */
+
+using Sqx.UnitTest;
+
+namespace Tests.Example
+{
+	public class ExampleTests
+	{
+		// Registeres the test methods and performs general initializations.
+		public static method Init
+		{
+			// All test methods in this test class expected to run automatically are to be registered in 
+			// the test framework like this.
+			// First argument is the name space name of this test class.
+			// Second argument is the class name of this test class.
+			// Third argument is an array containing the names of all the methods that should be registered.
+			
+			["Tests.Example", "ExampleTests", [
+				"Given10_WhenMultipliedBy2_Then20",
+				"GivenEmptyGroup_WhenAiUnitAdded_ThenOneAiInGroup"
+			]] call TestEngine.Register;
+		};
+		
+		// If this method exists, then it will be called once for every test method, before the test method is executed.
+		private static method BeforeEach {
+			// Use this to make common initializations for every test method.
+		};
+		
+		// If this method exists, then it will be called once for every test method, before the test method is executed.
+		private static method AfterEach {
+			// Use this to clean up general stuff after every test method has been executed.
+		};
+		
+		private static method Given10_WhenMultipliedBy2_Then20 {
+			private ["_value" as Scalar, "_result" as Scalar];
+		
+			// Arrange
+			_value = 10;
+			
+			// Act
+			_result = _value * 2;
+			
+			// Assert
+			[_result, 20, "Multiplication in SQF is broken!"] call Assert.AreEqual;
+		};
+		
+		private static method GivenEmptyGroup_WhenAiUnitAdded_ThenOneAiInGroup {
+			private ["_group" as Group];
+		
+			// Arrange
+			_group = createGroup west;
+			
+			// Act
+			"B_Soldier_F" createUnit [[0,0,100], _group];
+			
+			// Assert
+			[count units _group, 1, "Multiplication in SQF is broken!"] call Assert.AreEqual;
+			
+			// Some cleanup might be necessary
+			deleteVehicle (units _group select 1);
+			deleteGroup _group;
+		};
+	};
+};

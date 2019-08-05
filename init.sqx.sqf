@@ -1,6 +1,8 @@
 call compile preprocessFileLineNumbers "resistance\interfaces\compile-all-interfaces.sqx.sqf";
 call compile preprocessFileLineNumbers "resistance\classes\compile-all-classes.sqx.sqf";
 
+call compile preprocessFileLineNumbers "Sqx\UnitTest\Init.sqx.sqf" call compile preprocessFileLineNumbers "resistance\tests\compile-all-tests.sqx.sqf";
+
 
 
 private ["_saveManager", "_gameMaster", "_savedWorldData"];
@@ -17,6 +19,17 @@ missionLogger = ([4] call cl_dave3_LoggerUtil_constructor);
 ([missionLogger, [["---"], 3]] call cl_dave3_LoggerUtil_logMessage);
 ([missionLogger, [["---"], 3]] call cl_dave3_LoggerUtil_logMessage);
 ([missionLogger, [["Logger initialised"], 3]] call cl_dave3_LoggerUtil_logMessage);
+([missionLogger, [["---"], 3]] call cl_dave3_LoggerUtil_logMessage);
+([missionLogger, [["---"], 3]] call cl_dave3_LoggerUtil_logMessage);
+([missionLogger, [["---"], 3]] call cl_dave3_LoggerUtil_logMessage);
+([missionLogger, [["---"], 3]] call cl_dave3_LoggerUtil_logMessage);
+([missionLogger, [["---"], 3]] call cl_dave3_LoggerUtil_logMessage);
+
+if (testBuild) then {
+    call Sqx_UnitTest_TestEngine_RunDelayedAsync;
+    sleep 10; };
+
+
 
 _saveManager = ([nukeTheSave, saveGameName, 30] call cl_dave3_SaveManager_constructor);
 _gameMaster = ([] call cl_dave3_GameMaster_constructor);

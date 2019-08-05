@@ -5,6 +5,7 @@
 // Set up logging framework
 logger = compileFinal preprocessFileLineNumbers "resistance\logging-utils\logger.sqf";
 
+
 // Script definitions
 spawnBase = compileFinal preprocessFileLineNumbers "resistance\resistance-camp\resistance-camp-placement.sqf";
 reviewIntelligenceAction = compileFinal preprocessFileLineNumbers "resistance\resistance-camp\resistance-camp-actions\resistance-camp-map-action.sqf";

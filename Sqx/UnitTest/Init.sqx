@@ -1,0 +1,9 @@
+call compile preprocessFileLineNumbers "Sqx\UnitTest\TestEngine\Assert.sqx";
+call compile preprocessFileLineNumbers "Sqx\UnitTest\TestEngine\TestUnit.sqx";
+call compile preprocessFileLineNumbers "Sqx\UnitTest\TestEngine\TestEngine.sqx";
+
+/* Initialize the test engine */
+call Sqx.UnitTest.TestEngine.Init;
+
+/* Register the user's test classes */
+call compile preprocessFileLineNumbers "Tests\InitMyTestClasses.sqx";

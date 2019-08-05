@@ -1,0 +1,28 @@
+/*
+ * Name:	TestUnit
+ * Date:	2018-11-20
+ * Version: 1.0
+ * Author:  Engima
+ *
+ * Description:
+ * A class that contains information about a test class and its test methods.
+ */
+namespace Sqx.UnitTest
+{
+	public class TestUnit
+	{
+		// Creates a TestUnit object.
+		public constructor("_namespaceName" as String, "_className" as String, "_methodNames" as Array)
+		{
+			_self.NamespaceName = _namespaceName;
+			_self.ClassName = _className; // TODO SQX: Seems that you cannot write TestEngine.ClassName, since it's interpreted as being an outsider accessing the private setter. Both for static and non static. How can that be???
+			_self.MethodNames = _methodNames;
+		};
+		
+		public property String NamespaceName { get; set; };
+		
+		public property String ClassName { get; set; };
+		
+		public property Array MethodNames { get; set; };
+	};
+};

@@ -1,0 +1,11 @@
+/* In this file all custom test classes are to be included and initialized. */
+
+/* Include all test classes here */
+call compile preprocessFileLineNumbers "Tests\Example\ExampleTests.sqx";
+// call compile preprocessFileLineNumbers "Tests\Example\SomeExtraTests.sqx"; /* These are just examples*/
+// call compile preprocessFileLineNumbers "Tests\Some\CodeFiles\LogicTests.sqx";
+
+/* Initialize all test classes here */
+call Tests.Example.ExampleTests.Init;
+// call Tests.Example.SomeExtraTests.Init; /* These are just examples*/
+// call Tests.Some.CodeFiles.LogigTests.Init;

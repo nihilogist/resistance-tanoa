@@ -12,18 +12,37 @@ namespace dave3
 	public class MapData : ISaveable
 	{
 		// MapData is based on Regions
+		public property Array regions { get; private set; };
 	
 		// Creates a MapData object.
 		public constructor("_mapDataData" as Array) {
+			[["MAPDATA: Received data to construct campaign map data", _mapDataData], LogLevel.Debug] call missionLogger.logMessage;
+			private ["_regionsData" as Array];
 			
+			_regionsData = [_mapDataData select 0];
+			[["MAPDATA: Regions Data", _regionsData], LogLevel.Debug] call missionLogger.logMessage;
+			_self.regions = [];
+			{
+				private ["_regionData" as Array];
+				_regionData = _x;
+				[["MAPDATA: Constructing Region: ", _regionData], LogLevel.Debug] call missionLogger.logMessage;
+				_self.regions pushBack ([_regionData] new Region);
+			} forEach _regionsData;
 		};
 		
 		public method Array getSaveableData {
-			private ["_saveableData"];
+			private ["_saveableData" as Array, "_regionsData" as Array];
 			
-			_saveableData = [
-			];
+			_regionsData = [];
+			{
+				private ["_saveableRegion" as Array];
+				_saveableRegion = [] call _x.getSaveableData;
+				_regionsData pushBack _saveableRegion;
+			} forEach _self.regions as Region;
 			
+			
+			_saveableData = _regionsData;
+			[["MAPDATA: Reteurning data to save campaign map data", _saveableData], LogLevel.Debug] call missionLogger.logMessage;
 			_saveableData
 		};
 	};

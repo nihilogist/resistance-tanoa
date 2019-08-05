@@ -52,6 +52,8 @@ dave3_tests_CampaignTests_Given_CampaignDefinition_When_GettingSaveableData_Then
 
 
     _result = ([_testCampaign, []] call cl_dave3_Campaign_getSaveableData);
+    ([missionLogger, [["CAMPAIGNTEST: Initial Data  ", campaignDataInitial], 4]] call cl_dave3_LoggerUtil_logMessage);
+    ([missionLogger, [["CAMPAIGNTEST: Savegame Data ", _result], 4]] call cl_dave3_LoggerUtil_logMessage);
 
 
     [_result isEqualTo campaignDataInitial, "Campaign not loading correctly"] call Sqx_UnitTest_Assert_IsTrue; };

@@ -14,18 +14,20 @@ namespace dave3
 	
 		// Properties for the region
 		public property String regionName {get; private set; };
-		public property Array towns {get; private set; };
-		public property Array prisonCamps { get; private set; };
-		public property GendarmeHQ gendarmeHQ { get; private set; };
+		//public property Array towns {get; private set; };
+		//public property Array prisonCamps { get; private set; };
+		//public property GendarmeHQ gendarmeHQ { get; private set; };
 	
 		// Creates a Region object.
 		public constructor {
 			params ["_regionData" as Array];
+			[["REGION: Received data to construct region: ", _regionData], LogLevel.Debug] call missionLogger.logMessage;
 			
 			// Unpack the region name
+			[["REGION: Region Name: ", _regionData select 0], LogLevel.Debug] call missionLogger.logMessage;
 			_self.regionName = _regionData select 0;
 			
-			// Create the region's prison camps
+			/* Create the region's prison camps
 			_self.prisonCamps = [];
 			{
 				_self.prisonCamps pushBack ([_x] new PrisonCamp);
@@ -39,14 +41,14 @@ namespace dave3
 			_self.towns = [];
 			{
 				_self.towns pushBack ([_x] new Town);
-			} forEach (_regionData select 3);
+			} forEach (_regionData select 3);*/
 			
 		};
 		
 		
 		public method Array getSaveableData() {
 			private ["_saveableData" as Array, "_gendarmeHQ" as GendarmeHQ, "_prisonCamps" as Array, "_towns" as Array];
-			_gendarmeHQ = _self.gendarmeHQ;
+			/*_gendarmeHQ = _self.gendarmeHQ;
 			
 			_prisonCamps = [];
 			{
@@ -56,14 +58,12 @@ namespace dave3
 			_towns = [];
 			{
 				_towns pushBack ([] call _x.getSaveableData);
-			} forEach _self.towns as Town;
+			} forEach _self.towns as Town; */
 			
 			_saveableData = [
-				_self.regionName, // 0 = region name
-				_prisonCamps, // 1 = prison camp
-				call _gendarmeHQ.getSaveableData, // 2 = gendarme HQ
-				[] // 3 = towns
+				_self.regionName // 0 = region name
 			];
+			[["REGION: Returning data to save region: ", _saveableData], LogLevel.Debug] call missionLogger.logMessage;
 			_saveableData
 		};
 		

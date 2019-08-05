@@ -3,11 +3,16 @@
 /* Include all test classes here */
 call compile preprocessFileLineNumbers "Tests\Example\ExampleTests.sqx";
 call compile preprocessFileLineNumbers "Tests\resistance\regions\CampaignTests.sqx";
+call compile preprocessFileLineNumbers "Tests\resistance\regions\MapDataTests.sqx";
+call compile preprocessFileLineNumbers "Tests\resistance\regions\RegionTests.sqx";
 // call compile preprocessFileLineNumbers "Tests\Example\SomeExtraTests.sqx"; /* These are just examples*/
 // call compile preprocessFileLineNumbers "Tests\Some\CodeFiles\LogicTests.sqx";
 
 /* Initialize all test classes here */
-call Tests.Example.ExampleTests.Init;
+//call Tests.Example.ExampleTests.Init;
+call dave3.tests.RegionTests.Init;
+call dave3.tests.MapDataTests.Init;
 call dave3.tests.CampaignTests.Init;
+
 // call Tests.Example.SomeExtraTests.Init; /* These are just examples*/
 // call Tests.Some.CodeFiles.LogigTests.Init;

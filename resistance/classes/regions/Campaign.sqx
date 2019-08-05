@@ -20,8 +20,11 @@ namespace dave3
 		
 		// Creates a Campaign object.
 		public constructor ("_campaignData" as Array) {
+			[["CAMPAIGN: Received data to construct campaign state: ", _campaignData], LogLevel.Debug] call missionLogger.logMessage;
+			[["CAMPAIGN: Campaign Name: ", _campaignData select 0], LogLevel.Debug] call missionLogger.logMessage;
 			_self.mapName = _campaignData select 0;
-			_self.mapData = (_campaignData select 1) new MapData;
+			[["CAMPAIGN: MapData: ", [_campaignData select 1]], LogLevel.Debug] call missionLogger.logMessage;
+			_self.mapData = ([_campaignData select 1]) new MapData;
 		};
 		
 		
@@ -32,7 +35,7 @@ namespace dave3
 				_self.mapName, // Map Name as array 0
 				[] call _self.mapData.getSaveableData // MapData as array 1
 			];
-			
+			[["CAMPAIGN: Returning data to save campaign state", _saveableData], LogLevel.Debug] call missionLogger.logMessage;
 			_saveableData
 		};
 	

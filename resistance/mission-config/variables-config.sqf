@@ -2,7 +2,7 @@
 gameplayLoopDuration = 10;
 autosaveFrequency = 120;
 saveGameName = "resistanceSave";
-nukeTheSave = false;
+nukeTheSave = true;
 debug = true;
 logDetailLevel = 3;
 

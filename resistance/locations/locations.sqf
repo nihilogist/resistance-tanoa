@@ -9,8 +9,10 @@ bases = [
 firstAmmunitionCache = [
 	[1787.45, 7309.312, 0], // position
 	0, // direction
-	[["arifle_AKM_F"],[2]], // weapon contents
-	[["30rnd_762x39_AK12_Mag_F"],[4]] // magazine contents
+	[["arifle_AKM_F", "hgun_Pistol_heavy_02_F"],[2, 8]], // weapon contents
+	[["30rnd_762x39_AK12_Mag_F", "IEDLandSmall_Remote_Mag", "6rnd_45ACP_Cylinder"],[4, 2, 16]], // magazine contents
+	[[], []], // backpack contents
+	[["ACE_fieldDressing", "ACE_EarPlugs"], [10, 20]] // item contents
 ];
 
 ammunitionCaches = [
@@ -53,8 +55,8 @@ balavu = [
 
 worldData = [
 	"Tanoa", // World name
-	[balavu], // regions array
-	[ammunitionCaches] // ammo caches array
+	[balavu], // regions array -- largely static data
+	[ammunitionCaches] // ammo caches array - heavily 
 ];
 
 /*

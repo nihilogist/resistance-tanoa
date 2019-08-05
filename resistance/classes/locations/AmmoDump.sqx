@@ -17,7 +17,7 @@ namespace dave3
 		// Creates a AmmoDump object.
 		public constructor {
 			params ["_ammoDumpData" as Array];
-			private ["_position" as Array, "_direction" as Scalar, "_weaponContents" as Array, "_magazineContents" as Array];
+			private ["_position" as Array, "_direction" as Scalar, "_weaponContents" as Array, "_magazineContents" as Array, "_backpackContents" as Array, "_itemContents" as Array];
 			
 			[["AMMODUMP: received cache state data as: ", _ammoDumpData], LogLevel.Debug] call missionLogger.logMessage;
 		
@@ -26,6 +26,8 @@ namespace dave3
 			_direction = _ammoDumpData select 1;
 			_weaponContents = _ammoDumpData select 2;
 			_magazineContents = _ammoDumpData select 3;
+			_backpackContents = _ammoDumpData select 4;
+			_itemContents = _ammoDumpData select 5;
 			
 			// Spawn the box
 			_ammunitionCache = _boxClassName createVehicle (_position);
@@ -39,6 +41,8 @@ namespace dave3
 			// Fill it with the inventory supplied
 			[_weaponContents select 0, _weaponContents select 1] call _self.addWeaponsToCache;
 			[_magazineContents select 0, _magazineContents select 1] call _self.addMagazinesToCache;
+			[_backpackContents select 0, _backpackContents select 1] call _self.addBackpacksToCache;
+			[_itemContents select 0, _itemContents select 1] call _self.addItemsToCache;
 			
 			
 		};
@@ -65,6 +69,18 @@ namespace dave3
 		private method addMagazinesToCache ("_itemList" as Array, "_itemQuantity" as Array) {
 			for "_i" from 0 to (count _itemList) do {
 				_ammunitionCache addMagazineCargoGlobal [_itemList select _i, _itemQuantity select _i];
+			};
+		};
+		
+		private method addBackpacksToCache ("_itemList" as Array, "_itemQuantity" as Array) {
+			for "_i" from 0 to (count _itemList) do {
+				_ammunitionCache addBackpackCargoGlobal [_itemList select _i, _itemQuantity select _i];
+			};
+		};
+		
+		private method addItemsToCache ("_itemList" as Array, "_itemQuantity" as Array) {
+			for "_i" from 0 to (count _itemList) do {
+				_ammunitionCache addItemCargoGlobal [_itemList select _i, _itemQuantity select _i];
 			};
 		};
 	};

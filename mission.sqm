@@ -444,7 +444,7 @@ class Mission
 			alpha=0;
 			a=8;
 			b=30;
-			angle=41.013985;
+			angle=41.013981;
 			id=25;
 		};
 		class Item8
@@ -457,7 +457,7 @@ class Mission
 			alpha=0;
 			a=8;
 			b=30;
-			angle=41.013985;
+			angle=41.013981;
 			id=26;
 		};
 		class Item9
@@ -498,7 +498,7 @@ class Mission
 			alpha=0.56709194;
 			a=5;
 			b=50;
-			angle=139.91394;
+			angle=139.91393;
 			id=139;
 		};
 		class Item12
@@ -511,7 +511,7 @@ class Mission
 			alpha=0.56709194;
 			a=5;
 			b=30;
-			angle=132.05194;
+			angle=132.05193;
 			id=140;
 			atlOffset=-0.0001335144;
 		};

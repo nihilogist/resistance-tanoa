@@ -1,0 +1,61 @@
+/*
+ * Name:	OrderQueueTests
+ * Date:	2018-11-19
+ * Version: 1.0
+ * Author:  Engima
+ *
+ * Description:
+ * Tests for the OrderQueue object.
+ */
+
+using Sqx.UnitTest;
+using dave3;
+
+namespace dave3.tests
+{
+	public class CampaignTests
+	{
+		// Registeres the test methods and performs general initializations.
+		public static method Init
+		{
+			// All test methods in this test class expected to run automatically are to be registered in 
+			// the test framework like this.
+			// First argument is the name space name of this test class.
+			// Second argument is the class name of this test class.
+			// Third argument is an array containing the names of all the methods that should be registered.
+			
+			["dave3.tests", "CampaignTests", [
+				"Given_CampaignDefinition_When_GettingName_Then_ExpectTanoa",
+				"Given_CampaignDefinition_When_GettingSaveableData_Then_ExpectSameArray"
+			]] call TestEngine.Register;
+		};
+		
+		
+		private static method Given_CampaignDefinition_When_GettingName_Then_ExpectTanoa {
+			private ["_testCampaign" as Campaign, "_result" as String];
+		
+			// Arrange
+			_testCampaign = [campaignDataInitial] new Campaign;
+			
+			// Act
+			_result = _testCampaign.mapName;
+			
+			// Assert
+			[_result isEqualTo "Resistance - TANOA", "Campaign name not set correctly"] call Assert.IsTrue;
+		};
+		
+		private static method Given_CampaignDefinition_When_GettingSaveableData_Then_ExpectSameArray {
+			private ["_testCampaign" as Campaign, "_result" as Array];
+		
+			// Arrange
+			_testCampaign = [campaignDataInitial] new Campaign;
+			
+			// Act
+			_result = [] call _testCampaign.getSaveableData;
+		
+			// Assert
+			[_result isEqualTo campaignDataInitial, "Campaign not loading correctly"] call Assert.IsTrue;
+		};
+		
+	};
+};

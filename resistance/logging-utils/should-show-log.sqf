@@ -12,15 +12,15 @@ if (_logLevel isEqualTo "ERROR") then {
 	true
 } else {
 	if (_logLevel isEqualTo "LOG" || _logLevel isEqualTo "WARN") then {
-		if (logLevel < 4) then {true} else {false};
+		if (logDetailLevel < 4) then {true} else {false};
 	};
 	
 	if (_logLevel isEqualTo "INFO") then {
-		if (logLevel < 3) then {true} else {false};
+		if (logDetailLevel < 3) then {true} else {false};
 	};
 	
 	if (_logLevel isEqualTo "DEBUG") then {
-		if (logLevel < 2) then {true} else {false};
+		if (logDetailLevel < 2) then {true} else {false};
 	};
  
 };

@@ -2,8 +2,10 @@
 [] call compileFinal preprocessFileLineNumbers "resistance\locations\locations.sqf";
 // Setup configuration variables
 [] call compileFinal preprocessFileLineNumbers "resistance\mission-config\mission-config.sqf";
+[] call compileFinal preprocessFileLineNumbers "resistance\mission-config\campaign-config.sqf";
 // Set up logging framework
 logger = compileFinal preprocessFileLineNumbers "resistance\logging-utils\logger.sqf";
+
 
 // Script definitions
 spawnBase = compileFinal preprocessFileLineNumbers "resistance\resistance-camp\resistance-camp-placement.sqf";

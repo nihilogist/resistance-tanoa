@@ -1,38 +1,56 @@
 call compile preprocessFileLineNumbers "resistance\interfaces\compile-all-interfaces.sqx";
 call compile preprocessFileLineNumbers "resistance\classes\compile-all-classes.sqx";
+call compile preprocessFileLineNumbers "Sqx\UnitTest\Init.sqx.sqf"
+call compile preprocessFileLineNumbers "resistance\tests\compile-all-tests.sqx";
 
 using dave3;
 
-private ["_saveManager" as SaveManager, "_gameMaster" as GameMaster, "_savedWorldData" as Array, "_worldName" as String, "_worldRegions" as Array];
+private ["_saveManager" as SaveManager, "_gameMaster" as GameMaster, "_savedWorldData" as Array];
 
 sleep 3;
 
+
+
 // Initialise singletons
-_saveManager = [nukeTheSave, saveGameName, 120] new SaveManager;
+missionLogger = [LogLevel.Debug] new LoggerUtil;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+[["Logger initialised"], LogLevel.Info] call missionLogger.logMessage;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+[["---"], LogLevel.Info] call missionLogger.logMessage;
+
+if (testBuild) then {
+	call Sqx_UnitTest_TestEngine_RunDelayedAsync; // Added by Sqx.UnitTest
+	sleep 10;
+};
+
+
+_saveManager = [nukeTheSave, saveGameName, 30] new SaveManager;
 _gameMaster = [] new GameMaster;
 
 // Check to see if world can be loaded
 _savedWorldData = call _saveManager.getSavedData;
 
-if (isNil "_savedWorldData") then {
-	["INIT: Saved world data does not exist."] call logger;
-	_worldName = worldData select 0;
-	_worldRegions = worldData select 1;
+
+[["INIT: Parsing saved world data", _savedWorldData]] call missionLogger.logMessage;
+
+
+if (count _savedWorldData == 0) then {
+	[["INIT: No world data in save file."]] call missionLogger.logMessage;
+	_savedWorldData = [worldData];
 } else {
-	["INIT: Parsing saved world data"] call logger;
-	if (count _savedWorldData == 0) then {
-		["INIT: No world data in save file."] call logger;
-		_worldName = worldData select 0;
-		_worldRegions = worldData select 1;
-	} else {
-		["INIT: Selecting world data from save file"] call logger;
-		_worldName = _savedWorldData select 0;
-		[["INIT: World name found as ", _worldName] joinString ""] call logger;
-		_worldRegions = _savedWorldData select 1;
-	};
+	[["INIT: Selecting world data from save file"]] call missionLogger.logMessage;
 };
 
-theWorld = [[_worldName, _worldRegions]] new WorldRegions;
+[["INIT: Using world data to construct world state: ", _savedWorldData], LogLevel.Info] call missionLogger.logMessage;
+
+theWorld = (_savedWorldData) new WorldRegions;
 
 // Once the world is initialised, then set it into the save manager and request a save.
 [theWorld] call _saveManager.setWorldToSave;
@@ -45,4 +63,4 @@ theWorld = [[_worldName, _worldRegions]] new WorldRegions;
 sleep 10;
 
 // Start the game master
-[] call _gameMaster.startGameMasterAsync;
+[] call _gameMaster.startGameMasterAsync; 

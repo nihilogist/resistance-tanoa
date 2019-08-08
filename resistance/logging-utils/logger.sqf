@@ -6,7 +6,7 @@ if (debug && isServer) then {
 	if (_shouldShowLog) then {
 		_serverTime = [serverTime, "HH:MM:SS:MM"] call BIS_fnc_timeToString;
 
-		_logOutput = [_serverTime, ": ", _logLevel, ": ", _logStatement] joinString "";
+		_logOutput = [_serverTime, ": ", _logLevel, ": ", "RESISTANCELOG ", _logStatement] joinString "";
 		[_logOutput] remoteExec ["systemChat"];	
 	};
 	

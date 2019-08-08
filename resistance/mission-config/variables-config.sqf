@@ -4,7 +4,8 @@ autosaveFrequency = 120;
 saveGameName = "resistanceSave";
 nukeTheSave = true;
 debug = true;
-logLevel = 3;
+logDetailLevel = 3;
+testBuild = true; // Do we run the unit tests on mission start?
 
 // Ingame variables
 popularSupport = 10; // A measure of the popular support for the resistance

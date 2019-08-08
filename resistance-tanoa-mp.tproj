@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectRootNode Name="resistance-tanoa-mp" IsExpanded="true" FileName="">
-    <IsSelected>false</IsSelected>
+    <IsSelected>true</IsSelected>
     <SubNodes>
-      <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="Enigma" IsExpanded="true" FileName="Enigma">
+      <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="Enigma" IsExpanded="false" FileName="Enigma">
         <IsSelected>false</IsSelected>
         <SubNodes>
           <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="Civilians" IsExpanded="false" FileName="Enigma\Civilians">
@@ -22,7 +22,7 @@
                   </ProjectNodeViewModel>
                 </SubNodes>
               </ProjectNodeViewModel>
-              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="Server" IsExpanded="true" FileName="Enigma\Civilians\Server">
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="Server" IsExpanded="false" FileName="Enigma\Civilians\Server">
                 <IsSelected>false</IsSelected>
                 <SubNodes>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="ServerFunctions.sqf" IsExpanded="false" FileName="Enigma\Civilians\Server\ServerFunctions.sqf">
@@ -43,10 +43,10 @@
           </ProjectNodeViewModel>
         </SubNodes>
       </ProjectNodeViewModel>
-      <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="resistance" IsExpanded="true" FileName="resistance">
+      <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="resistance" IsExpanded="false" FileName="resistance">
         <IsSelected>false</IsSelected>
         <SubNodes>
-          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="classes" IsExpanded="true" FileName="resistance\classes">
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="classes" IsExpanded="false" FileName="resistance\classes">
             <IsSelected>false</IsSelected>
             <SubNodes>
               <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="game" IsExpanded="false" FileName="resistance\classes\game">
@@ -66,9 +66,13 @@
                   </ProjectNodeViewModel>
                 </SubNodes>
               </ProjectNodeViewModel>
-              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="locations" IsExpanded="true" FileName="resistance\classes\locations">
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="locations" IsExpanded="false" FileName="resistance\classes\locations">
                 <IsSelected>false</IsSelected>
                 <SubNodes>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="AmmoDump.sqx" IsExpanded="false" FileName="resistance\classes\locations\AmmoDump.sqx">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="compile-all-locations.sqx" IsExpanded="false" FileName="resistance\classes\locations\compile-all-locations.sqx">
                     <IsSelected>false</IsSelected>
                     <SubNodes />
@@ -83,15 +87,23 @@
                   </ProjectNodeViewModel>
                 </SubNodes>
               </ProjectNodeViewModel>
-              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="regions" IsExpanded="true" FileName="resistance\classes\regions">
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="regions" IsExpanded="false" FileName="resistance\classes\regions">
                 <IsSelected>false</IsSelected>
                 <SubNodes>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="Campaign.sqx" IsExpanded="false" FileName="resistance\classes\regions\Campaign.sqx">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="compile-all-regions.sqx" IsExpanded="false" FileName="resistance\classes\regions\compile-all-regions.sqx">
                     <IsSelected>false</IsSelected>
                     <SubNodes />
                   </ProjectNodeViewModel>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="MapData.sqx" IsExpanded="false" FileName="resistance\classes\regions\MapData.sqx">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="Region.sqx" IsExpanded="false" FileName="resistance\classes\regions\Region.sqx">
-                    <IsSelected>true</IsSelected>
+                    <IsSelected>false</IsSelected>
                     <SubNodes />
                   </ProjectNodeViewModel>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="Town.sqx" IsExpanded="false" FileName="resistance\classes\regions\Town.sqx">
@@ -104,10 +116,19 @@
                   </ProjectNodeViewModel>
                 </SubNodes>
               </ProjectNodeViewModel>
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="sides" IsExpanded="false" FileName="resistance\classes\sides">
+                <IsSelected>false</IsSelected>
+                <SubNodes>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="InsurgencySide.sqx" IsExpanded="false" FileName="resistance\classes\sides\InsurgencySide.sqx">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
+                </SubNodes>
+              </ProjectNodeViewModel>
               <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="units" IsExpanded="false" FileName="resistance\classes\units">
                 <IsSelected>false</IsSelected>
                 <SubNodes>
-                  <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="gendarmes" IsExpanded="true" FileName="resistance\classes\units\gendarmes">
+                  <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="gendarmes" IsExpanded="false" FileName="resistance\classes\units\gendarmes">
                     <IsSelected>false</IsSelected>
                     <SubNodes>
                       <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="compile-all-gendarmes.sqx" IsExpanded="false" FileName="resistance\classes\units\gendarmes\compile-all-gendarmes.sqx">
@@ -133,6 +154,14 @@
                     <IsSelected>false</IsSelected>
                     <SubNodes />
                   </ProjectNodeViewModel>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="Logger.sqx" IsExpanded="false" FileName="resistance\classes\utils\Logger.sqx">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="LogLevel.sqx" IsExpanded="false" FileName="resistance\classes\utils\LogLevel.sqx">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="MarkerUtils.sqx" IsExpanded="false" FileName="resistance\classes\utils\MarkerUtils.sqx">
                     <IsSelected>false</IsSelected>
                     <SubNodes />
@@ -145,11 +174,11 @@
               </ProjectNodeViewModel>
             </SubNodes>
           </ProjectNodeViewModel>
-          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="game-manager" IsExpanded="true" FileName="resistance\game-manager">
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="game-manager" IsExpanded="false" FileName="resistance\game-manager">
             <IsSelected>false</IsSelected>
             <SubNodes />
           </ProjectNodeViewModel>
-          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="interfaces" IsExpanded="true" FileName="resistance\interfaces">
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="interfaces" IsExpanded="false" FileName="resistance\interfaces">
             <IsSelected>false</IsSelected>
             <SubNodes>
               <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="compile-all-interfaces.sqx" IsExpanded="false" FileName="resistance\interfaces\compile-all-interfaces.sqx">
@@ -196,7 +225,7 @@
           <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="mission-config" IsExpanded="false" FileName="resistance\mission-config">
             <IsSelected>false</IsSelected>
             <SubNodes>
-              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="unit-config" IsExpanded="true" FileName="resistance\mission-config\unit-config">
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="unit-config" IsExpanded="false" FileName="resistance\mission-config\unit-config">
                 <IsSelected>false</IsSelected>
                 <SubNodes>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="civilian-config.sqf" IsExpanded="false" FileName="resistance\mission-config\unit-config\civilian-config.sqf">
@@ -204,6 +233,10 @@
                     <SubNodes />
                   </ProjectNodeViewModel>
                 </SubNodes>
+              </ProjectNodeViewModel>
+              <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="campaign-config.sqf" IsExpanded="false" FileName="resistance\mission-config\campaign-config.sqf">
+                <IsSelected>false</IsSelected>
+                <SubNodes />
               </ProjectNodeViewModel>
               <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="mission-config.sqf" IsExpanded="false" FileName="resistance\mission-config\mission-config.sqf">
                 <IsSelected>false</IsSelected>
@@ -233,14 +266,10 @@
               </ProjectNodeViewModel>
             </SubNodes>
           </ProjectNodeViewModel>
-          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="save-manager" IsExpanded="true" FileName="resistance\save-manager">
-            <IsSelected>false</IsSelected>
-            <SubNodes />
-          </ProjectNodeViewModel>
           <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="spawners" IsExpanded="false" FileName="resistance\spawners">
             <IsSelected>false</IsSelected>
             <SubNodes>
-              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="object-spawners" IsExpanded="true" FileName="resistance\spawners\object-spawners">
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="object-spawners" IsExpanded="false" FileName="resistance\spawners\object-spawners">
                 <IsSelected>false</IsSelected>
                 <SubNodes>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="spawn-on-marker.sqf" IsExpanded="false" FileName="resistance\spawners\object-spawners\spawn-on-marker.sqf">
@@ -250,6 +279,94 @@
                 </SubNodes>
               </ProjectNodeViewModel>
             </SubNodes>
+          </ProjectNodeViewModel>
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="tests" IsExpanded="false" FileName="resistance\tests">
+            <IsSelected>false</IsSelected>
+            <SubNodes>
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="regions" IsExpanded="false" FileName="resistance\tests\regions">
+                <IsSelected>false</IsSelected>
+                <SubNodes />
+              </ProjectNodeViewModel>
+              <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="compile-all-tests.sqx" IsExpanded="false" FileName="resistance\tests\compile-all-tests.sqx">
+                <IsSelected>false</IsSelected>
+                <SubNodes />
+              </ProjectNodeViewModel>
+            </SubNodes>
+          </ProjectNodeViewModel>
+        </SubNodes>
+      </ProjectNodeViewModel>
+      <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="Sqx" IsExpanded="false" FileName="Sqx">
+        <IsSelected>false</IsSelected>
+        <SubNodes>
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="UnitTest" IsExpanded="false" FileName="Sqx\UnitTest">
+            <IsSelected>false</IsSelected>
+            <SubNodes>
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="TestEngine" IsExpanded="false" FileName="Sqx\UnitTest\TestEngine">
+                <IsSelected>false</IsSelected>
+                <SubNodes>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="Assert.sqx" IsExpanded="false" FileName="Sqx\UnitTest\TestEngine\Assert.sqx">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="TestEngine.sqx" IsExpanded="false" FileName="Sqx\UnitTest\TestEngine\TestEngine.sqx">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="TestUnit.sqx" IsExpanded="false" FileName="Sqx\UnitTest\TestEngine\TestUnit.sqx">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
+                </SubNodes>
+              </ProjectNodeViewModel>
+              <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="Init.sqx" IsExpanded="false" FileName="Sqx\UnitTest\Init.sqx">
+                <IsSelected>false</IsSelected>
+                <SubNodes />
+              </ProjectNodeViewModel>
+            </SubNodes>
+          </ProjectNodeViewModel>
+        </SubNodes>
+      </ProjectNodeViewModel>
+      <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="Tests" IsExpanded="false" FileName="Tests">
+        <IsSelected>false</IsSelected>
+        <SubNodes>
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="Example" IsExpanded="false" FileName="Tests\Example">
+            <IsSelected>false</IsSelected>
+            <SubNodes>
+              <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="ExampleTests.sqx" IsExpanded="false" FileName="Tests\Example\ExampleTests.sqx">
+                <IsSelected>false</IsSelected>
+                <SubNodes />
+              </ProjectNodeViewModel>
+            </SubNodes>
+          </ProjectNodeViewModel>
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="resistance" IsExpanded="false" FileName="Tests\resistance">
+            <IsSelected>false</IsSelected>
+            <SubNodes>
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="regions" IsExpanded="false" FileName="Tests\resistance\regions">
+                <IsSelected>false</IsSelected>
+                <SubNodes>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="CampaignTests.sqx" IsExpanded="false" FileName="Tests\resistance\regions\CampaignTests.sqx">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="MapDataTests.sqx" IsExpanded="false" FileName="Tests\resistance\regions\MapDataTests.sqx">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="RegionTests.sqx" IsExpanded="false" FileName="Tests\resistance\regions\RegionTests.sqx">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
+                  <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="TownTests.sqx" IsExpanded="false" FileName="Tests\resistance\regions\TownTests.sqx">
+                    <IsSelected>false</IsSelected>
+                    <SubNodes />
+                  </ProjectNodeViewModel>
+                </SubNodes>
+              </ProjectNodeViewModel>
+            </SubNodes>
+          </ProjectNodeViewModel>
+          <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="InitMyTestClasses.sqx" IsExpanded="false" FileName="Tests\InitMyTestClasses.sqx">
+            <IsSelected>false</IsSelected>
+            <SubNodes />
           </ProjectNodeViewModel>
         </SubNodes>
       </ProjectNodeViewModel>

@@ -21,8 +21,6 @@ namespace dave3
 			
 			_gendarmeUnitClass = "B_GEN_Soldier_F";
 			
-			// [["Initialising Gendarme Group for ", _town] joinString "", "DEBUG"] call logger;
-			
 			// Define the home town
 			_mHomeTown = _town;
 			
@@ -30,10 +28,7 @@ namespace dave3
 			_mGroup = createGroup blufor;
 
 			// get a random position within a random patrol marker to spawn the group in
-			_positionToSpawn = [[call _mHomeTown.getRandomPatrolMarker]] call BIS_fnc_randomPos;
-			for "_i" from 0 to (_numberOfUnits - 1) do {
-				_gendarmeUnitClass createUnit [_positionToSpawn, _mGroup];
-			};
+
 		};
 		
 		public method Group getGendarmePatrol {

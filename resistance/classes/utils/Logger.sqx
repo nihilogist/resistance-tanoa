@@ -1,0 +1,67 @@
+/*
+ * Name:	Logger
+ * Date:	05/08/2019
+ * Version: 1.0
+ * Author:  dave3
+ *
+ * Description:
+ * Logging utility class
+ */
+namespace dave3
+{
+	public class LoggerUtil
+	{
+		private fields ["_mLogDetailLevels" as Array];
+	
+		// Creates a Logger object.
+		public constructor ("_logDetailLevel" as LogLevel) {
+			if (_logDetailLevel == LogLevel.Fatal) then {
+				_mLogDetailLevels = [LogLevel.Fatal];
+			};
+			
+			if (_logDetailLevel == LogLevel.Error) then {
+				_mLogDetailLevels = [LogLevel.Fatal, LogLevel.Error];
+			};
+			
+			if (_logDetailLevel == LogLevel.Info) then {
+				_mLogDetailLevels = [LogLevel.Fatal, LogLevel.Error, LogLevel.Info];
+			};
+			
+			if (_logDetailLevel == LogLevel.Debug) then {
+				_mLogDetailLevels = [LogLevel.Fatal, LogLevel.Error, LogLevel.Info, LogLevel.Debug];
+			};
+		};
+		
+		public method logMessage("_logMessage" as Array, ["_logLevel" as LogLevel, LogLevel.Info]) {
+			if (debug && isServer) then {
+				private ["_logOutput" as String, "_logLevelString" as String, "_logFinalOutput" as String];
+				if (_mLogDetailLevels find _logLevel > -1) then {
+					_logOutput = _logMessage joinString "";
+					_logLevelString = [_logLevel] call _self.translateLogLevel;
+					_logFinalOutput = ["RESISTANCELOG: ", _logLevelString, ": ", _logOutput] joinString "";
+					[_logFinalOutput] remoteExec ["systemChat"];
+					diag_log _logFinalOutput;
+				};
+			};
+		};
+		
+		private method String translateLogLevel("_logDetailLevel" as LogLevel) {
+			private ["_logDetailLevelString" as String];
+			_logDetailLevelString = "FATAL";
+			
+			if (_logDetailLevel == LogLevel.Error) then {
+				_logDetailLevelString = "ERROR";
+			};
+			
+			if (_logDetailLevel == LogLevel.Info) then {
+				_logDetailLevelString = "INFO";
+			};
+			
+			if (_logDetailLevel == LogLevel.Debug) then {
+				_logDetailLevelString = "DEBUG";
+			};
+			_logDetailLevelString
+		};
+	};
+};
+

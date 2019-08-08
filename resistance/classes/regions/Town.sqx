@@ -20,60 +20,25 @@ namespace dave3
 		public constructor {
 
 			params ["_townData" as Array];
-			private ["_targetGendarmes" as Scalar, "_assignedGendarmes" as Scalar];
 			
 			[["TownData array received: ", _townData], LogLevel.Debug] call missionLogger.logMessage;
 			
 			// deserialise the townData
 			_self.townName = _townData select 0;
-			_targetGendarmes = _townData select 1;
-			_self.gendarmesPatrolMarkers = _townData select 2;
-			
-						
-			// Spawn all gendarmes groups
-			if (_targetGendarmes > 0) then {
-				_assignedGendarmes = 0;
-				while {_assignedGendarmes < _targetGendarmes} do {
-					if (_targetGendarmes - _assignedGendarmes > 1) then {
-						_self.gendarmePatrols pushback ([2, _self] new GendarmeGroup);
-						_assignedGendarmes = _assignedGendarmes + 2;
-					} else {
-						_self.gendarmePatrols pushback ([1, _self] new GendarmeGroup);
-						_assignedGendarmes = _assignedGendarmes + 1;
-					};
-				};
-			};
-			
 			
 		};
 		
-		// returns one of the designated patrol markers for the town
-		public method String getRandomPatrolMarker {
-			selectRandom _self.gendarmesPatrolMarkers;
-		};
-		
-		// Method to return the current number of gendarmes in the town
-		public method Scalar getNumberOfGendarmes {
-			private ["_numberOfGendarmes" as Scalar];
-			_numberOfGendarmes = 0;
-			{
-				_numberOfGendarmes = _numberOfGendarmes + (count units (call _x.getGendarmePatrol));
-			} forEach _self.gendarmePatrols as GendarmeGroup;
-			_numberOfGendarmes
-		};
 		
 		public method Array getSaveableData() {
 			private ["_saveableData" as Array];
 			
 			_saveableData = [
-				_self.townName, // 0 = town name
-				call _self.getNumberOfGendarmes, // 1 = number of gendarmes
-				_self.gendarmesPatrolMarkers // 2 = gendarmes patrol markers
+				_self.townName // 0 = town name
 			];
 			
 			[["TownData array returned: ", _saveableData], LogLevel.Debug] call missionLogger.logMessage;
 			
-			[_saveableData]
+			_saveableData
 		};
 		
 	};

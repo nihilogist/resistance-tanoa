@@ -14,7 +14,7 @@ namespace dave3
 	
 		// Properties for the region
 		public property String regionName {get; private set; };
-		//public property Array towns {get; private set; };
+		public property Array towns {get; private set; };
 		//public property Array prisonCamps { get; private set; };
 		//public property GendarmeHQ gendarmeHQ { get; private set; };
 	
@@ -26,6 +26,16 @@ namespace dave3
 			// Unpack the region name
 			[["REGION: Region Name: ", _regionData select 0], LogLevel.Debug] call missionLogger.logMessage;
 			_self.regionName = _regionData select 0;
+			[["REGION: Town Data: ", _regionData select 1], LogLevel.Debug] call missionLogger.logMessage;
+			_townData = _regionData select 1;
+			
+			
+			// Create the region's towns
+			_self.towns = [];
+			
+			{
+				_self.towns pushBack ([_x] new Town);
+			} forEach _townData;
 			
 			/* Create the region's prison camps
 			_self.prisonCamps = [];
@@ -35,13 +45,7 @@ namespace dave3
 			
 			
 			// Create the gendarme HQ for the area
-			_self.gendarmeHQ = [[(_regionData select 2) select 0, _self.regionName]] new GendarmeHQ;
-			
-			// Create the region's towns
-			_self.towns = [];
-			{
-				_self.towns pushBack ([_x] new Town);
-			} forEach (_regionData select 3);*/
+			_self.gendarmeHQ = [[(_regionData select 2) select 0, _self.regionName]] new GendarmeHQ; */
 			
 		};
 		
@@ -54,14 +58,15 @@ namespace dave3
 			{
 				_prisonCamps pushBack ([] call _x.getSaveableData);
 			} forEach _self.prisonCamps as PrisonCamp;
-			
+			*/
 			_towns = [];
 			{
 				_towns pushBack ([] call _x.getSaveableData);
-			} forEach _self.towns as Town; */
+			} forEach _self.towns as Town;
 			
 			_saveableData = [
-				_self.regionName // 0 = region name
+				_self.regionName, // 0 = region name
+				_towns
 			];
 			[["REGION: Returning data to save region: ", _saveableData], LogLevel.Debug] call missionLogger.logMessage;
 			_saveableData

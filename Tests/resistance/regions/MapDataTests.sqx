@@ -38,16 +38,11 @@ namespace dave3.tests
 								]
 							];
 							
-			[["MAPDATATEST: MapData data ", _mapDataData], LogLevel.Debug] call missionLogger.logMessage;
-		
 			// Arrange
 			_testMapData = [_mapDataData] new MapData;
 			
 			// Act
 			_result = [] call _testMapData.getSaveableData;
-			
-			[["MAPDATATEST: Initial Data  ", _mapDataData], LogLevel.Debug] call missionLogger.logMessage;
-			[["MAPDATATEST: Savegame Data ", _result], LogLevel.Debug] call missionLogger.logMessage;
 			
 			// Assert
 			[_result isEqualTo _mapDataData, "MapData not loading correctly."] call Assert.IsTrue;

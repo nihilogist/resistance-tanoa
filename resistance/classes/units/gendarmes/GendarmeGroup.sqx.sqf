@@ -25,12 +25,9 @@ cl_dave3_GendarmeGroup_constructor = { private "_class_fields"; _class_fields = 
     _class_fields set [2, _town];
 
 
-    _class_fields set [1, createGroup blufor];
+    _class_fields set [1, createGroup blufor]; _class_fields };
 
 
-    _positionToSpawn = [[([(_class_fields select 2), []] call cl_dave3_Town_getRandomPatrolMarker)]] call BIS_fnc_randomPos;
-    for "_i" from 0 to (_numberOfUnits - 1) do {
-        _gendarmeUnitClass createUnit [_positionToSpawn, (_class_fields select 1)]; }; _class_fields };
 
 
 

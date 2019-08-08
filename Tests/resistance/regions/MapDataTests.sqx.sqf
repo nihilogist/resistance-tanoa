@@ -38,16 +38,11 @@ dave3_tests_MapDataTests_Given_CampaignDefinition_When_GettingMapData_Then_Expec
 
 
 
-    ([missionLogger, [["MAPDATATEST: MapData data ", _mapDataData], 4]] call cl_dave3_LoggerUtil_logMessage);
-
 
     _testMapData = ([_mapDataData] call cl_dave3_MapData_constructor);
 
 
     _result = ([_testMapData, []] call cl_dave3_MapData_getSaveableData);
-
-    ([missionLogger, [["MAPDATATEST: Initial Data  ", _mapDataData], 4]] call cl_dave3_LoggerUtil_logMessage);
-    ([missionLogger, [["MAPDATATEST: Savegame Data ", _result], 4]] call cl_dave3_LoggerUtil_logMessage);
 
 
     [_result isEqualTo _mapDataData, "MapData not loading correctly."] call Sqx_UnitTest_Assert_IsTrue; };

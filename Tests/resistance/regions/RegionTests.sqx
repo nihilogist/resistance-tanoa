@@ -24,7 +24,8 @@ namespace dave3.tests
 			// Third argument is an array containing the names of all the methods that should be registered.
 			
 			["dave3.tests", "RegionTests", [
-				"Given_RegionDefinition_When_GettingRegionData_Then_ExpectCorrectResult"
+				"Given_RegionDefinition_When_GettingRegionData_Then_ExpectCorrectResult",
+				"Given_RegionDefinitionWithTowns_When_GettingRegionData_Then_ExpectCorrectResult"
 			]] call TestEngine.Register;
 		};
 		
@@ -35,7 +36,6 @@ namespace dave3.tests
 			_regionData = 	[ // RegionData
 								"Balavu" // 0: Name = Balavu
 							];
-			[["REGIONTEST: Test region array data: ", _regionData], LogLevel.Debug] call missionLogger.logMessage;
 		
 			// Arrange
 			_testRegion = [_regionData] new Region;
@@ -43,8 +43,30 @@ namespace dave3.tests
 			// Act
 			_result = [] call _testRegion.getSaveableData;
 			
-			[["REGIONTEST: Initial Data  ", _regionData], LogLevel.Debug] call missionLogger.logMessage;
-			[["REGIONTEST: Savegame Data ", _result], LogLevel.Debug] call missionLogger.logMessage;
+			// Assert
+			[_result isEqualTo _regionData, "MapData not loading correctly."] call Assert.IsTrue;
+		};
+		
+		private static method Given_RegionDefinitionWithTowns_When_GettingRegionData_Then_ExpectCorrectResult {
+			private ["_testRegion" as Region, "_result" as Array, "_regionData" as Array];
+			
+			_regionData = 	[ // RegionData
+								"Balavu", // 0: Name = Balavu
+								[	// 1: Town data
+									[  // Town 0
+										"Balavu" // 0: town name
+									],
+									[  // Town 1
+										"Tavu" // 0: town name
+									]
+								]
+							];
+		
+			// Arrange
+			_testRegion = [_regionData] new Region;
+			
+			// Act
+			_result = [] call _testRegion.getSaveableData;
 			
 			// Assert
 			[_result isEqualTo _regionData, "MapData not loading correctly."] call Assert.IsTrue;

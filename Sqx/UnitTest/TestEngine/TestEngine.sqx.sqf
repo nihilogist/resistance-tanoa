@@ -11,7 +11,7 @@
 
 
 
-cl_Sqx_UnitTest_TestEngine_constructor = { private "_class_fields"; _class_fields = [["Sqx_UnitTest_TestEngine", []]]; _class_fields };
+cl_Sqx_UnitTest_TestEngine_constructor = { _this select 0 };
 
 
 
@@ -27,7 +27,7 @@ Sqx_UnitTest_TestEngine_Init = {
 
 
 Sqx_UnitTest_TestEngine_Register = {  params ["_namespaceName", "_className", "_methodNames"]; 
-    Sqx_UnitTest_TestEngine__mTestUnits pushBack ([_namespaceName, _className, _methodNames] call cl_Sqx_UnitTest_TestUnit_constructor); };
+    Sqx_UnitTest_TestEngine__mTestUnits pushBack ([[["Sqx_UnitTest_TestUnit",[]]], [_namespaceName, _className, _methodNames]] call cl_Sqx_UnitTest_TestUnit_constructor); };
 
 
 

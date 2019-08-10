@@ -16,7 +16,7 @@ cl_dave3_SaveManager_isRunning_PropIndex = 5;
 cl_dave3_SaveManager_autosaveInterval_PropIndex = 6;
 
 
-cl_dave3_SaveManager_constructor = { private "_class_fields"; _class_fields = [["dave3_SaveManager", []]];
+cl_dave3_SaveManager_constructor = { params ["_class_fields", "_this"];
 
     params ["_nukeTheSave", "_saveGameName", "_autosaveInterval"];
 

@@ -34,7 +34,12 @@ namespace dave3.tests
 			
 			_mapDataData = [ // 1: MapData Array
 								[ // Region 1: Balavu
-									"Balavu"
+									"Balavu",
+									[
+										[ // Town 1: Balavu
+											"Balavu"
+										]
+									]
 								]
 							];
 							

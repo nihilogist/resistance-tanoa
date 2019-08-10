@@ -18,7 +18,7 @@ cl_dave3_GendarmeHQ_region_PropIndex = 2;
 
 
 
-cl_dave3_GendarmeHQ_constructor = { private "_class_fields"; _class_fields = [["dave3_GendarmeHQ", ["dave3.ISaveable"]]];
+cl_dave3_GendarmeHQ_constructor = { params ["_class_fields", "_this"];
 
     params ["_gendarmeHQData"];
     private ["_hqBuildingClass", "_flagBuildingClass", "_hqBuilding", "_hqFlag", "_flagPosition"];

@@ -17,7 +17,7 @@ cl_dave3_Town_gendarmesPatrolMarkers_PropIndex = 2;
 cl_dave3_Town_gendarmePatrols_PropIndex = 3;
 
 
-cl_dave3_Town_constructor = { private "_class_fields"; _class_fields = [["dave3_Town", ["dave3.ISaveable"]]];
+cl_dave3_Town_constructor = { params ["_class_fields", "_this"];
 
     params ["_townData"];
 

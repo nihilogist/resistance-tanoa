@@ -12,7 +12,7 @@
 
 
 
-cl_Tests_Example_ExampleTests_constructor = { private "_class_fields"; _class_fields = [["Tests_Example_ExampleTests", []]]; _class_fields };
+cl_Tests_Example_ExampleTests_constructor = { _this select 0 };
 
 
 

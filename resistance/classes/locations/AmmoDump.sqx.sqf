@@ -15,7 +15,7 @@
 
 
 
-cl_dave3_AmmoDump_constructor = { private "_class_fields"; _class_fields = [["dave3_AmmoDump", ["dave3.ISaveable"]]];
+cl_dave3_AmmoDump_constructor = { params ["_class_fields", "_this"];
     params ["_ammoDumpData"];
     private ["_position", "_direction", "_weaponContents", "_magazineContents", "_backpackContents", "_itemContents"];
 

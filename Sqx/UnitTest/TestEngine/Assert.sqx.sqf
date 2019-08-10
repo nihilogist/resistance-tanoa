@@ -9,7 +9,7 @@
 
 
 
-cl_Sqx_UnitTest_Assert_constructor = { private "_class_fields"; _class_fields = [["Sqx_UnitTest_Assert", []]]; _class_fields };
+cl_Sqx_UnitTest_Assert_constructor = { _this select 0 };
 
 
 Sqx_UnitTest_Assert_AreEqual = {  params ["_expected", "_actual", ["_message", ""]]; 

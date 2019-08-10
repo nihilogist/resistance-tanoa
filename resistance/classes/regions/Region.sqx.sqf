@@ -19,7 +19,7 @@ cl_dave3_Region_towns_PropIndex = 2;
 
 
 
-cl_dave3_Region_constructor = { private "_class_fields"; _class_fields = [["dave3_Region", ["dave3.ISaveable"]]];
+cl_dave3_Region_constructor = { params ["_class_fields", "_this"];
     params ["_regionData"];
     ([missionLogger, [["REGION: Received data to construct region: ", _regionData], 4]] call cl_dave3_LoggerUtil_logMessage);
 
@@ -34,7 +34,7 @@ cl_dave3_Region_constructor = { private "_class_fields"; _class_fields = [["dave
     _class_fields set [2, []];
 
     {
-        (_class_fields select 2) pushBack (([_x] call cl_dave3_Town_constructor));
+        (_class_fields select 2) pushBack (([[["dave3_Town",["dave3.ISaveable"]]], [_x]] call cl_dave3_Town_constructor));
     } forEach _townData; _class_fields };
 
 

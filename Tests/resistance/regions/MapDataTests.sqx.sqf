@@ -12,7 +12,7 @@
 
 
 
-cl_dave3_tests_MapDataTests_constructor = { private "_class_fields"; _class_fields = [["dave3_tests_MapDataTests", []]]; _class_fields };
+cl_dave3_tests_MapDataTests_constructor = { _this select 0 };
 
 
 
@@ -34,12 +34,17 @@ dave3_tests_MapDataTests_Given_CampaignDefinition_When_GettingMapData_Then_Expec
 
     _mapDataData = [
     [
-    "Balavu"]];
+    "Balavu", 
+    [
+    [
+    "Balavu"]]]];
 
 
 
 
-    _testMapData = ([_mapDataData] call cl_dave3_MapData_constructor);
+
+
+    _testMapData = ([[["dave3_MapData",["dave3.ISaveable"]]], [_mapDataData]] call cl_dave3_MapData_constructor);
 
 
     _result = ([_testMapData, []] call cl_dave3_MapData_getSaveableData);

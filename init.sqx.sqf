@@ -12,7 +12,7 @@ sleep 3;
 
 
 
-missionLogger = ([4] call cl_dave3_LoggerUtil_constructor);
+missionLogger = ([[["dave3_LoggerUtil",[]]], [4]] call cl_dave3_LoggerUtil_constructor);
 ([missionLogger, [["---"], 3]] call cl_dave3_LoggerUtil_logMessage);
 ([missionLogger, [["---"], 3]] call cl_dave3_LoggerUtil_logMessage);
 ([missionLogger, [["---"], 3]] call cl_dave3_LoggerUtil_logMessage);
@@ -31,8 +31,8 @@ if (testBuild) then {
 
 
 
-_saveManager = ([nukeTheSave, saveGameName, 30] call cl_dave3_SaveManager_constructor);
-_gameMaster = ([] call cl_dave3_GameMaster_constructor);
+_saveManager = ([[["dave3_SaveManager",[]]], [nukeTheSave, saveGameName, 30]] call cl_dave3_SaveManager_constructor);
+_gameMaster = ([[["dave3_GameMaster",[]]], []] call cl_dave3_GameMaster_constructor);
 
 
 _savedWorldData = ([_saveManager, []] call cl_dave3_SaveManager_getSavedData);
@@ -50,7 +50,7 @@ if (count _savedWorldData == 0) then {
 
 ([missionLogger, [["INIT: Using world data to construct world state: ", _savedWorldData], 3]] call cl_dave3_LoggerUtil_logMessage);
 
-theWorld = ((_savedWorldData) call cl_dave3_WorldRegions_constructor);
+theWorld = ([[["dave3_WorldRegions",["dave3.ISaveable"]]], (_savedWorldData)] call cl_dave3_WorldRegions_constructor);
 
 
 ([_saveManager, [theWorld]] call cl_dave3_SaveManager_setWorldToSave);

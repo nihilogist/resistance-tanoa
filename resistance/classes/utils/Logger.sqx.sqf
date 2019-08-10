@@ -14,7 +14,7 @@
 
 
 
-cl_dave3_LoggerUtil_constructor = { private "_class_fields"; _class_fields = [["dave3_LoggerUtil", []]]; params ["_logDetailLevel"]; 
+cl_dave3_LoggerUtil_constructor = { params ["_class_fields", "_this"]; params ["_logDetailLevel"]; 
     if (_logDetailLevel == 1) then {
         _class_fields set [1, [1]]; };
 

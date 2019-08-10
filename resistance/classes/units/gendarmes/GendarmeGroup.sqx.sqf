@@ -15,7 +15,7 @@
 
 
 
-cl_dave3_GendarmeGroup_constructor = { private "_class_fields"; _class_fields = [["dave3_GendarmeGroup", []]];
+cl_dave3_GendarmeGroup_constructor = { params ["_class_fields", "_this"];
     params ["_numberOfUnits", "_town"];
     private ["_positionToSpawn", "_gendarmeUnitClass"];
 

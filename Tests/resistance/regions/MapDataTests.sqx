@@ -40,6 +40,11 @@ namespace dave3.tests
 											"Balavu",
 											"townBalavu"
 										]
+									],
+									[
+										[ // Prison camp
+											"locationBalavuPrisonCamp01"
+										]
 									]
 								]
 							];

@@ -9,44 +9,53 @@
  */
 namespace dave3
 {
-	public class Region : ISaveable
+	public class Region : ISaveable, IBuildable
 	{
 	
 		// Properties for the region
 		public property String regionName {get; private set; };
 		public property Array towns {get; private set; };
-		//public property Array prisonCamps { get; private set; };
+		public property Array prisonCamps { get; private set; };
 		//public property GendarmeHQ gendarmeHQ { get; private set; };
 	
 		// Creates a Region object.
 		public constructor {
 			params ["_regionData" as Array];
+			private ["_townData" as Array, "_prisonCampData" as Array];
 			[["REGION: Received data to construct region: ", _regionData], LogLevel.Debug] call missionLogger.logMessage;
 			
-			// Unpack the region name
+			// Unpack the region data
 			[["REGION: Region Name: ", _regionData select 0], LogLevel.Debug] call missionLogger.logMessage;
 			_self.regionName = _regionData select 0;
 			[["REGION: Town Data: ", _regionData select 1], LogLevel.Debug] call missionLogger.logMessage;
 			_townData = _regionData select 1;
+			if (!isNil "_townData") then {
+				[["REGION: Prison Camp Data: ", _regionData select 2], LogLevel.Debug] call missionLogger.logMessage;
+				_prisonCampData = _regionData select 2;
+			};
 			
+			_self.towns = [];
+			_self.prisonCamps = [];
 			
 			// Create the region's towns
-			_self.towns = [];
-			
 			if(!isNil "_townData") then {
 				{
 					_self.towns pushBack ([_x] new Town);
 				} forEach _townData;
+				
+				// Create the region's prison camps
+				if (!isNil "_prisonCampData") then
+				{ 
+					{
+						_self.prisonCamps pushBack ([_x] new PrisonCamp);
+					} forEach (_prisonCampData);
+				};
 			};
 			
-			/* Create the region's prison camps
-			_self.prisonCamps = [];
-			{
-				_self.prisonCamps pushBack ([_x] new PrisonCamp);
-			} forEach (_regionData select 1);
 			
 			
-			// Create the gendarme HQ for the area
+			
+			/* Create the gendarme HQ for the area
 			_self.gendarmeHQ = [[(_regionData select 2) select 0, _self.regionName]] new GendarmeHQ; */
 			
 		};
@@ -67,12 +76,25 @@ namespace dave3
 				_towns pushBack ([] call _x.getSaveableData);
 			} forEach _self.towns as Town;
 			
+			_prisonCamps = [];
+			{
+				_prisonCamps pushBack ([] call _x.getSaveableData);
+			} forEach _self.prisonCamps as PrisonCamp;
+			
 			_saveableData = [
 				_self.regionName, // 0 = region name
-				_towns
+				_towns, // 1 = towns array
+				_prisonCamps // 2 = prison camp array
 			];
 			[["REGION: Returning data to save region: ", _saveableData], LogLevel.Debug] call missionLogger.logMessage;
 			_saveableData
+		};
+		
+		public method build() {
+			// Build all prison camps
+			{
+				[] call _x.spawnPhysrep;
+			} forEach _self.prisonCamps as PrisonCamp;
 		};
 		
 	};

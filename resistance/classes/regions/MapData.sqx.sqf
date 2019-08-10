@@ -25,7 +25,7 @@ cl_dave3_MapData_constructor = { params ["_class_fields", "_this"]; params ["_ma
     {
         _regionData = _x;
         ([missionLogger, [["MAPDATA: Constructing Region: ", _regionData], 4]] call cl_dave3_LoggerUtil_logMessage);
-        (_class_fields select 1) pushBack (([[["dave3_Region",["dave3.ISaveable"]]], [_regionData]] call cl_dave3_Region_constructor));
+        (_class_fields select 1) pushBack (([[["dave3_Region",["dave3.IBuildable", "dave3.ISaveable"]]], [_regionData]] call cl_dave3_Region_constructor));
     } forEach _regionsData;
 
     ([missionLogger, [["MAPDATA: ", (count ((_class_fields select 1))), " regions constructed"], 3]] call cl_dave3_LoggerUtil_logMessage); _class_fields };
@@ -48,3 +48,9 @@ cl_dave3_MapData_getSaveableData = { params ["_class_fields", "_this"];
     _saveableData = _regionsData;
     ([missionLogger, [["MAPDATA: Reteurning data to save campaign map data", _saveableData], 4]] call cl_dave3_LoggerUtil_logMessage);
     _saveableData };
+
+
+cl_dave3_MapData_build = { params ["_class_fields", "_this"];
+    {
+        ([_x, []] call cl_dave3_Region_build);
+    } forEach (_class_fields select 1); };

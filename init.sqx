@@ -49,8 +49,12 @@ if (count _savedWorldData == 0) then {
 };
 
 [["INIT: Using data to construct campaign state: ", _savedWorldData], LogLevel.Info] call missionLogger.logMessage;
-
 theWorld = _savedWorldData new Campaign;
+
+sleep 5;
+
+[["INIT: Building world from save and spawning physreps."], LogLevel.Info] call missionLogger.logMessage;
+[] call theWorld.build;
 
 // Once the world is initialised, then set it into the save manager and request a save.
 [theWorld] call _saveManager.setWorldToSave;

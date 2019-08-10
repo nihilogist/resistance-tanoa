@@ -39,11 +39,12 @@ dave3_tests_RegionTests_Given_RegionDefinitionWithNoTowns_When_GettingRegionData
 
     _expectedRegionData = [
     "Balavu", 
+    [], 
     []];
 
 
 
-    _testRegion = ([[["dave3_Region",["dave3.ISaveable"]]], [_regionData]] call cl_dave3_Region_constructor);
+    _testRegion = ([[["dave3_Region",["dave3.IBuildable", "dave3.ISaveable"]]], [_regionData]] call cl_dave3_Region_constructor);
 
 
     _result = ([_testRegion, []] call cl_dave3_Region_getSaveableData);
@@ -64,13 +65,21 @@ dave3_tests_RegionTests_Given_RegionDefinitionWithTowns_When_GettingRegionData_T
 
     [
     "Tavu", 
-    "townTavu"]]];
+    "townTavu"]], 
+
+
+    [
+    [
+    "locationBalavuPrisonCamp01"], 
+
+    [
+    "locationBalavuPrisonCamp02"]]];
 
 
 
 
 
-    _testRegion = ([[["dave3_Region",["dave3.ISaveable"]]], [_regionData]] call cl_dave3_Region_constructor);
+    _testRegion = ([[["dave3_Region",["dave3.IBuildable", "dave3.ISaveable"]]], [_regionData]] call cl_dave3_Region_constructor);
 
 
     _result = ([_testRegion, []] call cl_dave3_Region_getSaveableData);

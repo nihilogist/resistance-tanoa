@@ -9,7 +9,7 @@
  */
 namespace dave3
 {
-	public class Campaign : ISaveable
+	public class Campaign : ISaveable, IBuildable
 	{
 		// mapName can be used as the name of the mission
 		public property String mapName { get; private set; };
@@ -53,6 +53,10 @@ namespace dave3
 			];
 			[["CAMPAIGN: Returning data to save campaign state", _saveableData], LogLevel.Debug] call missionLogger.logMessage;
 			_saveableData
+		};
+	
+		public method build {
+			[] call _self.mapData.build;
 		};
 	
 	};

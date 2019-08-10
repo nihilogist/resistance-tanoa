@@ -1,0 +1,18 @@
+/*
+ * Name:	IHasPhysRep
+ * Date:	10/08/2019
+ * Version: 1.0
+ * Author:  dave3
+ *
+ * Description:
+ * Interface describing an object that has a physical representation in the world space
+ */
+namespace dave3
+{
+	public interface IHasPhysRep
+	{
+		method spawnPhysrep();
+		method removePhysrep();
+	};
+};
+

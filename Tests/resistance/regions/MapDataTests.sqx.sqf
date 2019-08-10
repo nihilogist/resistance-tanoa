@@ -38,14 +38,19 @@ dave3_tests_MapDataTests_Given_CampaignDefinition_When_GettingMapData_Then_Expec
     [
     [
     "Balavu", 
-    "townBalavu"]]]];
+    "townBalavu"]], 
+
+
+    [
+    [
+    "locationBalavuPrisonCamp01"]]]];
 
 
 
 
 
 
-    _testMapData = ([[["dave3_MapData",["dave3.ISaveable"]]], [_mapDataData]] call cl_dave3_MapData_constructor);
+    _testMapData = ([[["dave3_MapData",["dave3.IBuildable", "dave3.ISaveable"]]], [_mapDataData]] call cl_dave3_MapData_constructor);
 
 
     _result = ([_testMapData, []] call cl_dave3_MapData_getSaveableData);

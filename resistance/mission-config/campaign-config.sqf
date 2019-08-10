@@ -13,6 +13,14 @@ campaignDataInitial = [
 					"Tavu", // 0: Town name
 					"townTavu" // 1: Town marker
 				]
+			],
+			[ // BalavuRegion 2: PrisonCamp array
+				[ // Prison Camp 0
+					"locationBalavuPrisonCamp01"
+				],
+				[ // Prison Camp 1
+					"locationBalavuPrisonCamp02"
+				]
 			]
 		]
 	],

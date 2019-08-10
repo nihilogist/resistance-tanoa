@@ -53,6 +53,8 @@ namespace dave3.tests
 			// Act
 			_result = [] call _testCampaign.getSaveableData;
 		
+			[["CAMPAIGNTEST: Data supplied: ", campaignDataInitial], LogLevel.Info] call missionLogger.logMessage;
+			[["CAMPAIGNTEST: Data retrieved: ", _result], LogLevel.Info] call missionLogger.logMessage;
 			// Assert
 			[_result isEqualTo campaignDataInitial, "Campaign not loading correctly"] call Assert.IsTrue;
 		};

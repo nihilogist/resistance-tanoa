@@ -17,27 +17,39 @@ namespace dave3
 		// MapData is held in the MapData object. This will contain details of all the regions and towns and special locations on the map.
 		public property MapData mapData { get; private set; };
 		
+		// MapMarkerData is held in the MapMarkerData object. This will contain an array of all the user-placed markers on the map.
+		public property MapMarkerData mapMarkerData { get; private set; };
+		
 		
 		// Creates a Campaign object.
 		public constructor ("_campaignData" as Array) {
 			[["CAMPAIGN: Received data to construct campaign state: ", _campaignData], LogLevel.Debug] call missionLogger.logMessage;
+			
 			[["CAMPAIGN: Campaign Name: ", _campaignData select 0], LogLevel.Debug] call missionLogger.logMessage;
 			_self.mapName = _campaignData select 0;
+			
 			[["CAMPAIGN: MapData: ", [_campaignData select 1]], LogLevel.Debug] call missionLogger.logMessage;
 			_self.mapData = ([_campaignData select 1]) new MapData;
+			
+			[["CAMPAIGN: MapMarkerData: ", [_campaignData select 2]], LogLevel.Debug] call missionLogger.logMessage;
+			_self.mapMarkerData = ([_campaignData select 2]) new MapMarkerData;
 		};
 		
 		
 		public method Array getSaveableData {
-			private ["_saveableData" as Array, "_saveableMapData" as Array, "_thisMapData" as MapData];
+			private ["_saveableData" as Array, "_saveableMapData" as Array, "_thisMapData" as MapData, "_thisMapMarkerData" as MapMarkerData, "_saveableMapMarkerData" as Array];
 			[["CAMPAIGN: Calculating Campaign save data for ", _self], LogLevel.Debug] call missionLogger.logMessage;
 			
 			_thisMapData = _self.mapData;
+			_thisMapMarkerData = _self.mapMarkerData;
+			
 			_saveableMapData = [] call _thisMapData.getSaveableData;
+			_saveableMapMarkerData = [] call _thisMapMarkerData.getSaveableData;
 			
 			_saveableData = [
 				_self.mapName, // Map Name as array 0
-				_saveableMapData // MapData as array 1
+				_saveableMapData, // MapData as array 1
+				_saveableMapMarkerData // MapMarkerData as array 2
 			];
 			[["CAMPAIGN: Returning data to save campaign state", _saveableData], LogLevel.Debug] call missionLogger.logMessage;
 			_saveableData

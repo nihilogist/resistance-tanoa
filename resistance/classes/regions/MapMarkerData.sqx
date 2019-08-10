@@ -1,0 +1,60 @@
+/*
+ * Name:	MapMarkerData
+ * Date:	10/08/2019
+ * Version: 1.0
+ * Author:  dave3
+ *
+ * Description:
+ * Class representing map marker data
+ */
+namespace dave3
+{
+	public class MapMarkerData : ISaveable
+	{
+		public property Array allUserDefinedMapMarkers { get; private set; };
+	
+		// Creates a MapMarkerData object.
+		public constructor ("_mapMarkers" as Array) {
+			
+			{
+				[["MAPMARKER: Rendering marker: ", _x], LogLevel.Info] call missionLogger.logMessage;
+				_x call BIS_fnc_stringToMarker;
+			} forEach _mapMarkers;
+			
+		};
+		
+		public method Array getSaveableData {
+			private ["_allMapMarkers" as Array, "_allUserMapMarkers" as Array, "_markerString" as Array, "_serialisedMarker" as String];
+		
+			_self.allUserDefinedMapMarkers = [];
+		
+			[["MAPMARKER: Getting all map markers."], LogLevel.Info] call missionLogger.logMessage;
+			_allMapMarkers = allMapMarkers;
+			[["MAPMARKER: ", _allMapMarkers], LogLevel.Info] call missionLogger.logMessage;
+			
+			[["MAPMARKER: Getting all USER map markers."], LogLevel.Info] call missionLogger.logMessage;
+			_allUserMapMarkers = [];
+			{
+				_markerString = toArray _x;
+				_markerString resize 15;
+				if (toString _markerString == "_USER_DEFINED #") then {
+					_allUserMapMarkers pushBack _x;
+				};
+			} forEach _allMapMarkers as String;
+			
+			[["MAPMARKER: user defined map markers found as: ", _allUserMapMarkers], LogLevel.Info] call missionLogger.logMessage;
+			
+			[["MAPMARKER: serialising markers"], LogLevel.Info] call missionLogger.logMessage;
+				
+			{
+				_serialisedMarker = _x call BIS_fnc_markerToString;
+				[["MAPMARKER: user defined map marker serialised as: ", _serialisedMarker], LogLevel.Info] call missionLogger.logMessage;
+				_self.allUserDefinedMapMarkers pushBack _serialisedMarker;
+			} forEach _allUserMapMarkers;
+			
+			
+			_self.allUserDefinedMapMarkers
+		};
+	};
+};
+

@@ -16,26 +16,30 @@ cl_dave3_MapData_regions_PropIndex = 1;
 
 
 cl_dave3_MapData_constructor = { params ["_class_fields", "_this"]; params ["_mapDataData"]; 
-    ([missionLogger, [["MAPDATA: Received data to construct campaign map data", _mapDataData], 4]] call cl_dave3_LoggerUtil_logMessage);
-    private ["_regionsData"];
+    ([missionLogger, [["MAPDATA: Received data to construct campaign map data ", _mapDataData], 3]] call cl_dave3_LoggerUtil_logMessage);
+    private ["_regionsData", "_regionData"];
 
     _regionsData = [_mapDataData select 0];
-    ([missionLogger, [["MAPDATA: Regions Data", _regionsData], 4]] call cl_dave3_LoggerUtil_logMessage);
+    ([missionLogger, [["MAPDATA: Regions Data", _regionsData], 3]] call cl_dave3_LoggerUtil_logMessage);
     _class_fields set [1, []];
     {
-        private ["_regionData"];
         _regionData = _x;
-        ([missionLogger, [["MAPDATA: Constructing Region: ", _regionData], 4]] call cl_dave3_LoggerUtil_logMessage);
+        ([missionLogger, [["MAPDATA: Constructing Region: ", _regionData], 3]] call cl_dave3_LoggerUtil_logMessage);
         (_class_fields select 1) pushBack (([[["dave3_Region",["dave3.ISaveable"]]], [_regionData]] call cl_dave3_Region_constructor));
-    } forEach _regionsData; _class_fields };
+    } forEach _regionsData;
+
+    ([missionLogger, [["MAPDATA: ", (count ((_class_fields select 1))), " regions constructed"], 3]] call cl_dave3_LoggerUtil_logMessage); _class_fields };
 
 
 cl_dave3_MapData_getSaveableData = { params ["_class_fields", "_this"];
-    private ["_saveableData", "_regionsData"];
+    private ["_saveableData", "_regionsData", "_saveableRegion"];
+
+    ([missionLogger, [["MAPDATA: Calculating Mapdata save data for ", _class_fields], 3]] call cl_dave3_LoggerUtil_logMessage);
 
     _regionsData = [];
+    ([missionLogger, [["MAPDATA: Saving ", (count (_class_fields select 1)), " regions."], 3]] call cl_dave3_LoggerUtil_logMessage);
     {
-        private ["_saveableRegion"];
+        ([missionLogger, [["MAPDATA: Calculating Mapdata save data for region", (_x select 1)], 3]] call cl_dave3_LoggerUtil_logMessage);
         _saveableRegion = ([_x, []] call cl_dave3_Region_getSaveableData);
         _regionsData pushBack _saveableRegion;
     } forEach (_class_fields select 1);

@@ -32,7 +32,7 @@ cl_dave3_LoggerUtil_constructor = { params ["_class_fields", "_this"]; params ["
 
 
 
-cl_dave3_LoggerUtil_logMessage = { params ["_class_fields", "_this"]; params ["_logMessage", ["_logLevel", 3]]; 
+cl_dave3_LoggerUtil_logMessage = { params ["_class_fields", "_this"]; params ["_logMessage", "_logLevel"]; 
     if (debug && isServer) then {
         private ["_logOutput", "_logLevelString", "_logFinalOutput"];
         if ((_class_fields select 1) find _logLevel > -1) then {

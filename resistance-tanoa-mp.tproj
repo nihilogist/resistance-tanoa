@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectRootNode Name="resistance-tanoa-mp" IsExpanded="true" FileName="">
-    <IsSelected>true</IsSelected>
+    <IsSelected>false</IsSelected>
     <SubNodes>
       <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="Enigma" IsExpanded="false" FileName="Enigma">
         <IsSelected>false</IsSelected>
@@ -43,13 +43,13 @@
           </ProjectNodeViewModel>
         </SubNodes>
       </ProjectNodeViewModel>
-      <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="resistance" IsExpanded="false" FileName="resistance">
+      <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="resistance" IsExpanded="true" FileName="resistance">
         <IsSelected>false</IsSelected>
         <SubNodes>
-          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="classes" IsExpanded="false" FileName="resistance\classes">
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="classes" IsExpanded="true" FileName="resistance\classes">
             <IsSelected>false</IsSelected>
             <SubNodes>
-              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="game" IsExpanded="false" FileName="resistance\classes\game">
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="game" IsExpanded="true" FileName="resistance\classes\game">
                 <IsSelected>false</IsSelected>
                 <SubNodes>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="compile-all-game.sqx" IsExpanded="false" FileName="resistance\classes\game\compile-all-game.sqx">
@@ -61,7 +61,7 @@
                     <SubNodes />
                   </ProjectNodeViewModel>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="SaveManager.sqx" IsExpanded="false" FileName="resistance\classes\game\SaveManager.sqx">
-                    <IsSelected>false</IsSelected>
+                    <IsSelected>true</IsSelected>
                     <SubNodes />
                   </ProjectNodeViewModel>
                 </SubNodes>
@@ -295,13 +295,13 @@
           </ProjectNodeViewModel>
         </SubNodes>
       </ProjectNodeViewModel>
-      <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="Sqx" IsExpanded="false" FileName="Sqx">
+      <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="Sqx" IsExpanded="true" FileName="Sqx">
         <IsSelected>false</IsSelected>
         <SubNodes>
-          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="UnitTest" IsExpanded="false" FileName="Sqx\UnitTest">
+          <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="UnitTest" IsExpanded="true" FileName="Sqx\UnitTest">
             <IsSelected>false</IsSelected>
             <SubNodes>
-              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="TestEngine" IsExpanded="false" FileName="Sqx\UnitTest\TestEngine">
+              <ProjectNodeViewModel xsi:type="ProjectFolderNodeViewModel" Name="TestEngine" IsExpanded="true" FileName="Sqx\UnitTest\TestEngine">
                 <IsSelected>false</IsSelected>
                 <SubNodes>
                   <ProjectNodeViewModel xsi:type="ProjectFileNodeViewModel" Name="Assert.sqx" IsExpanded="false" FileName="Sqx\UnitTest\TestEngine\Assert.sqx">

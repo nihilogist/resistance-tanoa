@@ -33,9 +33,11 @@ namespace dave3
 			// Create the region's towns
 			_self.towns = [];
 			
-			{
-				_self.towns pushBack ([_x] new Town);
-			} forEach _townData;
+			if(!isNil "_townData") then {
+				{
+					_self.towns pushBack ([_x] new Town);
+				} forEach _townData;
+			};
 			
 			/* Create the region's prison camps
 			_self.prisonCamps = [];
@@ -52,6 +54,7 @@ namespace dave3
 		
 		public method Array getSaveableData() {
 			private ["_saveableData" as Array, "_gendarmeHQ" as GendarmeHQ, "_prisonCamps" as Array, "_towns" as Array];
+			[["REGION: Calculating Region save data"], LogLevel.Debug] call missionLogger.logMessage;
 			/*_gendarmeHQ = _self.gendarmeHQ;
 			
 			_prisonCamps = [];

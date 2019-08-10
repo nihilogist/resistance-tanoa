@@ -37,7 +37,7 @@ namespace Sqx.UnitTest
 			if (!_onlyToRpt) then {
 				player sideChat _text;
 			};
-			[[_text], LogLevel.Debug] call missionLogger.logMessage;
+			[[_text], LogLevel.Info] call missionLogger.logMessage;
 			diag_log _text;
 		};
 		

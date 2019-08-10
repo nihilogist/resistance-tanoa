@@ -13,8 +13,8 @@ namespace dave3
 	{
 	
 		public property String townName { get; private set; };
-		public property Array gendarmesPatrolMarkers { get; private set; };
-		public property Array gendarmePatrols { get; private set; };
+		//public property Array gendarmesPatrolMarkers { get; private set; };
+		//public property Array gendarmePatrols { get; private set; };
 	
 		// Creates a Town object.
 		public constructor {

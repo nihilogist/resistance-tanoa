@@ -13,8 +13,8 @@
 
 
 cl_dave3_Town_townName_PropIndex = 1;
-cl_dave3_Town_gendarmesPatrolMarkers_PropIndex = 2;
-cl_dave3_Town_gendarmePatrols_PropIndex = 3;
+
+
 
 
 cl_dave3_Town_constructor = { params ["_class_fields", "_this"];

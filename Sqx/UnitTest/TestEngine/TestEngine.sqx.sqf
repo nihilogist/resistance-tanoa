@@ -37,7 +37,7 @@ Sqx_UnitTest_TestEngine_Output = {  params ["_text", ["_onlyToRpt", false]];
     if (!_onlyToRpt) then {
         player sideChat _text; };
 
-    ([missionLogger, [[_text], 4]] call cl_dave3_LoggerUtil_logMessage);
+    ([missionLogger, [[_text], 3]] call cl_dave3_LoggerUtil_logMessage);
     diag_log _text; };
 
 

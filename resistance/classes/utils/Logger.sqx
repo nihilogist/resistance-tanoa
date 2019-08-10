@@ -32,7 +32,7 @@ namespace dave3
 			};
 		};
 		
-		public method logMessage("_logMessage" as Array, ["_logLevel" as LogLevel, LogLevel.Info]) {
+		public method logMessage("_logMessage" as Array, "_logLevel" as LogLevel) {
 			if (debug && isServer) then {
 				private ["_logOutput" as String, "_logLevelString" as String, "_logFinalOutput" as String];
 				if (_mLogDetailLevels find _logLevel > -1) then {

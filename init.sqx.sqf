@@ -12,7 +12,7 @@ sleep 3;
 
 
 
-missionLogger = ([[["dave3_LoggerUtil",[]]], [4]] call cl_dave3_LoggerUtil_constructor);
+missionLogger = ([[["dave3_LoggerUtil",[]]], [3]] call cl_dave3_LoggerUtil_constructor);
 ([missionLogger, [["---"], 3]] call cl_dave3_LoggerUtil_logMessage);
 ([missionLogger, [["---"], 3]] call cl_dave3_LoggerUtil_logMessage);
 ([missionLogger, [["---"], 3]] call cl_dave3_LoggerUtil_logMessage);
@@ -38,19 +38,19 @@ _gameMaster = ([[["dave3_GameMaster",[]]], []] call cl_dave3_GameMaster_construc
 _savedWorldData = ([_saveManager, []] call cl_dave3_SaveManager_getSavedData);
 
 
-([missionLogger, [["INIT: Parsing saved world data", _savedWorldData]]] call cl_dave3_LoggerUtil_logMessage);
+([missionLogger, [["INIT: Parsing saved world data", _savedWorldData], 3]] call cl_dave3_LoggerUtil_logMessage);
 
 
 if (count _savedWorldData == 0) then {
-    ([missionLogger, [["INIT: No world data in save file."]]] call cl_dave3_LoggerUtil_logMessage);
-    _savedWorldData = [worldData]; } else { 
+    ([missionLogger, [["INIT: No campaign data in save file."], 2]] call cl_dave3_LoggerUtil_logMessage);
+    _savedWorldData = [campaignDataInitial]; } else { 
 
-    ([missionLogger, [["INIT: Selecting world data from save file"]]] call cl_dave3_LoggerUtil_logMessage); };
+    ([missionLogger, [["INIT: Selecting campaign data from save file"], 3]] call cl_dave3_LoggerUtil_logMessage); };
 
 
-([missionLogger, [["INIT: Using world data to construct world state: ", _savedWorldData], 3]] call cl_dave3_LoggerUtil_logMessage);
+([missionLogger, [["INIT: Using data to construct campaign state: ", _savedWorldData], 3]] call cl_dave3_LoggerUtil_logMessage);
 
-theWorld = ([[["dave3_WorldRegions",["dave3.ISaveable"]]], (_savedWorldData)] call cl_dave3_WorldRegions_constructor);
+theWorld = ([[["dave3_Campaign",["dave3.ISaveable"]]], _savedWorldData] call cl_dave3_Campaign_constructor);
 
 
 ([_saveManager, [theWorld]] call cl_dave3_SaveManager_setWorldToSave);

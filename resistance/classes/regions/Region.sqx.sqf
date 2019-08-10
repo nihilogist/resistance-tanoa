@@ -21,7 +21,7 @@ cl_dave3_Region_towns_PropIndex = 2;
 
 cl_dave3_Region_constructor = { params ["_class_fields", "_this"];
     params ["_regionData"];
-    ([missionLogger, [["REGION: Received data to construct region: ", _regionData], 3]] call cl_dave3_LoggerUtil_logMessage);
+    ([missionLogger, [["REGION: Received data to construct region: ", _regionData], 4]] call cl_dave3_LoggerUtil_logMessage);
 
 
     ([missionLogger, [["REGION: Region Name: ", _regionData select 0], 4]] call cl_dave3_LoggerUtil_logMessage);
@@ -54,7 +54,7 @@ cl_dave3_Region_constructor = { params ["_class_fields", "_this"];
 
 cl_dave3_Region_getSaveableData = { params ["_class_fields", "_this"];
     private ["_saveableData", "_gendarmeHQ", "_prisonCamps", "_towns"];
-    ([missionLogger, [["REGION: Calculating Region save data"], 3]] call cl_dave3_LoggerUtil_logMessage);
+    ([missionLogger, [["REGION: Calculating Region save data"], 4]] call cl_dave3_LoggerUtil_logMessage);
 
 
 

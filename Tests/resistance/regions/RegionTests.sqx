@@ -59,10 +59,12 @@ namespace dave3.tests
 								"Balavu", // 0: Name = Balavu
 								[	// 1: Town data
 									[  // Town 0
-										"Balavu" // 0: town name
+										"Balavu", // 0: town name
+										"townBalavu"
 									],
 									[  // Town 1
-										"Tavu" // 0: town name
+										"Tavu", // 0: town name
+										"townTavu"
 									]
 								]
 							];

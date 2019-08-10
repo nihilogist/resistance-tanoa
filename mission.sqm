@@ -8,11 +8,11 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=172;
+		nextID=174;
 	};
 	class MarkerIDProvider
 	{
-		nextID=9;
+		nextID=11;
 	};
 	class LayerIndexProvider
 	{
@@ -1694,7 +1694,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=28;
+		items=30;
 		class Item0
 		{
 			dataType="Group";
@@ -3237,6 +3237,34 @@ class Mission
 				};
 				nAttributes=5;
 			};
+		};
+		class Item28
+		{
+			dataType="Marker";
+			position[]={2653.4431,7.7160001,7343.1548};
+			name="townBalavu";
+			markerType="ELLIPSE";
+			type="ellipse";
+			alpha=0.15833752;
+			a=250;
+			b=100;
+			angle=19.999998;
+			id=172;
+			atlOffset=0.00012874603;
+		};
+		class Item29
+		{
+			dataType="Marker";
+			position[]={1005.287,3.263,7665.0659};
+			name="townTavu";
+			markerType="ELLIPSE";
+			type="ellipse";
+			alpha=0.28712314;
+			a=180;
+			b=150;
+			angle=145.92499;
+			id=173;
+			atlOffset=-2.2981668;
 		};
 	};
 };

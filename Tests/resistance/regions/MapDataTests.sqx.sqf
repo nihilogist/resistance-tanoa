@@ -37,7 +37,8 @@ dave3_tests_MapDataTests_Given_CampaignDefinition_When_GettingMapData_Then_Expec
     "Balavu", 
     [
     [
-    "Balavu"]]]];
+    "Balavu", 
+    "townBalavu"]]]];
 
 
 

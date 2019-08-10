@@ -37,7 +37,8 @@ namespace dave3.tests
 									"Balavu",
 									[
 										[ // Town 1: Balavu
-											"Balavu"
+											"Balavu",
+											"townBalavu"
 										]
 									]
 								]

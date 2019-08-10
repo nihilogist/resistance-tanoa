@@ -32,7 +32,8 @@ namespace dave3.tests
 			private ["_testTown" as Town, "_result" as Array, "_townData" as Array];
 			
 			_townData = 	[ // TownData
-								"Balavu" // 0: Name = Balavu
+								"Balavu", // 0: Name = Balavu
+								"townBalavu" // 1: Marker
 							];
 			[["TOWNTEST: Test region array data: ", _townData], LogLevel.Debug] call missionLogger.logMessage;
 		

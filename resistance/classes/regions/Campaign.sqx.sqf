@@ -30,7 +30,7 @@ cl_dave3_Campaign_constructor = { params ["_class_fields", "_this"]; params ["_c
 
 cl_dave3_Campaign_getSaveableData = { params ["_class_fields", "_this"];
     private ["_saveableData", "_saveableMapData", "_thisMapData"];
-    ([missionLogger, [["CAMPAIGN: Calculating Campaign save data for ", _class_fields], 3]] call cl_dave3_LoggerUtil_logMessage);
+    ([missionLogger, [["CAMPAIGN: Calculating Campaign save data for ", _class_fields], 4]] call cl_dave3_LoggerUtil_logMessage);
 
     _thisMapData = (_class_fields select 2);
     _saveableMapData = ([_thisMapData, []] call cl_dave3_MapData_getSaveableData);

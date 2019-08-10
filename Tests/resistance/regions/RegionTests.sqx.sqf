@@ -59,10 +59,12 @@ dave3_tests_RegionTests_Given_RegionDefinitionWithTowns_When_GettingRegionData_T
     "Balavu", 
     [
     [
-    "Balavu"], 
+    "Balavu", 
+    "townBalavu"], 
 
     [
-    "Tavu"]]];
+    "Tavu", 
+    "townTavu"]]];
 
 
 

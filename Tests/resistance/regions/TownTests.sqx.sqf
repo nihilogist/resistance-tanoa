@@ -32,7 +32,8 @@ dave3_tests_TownTests_Given_TownDefinition_When_GettingTownData_Then_ExpectCorre
     private ["_testTown", "_result", "_townData"];
 
     _townData = [
-    "Balavu"];
+    "Balavu", 
+    "townBalavu"];
 
     ([missionLogger, [["TOWNTEST: Test region array data: ", _townData], 4]] call cl_dave3_LoggerUtil_logMessage);
 

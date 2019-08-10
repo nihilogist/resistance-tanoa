@@ -9,44 +9,19 @@
  */
 namespace dave3
 {
-	public class PrisonCamp : ISaveable
+	public class PrisonCamp : ISaveable, IHasPhysRep
 	{
 	
 		public property String locationMarker { get; private set; };
+		
+		private fields ["_mPrisonCampShed"];
 	
 		// Creates a PrisonCamp object and spawns the prison camp buildings at the given location
 		public constructor {
 			params ["_prisonCampData" as Array];
-			private ["_prisonCampShedClass" as String, "_prisonCampGateClass" as String, "_prisonCampSidewallClass" as String, "_positionToSpawn", "_prisonCampShed"];
 			
 			// Deserialise data from array
 			_self.locationMarker = _prisonCampData select 0;
-
-			// Define buildings used in constructing the camp.
-			_prisonCampShedClass = "Land_Metal_Shed_F";
-			_prisonCampGateClass = "Land_Net_Fence_Gate_F";
-			_prisonCampSidewallClass = "Land_BackAlley_02_l_1m_F";
-
-			// Get the position to spawn the camp.
-			_positionToSpawn = markerPos _self.locationMarker;
-			
-			// Spawn in the buildings and arrange them.
-			_prisonCampShed = [_prisonCampShedClass, _self.locationMarker] call spawnObjectAtMarker;
-			
-			
-			private _prisonCampWall1 = _prisonCampSidewallClass createVehicle (_positionToSpawn);
-			_prisonCampWall1 attachTo [_prisonCampShed, [5.2, -1.8, 0]];
-			_prisonCampWall1 setVectorDirAndUp [[-1,0,0],[0,0,1]];
-			
-			
-			private _prisonCampWall2 = _prisonCampSidewallClass createVehicle (_positionToSpawn);
-			_prisonCampWall2 attachTo [_prisonCampShed, [-5.2, -1.8, 0]];
-			_prisonCampWall2 setVectorDirAndUp [[1,0,0],[0,0,1]];
-			
-			private _prisonCampGate = _prisonCampGateClass createVehicle (_positionToSpawn);
-			_prisonCampGate attachTo [_prisonCampShed, [0, 0.8, 0]];
-			_prisonCampGate setVectorDirAndUp [[0,-1,0], [0,0,1]];
-			
 			
 		};
 		
@@ -58,6 +33,37 @@ namespace dave3
 			_prisonCampData
 			
 		};
+		
+		public method spawnPhysrep() {
+			private ["_prisonCampShedClass" as String, "_prisonCampGateClass" as String, "_prisonCampSidewallClass" as String, "_positionToSpawn"];
+			// Define buildings used in constructing the camp.
+			_prisonCampShedClass = "Land_Metal_Shed_F";
+			_prisonCampGateClass = "Land_Net_Fence_Gate_F";
+			_prisonCampSidewallClass = "Land_BackAlley_02_l_1m_F";
+
+			// Get the position to spawn the camp.
+			_positionToSpawn = markerPos _self.locationMarker;
+			
+			// Spawn in the buildings and arrange them.
+			_mPrisonCampShed = [_prisonCampShedClass, _self.locationMarker] call spawnObjectAtMarker;
+			
+			
+			private _prisonCampWall1 = _prisonCampSidewallClass createVehicle (_positionToSpawn);
+			_prisonCampWall1 attachTo [_mPrisonCampShed, [5.2, -1.8, 0]];
+			_prisonCampWall1 setVectorDirAndUp [[-1,0,0],[0,0,1]];
+			
+			
+			private _prisonCampWall2 = _prisonCampSidewallClass createVehicle (_positionToSpawn);
+			_prisonCampWall2 attachTo [_mPrisonCampShed, [-5.2, -1.8, 0]];
+			_prisonCampWall2 setVectorDirAndUp [[1,0,0],[0,0,1]];
+			
+			private _prisonCampGate = _prisonCampGateClass createVehicle (_positionToSpawn);
+			_prisonCampGate attachTo [_mPrisonCampShed, [0, 0.8, 0]];
+			_prisonCampGate setVectorDirAndUp [[0,-1,0], [0,0,1]];
+		
+		};
+		
+		public method removePhysrep() {};
 	};
 	
 };

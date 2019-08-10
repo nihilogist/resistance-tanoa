@@ -29,7 +29,7 @@ cl_dave3_Campaign_constructor = { params ["_class_fields", "_this"]; params ["_c
     _class_fields set [1, _campaignData select 0];
 
     ([missionLogger, [["CAMPAIGN: MapData: ", [_campaignData select 1]], 4]] call cl_dave3_LoggerUtil_logMessage);
-    _class_fields set [2, ([[["dave3_MapData",["dave3.ISaveable"]]], ([_campaignData select 1])] call cl_dave3_MapData_constructor)];
+    _class_fields set [2, ([[["dave3_MapData",["dave3.IBuildable", "dave3.ISaveable"]]], ([_campaignData select 1])] call cl_dave3_MapData_constructor)];
 
     ([missionLogger, [["CAMPAIGN: MapMarkerData: ", [_campaignData select 2]], 4]] call cl_dave3_LoggerUtil_logMessage);
     _class_fields set [3, ([[["dave3_MapMarkerData",["dave3.ISaveable"]]], ([_campaignData select 2])] call cl_dave3_MapMarkerData_constructor)]; _class_fields };
@@ -53,3 +53,7 @@ cl_dave3_Campaign_getSaveableData = { params ["_class_fields", "_this"];
 
     ([missionLogger, [["CAMPAIGN: Returning data to save campaign state", _saveableData], 4]] call cl_dave3_LoggerUtil_logMessage);
     _saveableData };
+
+
+cl_dave3_Campaign_build = { params ["_class_fields", "_this"];
+    ([(_class_fields select 2), []] call cl_dave3_MapData_build); };

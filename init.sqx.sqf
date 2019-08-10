@@ -49,8 +49,12 @@ if (count _savedWorldData == 0) then {
 
 
 ([missionLogger, [["INIT: Using data to construct campaign state: ", _savedWorldData], 3]] call cl_dave3_LoggerUtil_logMessage);
+theWorld = ([[["dave3_Campaign",["dave3.IBuildable", "dave3.ISaveable"]]], _savedWorldData] call cl_dave3_Campaign_constructor);
 
-theWorld = ([[["dave3_Campaign",["dave3.ISaveable"]]], _savedWorldData] call cl_dave3_Campaign_constructor);
+sleep 5;
+
+([missionLogger, [["INIT: Building world from save and spawning physreps."], 3]] call cl_dave3_LoggerUtil_logMessage);
+([theWorld, []] call cl_dave3_Campaign_build);
 
 
 ([_saveManager, [theWorld]] call cl_dave3_SaveManager_setWorldToSave);

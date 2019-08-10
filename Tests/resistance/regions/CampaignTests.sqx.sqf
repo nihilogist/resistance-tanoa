@@ -35,7 +35,7 @@ dave3_tests_CampaignTests_Given_CampaignDefinition_When_GettingName_Then_ExpectT
     private ["_testCampaign", "_result"];
 
 
-    _testCampaign = ([[["dave3_Campaign",["dave3.ISaveable"]]], [campaignDataInitial]] call cl_dave3_Campaign_constructor);
+    _testCampaign = ([[["dave3_Campaign",["dave3.IBuildable", "dave3.ISaveable"]]], [campaignDataInitial]] call cl_dave3_Campaign_constructor);
 
 
     _result = (_testCampaign select 1);
@@ -48,7 +48,7 @@ dave3_tests_CampaignTests_Given_CampaignDefinition_When_GettingSaveableData_Then
     private ["_testCampaign", "_result"];
 
 
-    _testCampaign = ([[["dave3_Campaign",["dave3.ISaveable"]]], [campaignDataInitial]] call cl_dave3_Campaign_constructor);
+    _testCampaign = ([[["dave3_Campaign",["dave3.IBuildable", "dave3.ISaveable"]]], [campaignDataInitial]] call cl_dave3_Campaign_constructor);
 
 
     _result = ([_testCampaign, []] call cl_dave3_Campaign_getSaveableData);

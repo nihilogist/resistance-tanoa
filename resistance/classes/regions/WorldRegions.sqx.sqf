@@ -33,7 +33,7 @@ cl_dave3_WorldRegions_constructor = { params ["_class_fields", "_this"];
     _class_fields set [2, []];
 
     {
-        _region = ([[["dave3_Region",["dave3.ISaveable"]]], [_x]] call cl_dave3_Region_constructor);
+        _region = ([[["dave3_Region",["dave3.IBuildable", "dave3.ISaveable"]]], [_x]] call cl_dave3_Region_constructor);
         (_class_fields select 2) pushBack _region;
     } forEach _regionsData;
 

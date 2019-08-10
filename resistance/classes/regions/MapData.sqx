@@ -9,7 +9,7 @@
  */
 namespace dave3
 {
-	public class MapData : ISaveable
+	public class MapData : ISaveable, IBuildable
 	{
 		// MapData is based on Regions
 		public property Array regions { get; private set; };
@@ -48,6 +48,12 @@ namespace dave3
 			_saveableData = _regionsData;
 			[["MAPDATA: Reteurning data to save campaign map data", _saveableData], LogLevel.Debug] call missionLogger.logMessage;
 			_saveableData
+		};
+		
+		public method build {
+			{
+				[] call _x.build;
+			} forEach _self.regions as Region;
 		};
 	};
 };

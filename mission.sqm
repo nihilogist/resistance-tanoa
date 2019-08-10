@@ -8,11 +8,11 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=172;
+		nextID=174;
 	};
 	class MarkerIDProvider
 	{
-		nextID=9;
+		nextID=11;
 	};
 	class LayerIndexProvider
 	{
@@ -21,9 +21,9 @@ class EditorData
 	class Camera
 	{
 		pos[]={1792.0938,25.569139,7329.8223};
-		dir[]={-0.24520604,-0.597525,-0.76347047};
-		up[]={-0.18272221,0.80183554,-0.56892103};
-		aside[]={-0.95211792,3.4866389e-007,0.30579856};
+		dir[]={-0.49295673,-0.38419157,-0.78066957};
+		up[]={-0.20514248,0.92324132,-0.32487309};
+		aside[]={-0.84555447,-6.7624205e-007,0.53393257};
 	};
 };
 binarizationWanted=0;
@@ -1694,7 +1694,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=28;
+		items=30;
 		class Item0
 		{
 			dataType="Group";
@@ -3237,6 +3237,34 @@ class Mission
 				};
 				nAttributes=5;
 			};
+		};
+		class Item28
+		{
+			dataType="Marker";
+			position[]={2653.4431,7.7160001,7343.1548};
+			name="townBalavu";
+			markerType="ELLIPSE";
+			type="ellipse";
+			alpha=0.15833752;
+			a=250;
+			b=100;
+			angle=19.999998;
+			id=172;
+			atlOffset=0.00012874603;
+		};
+		class Item29
+		{
+			dataType="Marker";
+			position[]={1005.287,3.263,7665.0659};
+			name="townTavu";
+			markerType="ELLIPSE";
+			type="ellipse";
+			alpha=0.28712314;
+			a=180;
+			b=150;
+			angle=145.92499;
+			id=173;
+			atlOffset=-2.2981668;
 		};
 	};
 };

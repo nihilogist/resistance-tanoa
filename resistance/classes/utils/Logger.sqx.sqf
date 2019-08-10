@@ -14,7 +14,7 @@
 
 
 
-cl_dave3_LoggerUtil_constructor = { private "_class_fields"; _class_fields = [["dave3_LoggerUtil", []]]; params ["_logDetailLevel"]; 
+cl_dave3_LoggerUtil_constructor = { params ["_class_fields", "_this"]; params ["_logDetailLevel"]; 
     if (_logDetailLevel == 1) then {
         _class_fields set [1, [1]]; };
 
@@ -32,7 +32,7 @@ cl_dave3_LoggerUtil_constructor = { private "_class_fields"; _class_fields = [["
 
 
 
-cl_dave3_LoggerUtil_logMessage = { params ["_class_fields", "_this"]; params ["_logMessage", ["_logLevel", 3]]; 
+cl_dave3_LoggerUtil_logMessage = { params ["_class_fields", "_this"]; params ["_logMessage", "_logLevel"]; 
     if (debug && isServer) then {
         private ["_logOutput", "_logLevelString", "_logFinalOutput"];
         if ((_class_fields select 1) find _logLevel > -1) then {

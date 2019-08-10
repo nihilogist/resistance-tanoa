@@ -15,7 +15,7 @@
 cl_dave3_PrisonCamp_locationMarker_PropIndex = 1;
 
 
-cl_dave3_PrisonCamp_constructor = { private "_class_fields"; _class_fields = [["dave3_PrisonCamp", ["dave3.ISaveable"]]];
+cl_dave3_PrisonCamp_constructor = { params ["_class_fields", "_this"];
     params ["_prisonCampData"];
     private ["_prisonCampShedClass", "_prisonCampGateClass", "_prisonCampSidewallClass", "_positionToSpawn", "_prisonCampShed"];
 

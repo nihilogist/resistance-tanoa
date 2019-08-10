@@ -18,7 +18,7 @@ cl_dave3_WorldRegions_caches_PropIndex = 3;
 
 
 
-cl_dave3_WorldRegions_constructor = { private "_class_fields"; _class_fields = [["dave3_WorldRegions", ["dave3.ISaveable"]]];
+cl_dave3_WorldRegions_constructor = { params ["_class_fields", "_this"];
     params ["_worldData"];
 
     private ["_regionsData", "_region", "_cacheData", "_cache"];
@@ -33,7 +33,7 @@ cl_dave3_WorldRegions_constructor = { private "_class_fields"; _class_fields = [
     _class_fields set [2, []];
 
     {
-        _region = ([_x] call cl_dave3_Region_constructor);
+        _region = ([[["dave3_Region",["dave3.ISaveable"]]], [_x]] call cl_dave3_Region_constructor);
         (_class_fields select 2) pushBack _region;
     } forEach _regionsData;
 
@@ -44,7 +44,7 @@ cl_dave3_WorldRegions_constructor = { private "_class_fields"; _class_fields = [
 
     {
         ([missionLogger, [["Generating Ammo Cache - ", _x], 4]] call cl_dave3_LoggerUtil_logMessage);
-        _cache = ([_x] call cl_dave3_AmmoDump_constructor);
+        _cache = ([[["dave3_AmmoDump",["dave3.ISaveable"]]], [_x]] call cl_dave3_AmmoDump_constructor);
         (_class_fields select 3) pushBack _cache;
     } forEach _cacheData; _class_fields };
 

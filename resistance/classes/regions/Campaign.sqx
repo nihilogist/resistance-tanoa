@@ -29,11 +29,15 @@ namespace dave3
 		
 		
 		public method Array getSaveableData {
-			private ["_saveableData"];
+			private ["_saveableData" as Array, "_saveableMapData" as Array, "_thisMapData" as MapData];
+			[["CAMPAIGN: Calculating Campaign save data for ", _self], LogLevel.Debug] call missionLogger.logMessage;
+			
+			_thisMapData = _self.mapData;
+			_saveableMapData = [] call _thisMapData.getSaveableData;
 			
 			_saveableData = [
 				_self.mapName, // Map Name as array 0
-				[] call _self.mapData.getSaveableData // MapData as array 1
+				_saveableMapData // MapData as array 1
 			];
 			[["CAMPAIGN: Returning data to save campaign state", _saveableData], LogLevel.Debug] call missionLogger.logMessage;
 			_saveableData

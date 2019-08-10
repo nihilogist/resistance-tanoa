@@ -17,7 +17,7 @@ cl_dave3_GameMaster_isRunning_PropIndex = 2;
 
 
 
-cl_dave3_GameMaster_constructor = { private "_class_fields"; _class_fields = [["dave3_GameMaster", []]];
+cl_dave3_GameMaster_constructor = { params ["_class_fields", "_this"];
 
     _class_fields set [1, 60]; _class_fields };
 

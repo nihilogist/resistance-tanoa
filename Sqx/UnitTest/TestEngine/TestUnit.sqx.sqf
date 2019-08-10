@@ -12,7 +12,7 @@
 
 
 
-cl_Sqx_UnitTest_TestUnit_constructor = { private "_class_fields"; _class_fields = [["Sqx_UnitTest_TestUnit", []]]; params ["_namespaceName", "_className", "_methodNames"]; 
+cl_Sqx_UnitTest_TestUnit_constructor = { params ["_class_fields", "_this"]; params ["_namespaceName", "_className", "_methodNames"]; 
 
     _class_fields set [1, _namespaceName];
     _class_fields set [2, _className];

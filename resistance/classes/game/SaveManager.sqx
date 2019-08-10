@@ -11,7 +11,7 @@ namespace dave3
 {
 	public class SaveManager
 	{
-		private fields ["_mSaveGameName" as String, "_mSaveGameContents" as Array, "_mAwaitingSave" as Boolean, "_mWorldToSave" as WorldRegions];
+		private fields ["_mSaveGameName" as String, "_mSaveGameContents" as Array, "_mAwaitingSave" as Boolean, "_mCampaign" as Campaign];
 		public property Boolean isRunning {get; private set;};
 		public property Scalar autosaveInterval { get; private set; };
 	
@@ -62,16 +62,16 @@ namespace dave3
 		
 		// Requests a game save at the next save evaluation
 		public method requestSave {
-			//["Server save has been requested."] call logger;
+			[["Server save has been requested."], LogLevel.Info] call missionLogger.logMessage;
 			_mAwaitingSave = true;
 		};
 		
 		
 		// Sets the world to save from the passed parameter
 		public method setWorldToSave {
-			params ["_worldToSave" as WorldRegions];
+			params ["_campaign" as Campaign];
 			
-			_mWorldToSave = _worldToSave;
+			_mCampaign = _campaign;
 		};
 		
 		private method Run {
@@ -82,16 +82,16 @@ namespace dave3
 					_mAwaitingSave
 				};
 				// Then persist the data in the world to save into the profile namespace
-				//["Saving game state to server profile namespace"] call logger;
+				[["Saving game state to server profile namespace"], LogLevel.Info] call missionLogger.logMessage;
 				_mSaveGameContents = [];
 				profileNamespace setVariable [_mSaveGameName, _mSaveGameContents];
 				saveProfileNamespace;
 				
-				_mSaveGameContents = [call _mWorldToSave.getSaveableData];
+				_mSaveGameContents = [call _mCampaign.getSaveableData];
 				profileNamespace setVariable [_mSaveGameName, _mSaveGameContents];
 				saveProfileNamespace;
 				_mAwaitingSave = false;
-				["Game state saved."] call logger;
+				[["Game state saved to server profile namespace"], LogLevel.Info] call missionLogger.logMessage;
 			};
 			
 			_self.isRunning = false;

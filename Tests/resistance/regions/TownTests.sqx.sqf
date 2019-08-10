@@ -11,7 +11,7 @@
 
 
 
-cl_dave3_tests_TownTests_constructor = { private "_class_fields"; _class_fields = [["dave3_tests_TownTests", []]]; _class_fields };
+cl_dave3_tests_TownTests_constructor = { _this select 0 };
 
 
 
@@ -32,12 +32,13 @@ dave3_tests_TownTests_Given_TownDefinition_When_GettingTownData_Then_ExpectCorre
     private ["_testTown", "_result", "_townData"];
 
     _townData = [
-    "Balavu"];
+    "Balavu", 
+    "townBalavu"];
 
     ([missionLogger, [["TOWNTEST: Test region array data: ", _townData], 4]] call cl_dave3_LoggerUtil_logMessage);
 
 
-    _testTown = ([_townData] call cl_dave3_Town_constructor);
+    _testTown = ([[["dave3_Town",["dave3.ISaveable"]]], [_townData]] call cl_dave3_Town_constructor);
 
 
     _result = ([_testTown, []] call cl_dave3_Town_getSaveableData);

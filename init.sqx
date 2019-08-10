@@ -12,7 +12,7 @@ sleep 3;
 
 
 // Initialise singletons
-missionLogger = [LogLevel.Debug] new LoggerUtil;
+missionLogger = [LogLevel.Info] new LoggerUtil;
 [["---"], LogLevel.Info] call missionLogger.logMessage;
 [["---"], LogLevel.Info] call missionLogger.logMessage;
 [["---"], LogLevel.Info] call missionLogger.logMessage;
@@ -38,19 +38,19 @@ _gameMaster = [] new GameMaster;
 _savedWorldData = call _saveManager.getSavedData;
 
 
-[["INIT: Parsing saved world data", _savedWorldData]] call missionLogger.logMessage;
+[["INIT: Parsing saved world data", _savedWorldData], LogLevel.Info] call missionLogger.logMessage;
 
 
 if (count _savedWorldData == 0) then {
-	[["INIT: No world data in save file."]] call missionLogger.logMessage;
-	_savedWorldData = [worldData];
+	[["INIT: No campaign data in save file."], LogLevel.Error] call missionLogger.logMessage;
+	_savedWorldData = [campaignDataInitial];
 } else {
-	[["INIT: Selecting world data from save file"]] call missionLogger.logMessage;
+	[["INIT: Selecting campaign data from save file"], LogLevel.Info] call missionLogger.logMessage;
 };
 
-[["INIT: Using world data to construct world state: ", _savedWorldData], LogLevel.Info] call missionLogger.logMessage;
+[["INIT: Using data to construct campaign state: ", _savedWorldData], LogLevel.Info] call missionLogger.logMessage;
 
-theWorld = (_savedWorldData) new WorldRegions;
+theWorld = _savedWorldData new Campaign;
 
 // Once the world is initialised, then set it into the save manager and request a save.
 [theWorld] call _saveManager.setWorldToSave;

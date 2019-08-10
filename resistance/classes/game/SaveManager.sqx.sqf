@@ -16,7 +16,7 @@ cl_dave3_SaveManager_isRunning_PropIndex = 5;
 cl_dave3_SaveManager_autosaveInterval_PropIndex = 6;
 
 
-cl_dave3_SaveManager_constructor = { private "_class_fields"; _class_fields = [["dave3_SaveManager", []]];
+cl_dave3_SaveManager_constructor = { params ["_class_fields", "_this"];
 
     params ["_nukeTheSave", "_saveGameName", "_autosaveInterval"];
 
@@ -62,16 +62,16 @@ cl_dave3_SaveManager_getSavedData = { params ["_class_fields", "_this"];
 
 
 cl_dave3_SaveManager_requestSave = { params ["_class_fields", "_this"];
-
+    ([missionLogger, [["Server save has been requested."], 3]] call cl_dave3_LoggerUtil_logMessage);
     _class_fields set [3, true]; };
 
 
 
 
 cl_dave3_SaveManager_setWorldToSave = { params ["_class_fields", "_this"];
-    params ["_worldToSave"];
+    params ["_campaign"];
 
-    _class_fields set [4, _worldToSave]; };
+    _class_fields set [4, _campaign]; };
 
 
 cl_dave3_SaveManager_Run = { params ["_class_fields", "_this"];
@@ -82,16 +82,16 @@ cl_dave3_SaveManager_Run = { params ["_class_fields", "_this"];
             (_class_fields select 3) };
 
 
-
+        ([missionLogger, [["Saving game state to server profile namespace"], 3]] call cl_dave3_LoggerUtil_logMessage);
         _class_fields set [2, []];
         profileNamespace setVariable [(_class_fields select 1), (_class_fields select 2)];
         saveProfileNamespace;
 
-        _class_fields set [2, [([(_class_fields select 4), []] call cl_dave3_WorldRegions_getSaveableData)]];
+        _class_fields set [2, [([(_class_fields select 4), []] call cl_dave3_Campaign_getSaveableData)]];
         profileNamespace setVariable [(_class_fields select 1), (_class_fields select 2)];
         saveProfileNamespace;
         _class_fields set [3, false];
-        ["Game state saved."] call logger; };
+        ([missionLogger, [["Game state saved to server profile namespace"], 3]] call cl_dave3_LoggerUtil_logMessage); };
 
 
     _class_fields set [5, false]; };
